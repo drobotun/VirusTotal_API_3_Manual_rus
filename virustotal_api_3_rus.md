@@ -428,3 +428,33 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
   } 
 }
 ```
+В словаре атрибутов присутствует также поля с информацией, извлеченной из самого файла. Эта информация раскрыта в следующих ключах:
+
+- `type_description` - описание типа файла, с коротким его представлением `type_tag`, который можно использовать для поиска файлов этого типа;
+- `creation_date` - извлекается, когда это возможно, из файла и указывает метку времени компиляции или сборки, может быть подделан создателями вредоносных программ;
+- `total_votes` - 
+- `vhash` -
+- `tags` - 
+
+##### JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "type_description": "<string>",
+      "type_tag": "<string>",
+      "creation_date": "<unix_timestamp>",
+        
+      "ssdeep": "<string>",
+      "vhash": "<vhash>",
+      "authentihash": "<string>",
+      
+      "reputation": <int>,
+      "total_votes": { "harmless": <int>, "malicious": <int> },
+      "tags": [ "<strings>" ]
+    }
+  }
+}
+```
