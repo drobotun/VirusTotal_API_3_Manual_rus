@@ -390,7 +390,12 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 
 - хэш-суммы файлов, такие как `md5`, `sha1` и `sha256`, которые однозначно идентифицируют файл;
 - `size` - размер файла;
-- `first_submission_date` - дата когда файл был впервые получен в VirusTotal (как временная метка UNIX);
-- `last_submission_date` - дата последнего анализа файла (как временная метка UNIX);
-
+- `first_submission_date` - дата и время когда файл был впервые получен в VirusTotal (как временная метка UNIX);
+- `last_analysis_date` - дата и время последнего анализа файла (как временная метка UNIX);
+- `last_modification_date` - дата и время последнего изменения файла (как временная метка UNIX);
+- `times_submitted` - число загрузок файла на сервер;
+- `last_analysis_results` - результаты последнего анализа;
+- `names` -
+- `downloadable` - 
+- `unique_sources` -
 
