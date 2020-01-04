@@ -95,9 +95,7 @@
 
 # <a name="intro"> Вступление </a>
 
-<a name="overview">
-## Краткий обзор
-</a>
+## <a name="overview"> Краткий обзор </a>
 
 VirusTotal API 3 версии на данный момент находится в стадии бета-версии. Данная версия заменит [VirusTotal API 2 версии](https://developers.virustotal.com/v2.0) с течением определенного времени. Версия 3 VirusTotal API основана на спецификации [http://jsonapi.org/](http://jsonapi.org/) и была разработана с учетом простоты использования и единообразия.
 
