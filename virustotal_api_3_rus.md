@@ -395,7 +395,36 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 - `last_modification_date` - дата и время последнего изменения файла (как временная метка UNIX);
 - `times_submitted` - число загрузок файла на сервер;
 - `last_analysis_results` - результаты последнего анализа;
-- `names` -
-- `downloadable` - 
-- `unique_sources` -
+- `names` - имя файла `meaningful_name`, которое мы считаем наиболее содержательным;
+- `downloadable` - показывает возможность скачивания файла с сервера;
+- `unique_sources` - указывает, из скольких различных источников был получен файл.
 
+##### JSON
+```
+{
+  "data": {
+    "type": "file",
+    "id": "<SHA256>",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/files/<SHA256>"
+    },
+    "attributes" : {
+      "md5": "<string>",
+      "sha1": "<string>",
+      "sha256": "<string>",
+      "size": <int>,
+      "first_submission_date": "<unix_timestamp>",
+      "last_submission_date": "<unix_timestamp>",
+      "last_modification_date": "<unix_timestamp>",
+      "times_submitted": <int>,
+      "last_analysis_date": "<unix_timestamp>",
+      "last_analysis_results": [ <objects> ],      
+      "names": [ <strings> ],
+      "meaningful_name": "<string>",
+      "downloadable": <boolean>,
+      "unique_sources": <int>,
+      ...
+    }
+  } 
+}
+```
