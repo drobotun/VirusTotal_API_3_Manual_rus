@@ -93,9 +93,7 @@
 	- [**GET** /urls/{id}/network_location]()
 	- [**GET** /urls/{id}/{relationship}]()
 
-<a name="intro">
-# Вступление
-</a>
+# <a name="intro"> Вступление </a>
 
 <a name="overview">
 ## Краткий обзор
