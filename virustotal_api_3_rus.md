@@ -823,8 +823,76 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 #### Тип файла идентифицированный с помощью утилиты [TrID](http://mark0.net/soft-trid-e.html)
 
 
+## <a name="file_behaviour"> Поведение файлов (file behaviour) </a>
 
 
+### <a name="DnsLookup"> DnsLookup </a>
+
+
+### <a name="DroppedFile"> DroppedFile </a>
+
+
+### <a name="BehaviourTag"> BehaviourTag </a>
+
+
+### <a name="FileCopy"> FileCopy </a>
+
+
+### <a name="HttpConversation"> HttpConversation </a>
+
+
+### <a name="IpTraffic"> IpTraffic </a>
+
+
+### <a name="PermissionCheck"> PermissionCheck </a>
+
+
+### <a name="Process"> Process </a>
+
+
+### <a name="Sms"> Sms </a>
+
+
+### <a name="VerdictTag"> VerdictTag </a>
+
+
+## <a name="domains"> Домены (domains) </a>
+
+
+### <a name="communicating_files"> communicating_files </a>
+
+
+### <a name="communicating_files"> communicating_files </a>
+
+
+### <a name="downloaded_files"> downloaded_files </a>
+
+
+### <a name="graphs"> graphs </a>
+
+
+### <a name="referrer_files"> referrer_files </a>
+
+
+### <a name="resolutions"> resolutions </a>
+
+
+### <a name="siblings"> siblings </a>
+
+
+## <a name="IP_addresses"> IP-адреса (IP addresses) </a>
+
+
+## <a name="URLs"> URL (URLs) </a>
+
+
+## <a name="submission"> Представления (submissions) </a>
+
+
+## <a name="screenshots"> Скриншоты (screenshots) </a>
+
+
+## <a name="votes"> Голоса (votes) </a>
 
 
 # <a name="endpoint"> Основные конечные точки API </a>
@@ -864,7 +932,7 @@ with open("<путь к файлу>", "rb") as file:
 
 ##### Заголовок запроса
 
-- **x-apikey** - ключ доступа к API.
+- **x-apikey** - ключ доступа к API (string).
 
 Файлы могут быть загружены в VirusTotal путем отправки POST-запросов, закодированных как `multipart/form-data` в конечную точку `https://www.virustotal.com/api/v3/files`. Каждый POST-запрос должен иметь поле с именем `file`, содержащее файл для анализа. Общий размер полезной нагрузки не может превышать 32 МБ. Для загрузки больших файлов см. [**GET** /files/upload_url](#get_files_upload_url).
 
@@ -906,7 +974,7 @@ response = requests.get(api_url, headers=headers)
 
 ##### Заголовок запроса
 
-- **x-apikey** - ключ доступа к API.
+- **x-apikey** - ключ доступа к API (string).
 
 Для загрузки файлов размером менее 32 МБ вы можете просто использовать конечную точку [**POST** /files](#post_files), но для файлов большего размера необъодимо сначала получить специальный URL загрузки, а затем отправить POST-запрос  на этот URL вместо отправки его в конечную точку **POST** /files. Этот POST-запрос должен иметь тот же формат, что и для конечной точки **POST** /files. Каждый полученный URL можно использовать только один раз.
 
@@ -947,11 +1015,11 @@ response = requests.get(api_url, headers=headers)
 
 ##### Параметры запроса
 
-- **id** - SHA-256, SHA-1 или MD5 идентификатор файла.
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
 
 ##### Заголовок запроса
 
-- **x-apikey** - ключ доступа к API.
+- **x-apikey** - ключ доступа к API (string).
 
 ##### Пример ответа
 ```
@@ -1048,7 +1116,7 @@ response = requests.get(api_url, headers=headers)
 }
 ```
 
-### <a name="post_files_analyse)"> POST /files/{id}/analyse </a>
+### <a name="post_files_analyse"> POST /files/{id}/analyse </a>
 
 Повторный анализ файла в VirusTotal/
 >##### :warning: Осторожно!
@@ -1074,11 +1142,11 @@ response = requests.post(api_url, headers=headers)
 
 ##### Параметры запроса
 
-- **id** - SHA-256, SHA-1 или MD5 идентификатор файла.
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
 
 ##### Заголовок запроса
 
-- **x-apikey** - ключ доступа к API.
+- **x-apikey** - ключ доступа к API (string).
 
 Файлы, которые уже были загружены в VirusTotal, можно повторно проанализировать, не загружая их снова, используя эту функцию. Ответом является дескриптор объекта для нового анализа, как и в функции [**POST** /files](#post_files). Идентификатор, содержащийся в дескрипторе, можно использовать с функции [**GET** /analyses/{id}](#get_analyses_id) для получения информации о результатах анализа.
 
@@ -1091,3 +1159,36 @@ response = requests.post(api_url, headers=headers)
   }
 }
 ```
+
+### <a name="get_files_comments"> GET /files/{id}/comments </a>
+
+Получение комментариев для файла
+
+**GET:** `https://www.virustotal.com/api/v3/files/{id}/comments`
+
+##### cURL
+```curl
+curl --request GET \
+  --url https://www.virustotal.com/api/v3/files/{id}/comments \
+  --header 'x-apikey: <your API key>'
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/comments"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+query = {'limit': str(limit), 'cursor': cursor}
+response = requests.get(api_url, headers=headers, params=query)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
+- **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
+- **cursor** - курсор продолжения (string, необязательный параметр).
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
