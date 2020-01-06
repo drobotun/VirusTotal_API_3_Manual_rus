@@ -743,3 +743,81 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
   }
 }
 ```
+
+### <a name="dmg_info"> dmg_info </a>
+#### Информация о монтируемых образах дисков macOS
+
+
+### <a name="dot_net_guids"> dot_net_guids </a>
+#### Идентификаторы для сборок Microsoft .NET
+
+
+### <a name="elf_info"> elf_info </a>
+#### Информация о Unix ELF-файлах
+
+
+### <a name="exiftool"> exiftool </a>
+#### Информация о метаданных EXIF из файлов
+
+### <a name="ipa_info"> ipa_info </a>
+#### Информация об iOS App Store Package файле
+
+
+### <a name="isoimage_info"> isoimage_info </a>
+#### Информация о файлах ISO=образов
+
+
+
+
+
+# <a name="endpoint"> Основные конечные точки API </a>
+
+## <a name="files_api"> Files </a>
+
+Файлы являются одним из наиболее важных типов объектов в API VirusTotal. У нас есть огромный набор данных из более чем 2 миллиардов файлов, которые были проанализированы VirusTotal на протяжении многих лет. В этом разделе описываются конечные точки API для анализа новых файлов и получения информации о любом файле в нашем наборе данных.
+
+### <a name="post_files"> POST /files </a>
+
+Загрузка и анализ файла.
+
+**POST:** `https://www.virustotal.com/api/v3/files`
+
+##### cURL
+```curl
+curl --request POST \
+  --url https://www.virustotal.com/api/v3/files \
+  --header 'x-apikey: <your API key>' \
+  --form file=@/path/to/file
+```
+
+```python
+api_url = 'https://www.virustotal.com/api/v3/files'
+headers = {'x-apikey' : '<ключ доступа к API>'}
+with open('<путь к файлу>', 'rb') as file:
+    files = {'file': ('<путь к файлу>', file)}
+    response = requests.post(api_url, headers=headers, files=files)
+```
+
+##### Параметры запроса
+
+- **file** - файл для сканирования.
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API.
+
+Файлы могут быть загружены в VirusTotal путем отправки POST-запросов, закодированных как `multipart/form-data` в конечную точку `https://www.virustotal.com/api/v3/files`. Каждый POST-запрос должен иметь поле с именем `file`, содержащее файл для анализа. Общий размер полезной нагрузки не может превышать 32 МБ. Для загрузки больших файлов см. [**GET** /files/upload_url](#get_files_upload_url).
+
+Результат, возвращаемый этой функцией, является дескриптором объекта для нового анализа. Идентификатор, содержащийся в дескрипторе, можно использовать с конечной точкой [**GET** /analysis/{id}](#get_analyses_id) для получения информации о результатах анализа этого файла.
+
+Для анализа файла, который ранее уже был загружен в VirusTotal, можно использовать [**POST** /fails/{id}/analyse](#post_files_analyse).
+
+##### Пример ответа
+```
+{
+  "data": {
+    "type": "analysis",
+    "id": "NjY0MjRlOTFjMDIyYTkyNWM0NjU2NWQzYWNlMzFmZmI6MTQ3NTA0ODI3Nw=="
+  }
+}
+```
