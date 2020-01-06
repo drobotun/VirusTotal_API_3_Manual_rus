@@ -822,3 +822,27 @@ with open("<путь к файлу>", "rb") as file:
   }
 }
 ```
+
+### <a name="get_files_upload_url"> GET /files/upload_url </a>
+
+Получение URL для загрузки файла больше 32 МБ.
+
+**GET**: `https://www.virustotal.com/api/v3/files/upload_url`
+
+##### cURL
+```curl
+curl --request GET \
+  --url https://www.virustotal.com/api/v3/files/upload_url \
+  --header 'x-apikey: <your API key>'
+```
+
+##### Python
+```python
+api_url = "https://www.virustotal.com/api/v3/files/upload_url"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+response = requests.post(api_url, headers=headers)
+```
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API.
