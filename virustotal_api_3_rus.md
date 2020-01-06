@@ -790,6 +790,7 @@ curl --request POST \
   --form file=@/path/to/file
 ```
 
+##### Python
 ```python
 api_url = 'https://www.virustotal.com/api/v3/files'
 headers = {'x-apikey' : '<ключ доступа к API>'}
