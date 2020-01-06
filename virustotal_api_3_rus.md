@@ -918,7 +918,7 @@ response = requests.get(api_url, headers=headers)
           "method": "blacklist",
           "result": null
         }
-        ...
+    ...
       },
       "last_analysis_stats": {
         "harmless": 0,
