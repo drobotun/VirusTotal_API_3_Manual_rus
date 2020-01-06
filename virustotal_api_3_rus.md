@@ -792,6 +792,8 @@ curl --request POST \
 
 ##### Python
 ```python
+import requests
+    ...
 api_url = "https://www.virustotal.com/api/v3/files"
 headers = {"x-apikey" : "<ключ доступа к API>"}
 with open("<путь к файлу>", "rb") as file:
