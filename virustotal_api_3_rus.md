@@ -20,31 +20,31 @@
 - [Файлы (files)](#files_obj)
 	- [androguard](#androguard)
 	- [asf_info](#asf_info)
-	- [authentihash]()
-	- [bundle_info]()
-	- [class_info]()
-	- [deb_info]()
-	- [dmg_info]()
-	- [dot_net_guids]()
-	- [elf_info]()
-	- [exiftool]()
-	- [image_code_injections]()
-	- [ipa_info]()
-	- [isoimage_info]()
-	- [jar_info]()
-	- [macho_info]()
-	- [magic]()
-	- [office_info]()
-	- [openxml_info]()
-	- [packers]()
-	- [pdf_info]()
-	- [pe_info]()
-	- [rombios_info]()
-	- [rtf_info]()
-	- [signature_info]()
-	- [ssdeep]()
-	- [swf_info]()
-	- [trid]()
+	- [authentihash](#authentihash)
+	- [bundle_info](#bundle_info)
+	- [class_info](#class_info)
+	- [deb_info](#deb_info)
+	- [dmg_info](#dmg_info)
+	- [dot_net_guids](#dot_net_guids)
+	- [elf_info](#)
+	- [exiftool](#)
+	- [image_code_injections](#)
+	- [ipa_info](#)
+	- [isoimage_info](#)
+	- [jar_info](#)
+	- [macho_info](#)
+	- [magic](#)
+	- [office_info](#)
+	- [openxml_info](#)
+	- [packers](#)
+	- [pdf_info](#)
+	- [pe_info](#)
+	- [rombios_info](#)
+	- [rtf_info](#)
+	- [signature_info](#)
+	- [ssdeep](#)
+	- [swf_info](#)
+	- [trid](#)
 - [Поведение файлов (file behaviour)]()
 	- [DnsLookup]()
 	- [DroppedFile]()
@@ -317,6 +317,7 @@ https://www.virustotal.com/api/v3/{collection name}/{object id}?relationships={r
 Объекты, возвращаемые такими запросами, включают словарь отношений, где ключи - это имена запрашиваемых отношений, а значения - это либо дескриптор объекта (если отношение одно к одному), либо коллекция, как описано в разделе ["Коллекции"](#collections) (если отношение одно ко многим). Однако обратите внимание, что эти коллекции содержат не все связанные объекты, а только их дескрипторы (т. е. их тип и идентификатор).
 
 ##### Отношения в объекте
+
 ```
 {
   "type": "{object type}",
@@ -454,3 +455,194 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 }
 ```
 Кроме того, VirusTotal вместе с каждым антивирусным сканированием запускает набор утилит, позволяющих собирать дополнительную информацию о файле. Вся эта информация содержится в поле `attributes` вместе с остальными ранее описанными полями.
+
+### <a name="androguard"> androguard </a>
+#### Информация об Android файлах
+
+`androguard` показывает информацию о файлах Android APK, DEX и XML, извлеченных с помощью утилиты Androguard.
+
+- `Activities` - список активностей (activities) приложения;
+- `AndroguardVersion` - версия используемой утилиты Androguard;
+- `AndroidApplication` - тип файла Android в формате целого числа;
+- `AndroidApplicationError` - логическое переменная со значением `False`;
+- `AndroidApplicationInfo` - тип файла Android ("APK"," DEX","XML");
+- `AndroidVersionCode` - код версии Android, считанный из манифеста;
+- `AndroidVersionName` - имя версии Android, считанное из манифеста;
+- `Libraries` - список библиотек, используемых приложением;
+- `Main Activity` - название основной активности (activitie), прочитанное из манифеста;
+- `MinSdkVersion` - минимальная поддерживаемая версия SDK;
+- `Package` - имя пакета, считанное из манифеста;
+- `Permissions` - словарь с разрешениями, используемыми в качестве ключа и списка с 3 элементами в качестве значения:
+	- тип разрешения (например, `normal`, `dangerous`);
+	- короткий дескриптор разрешения;
+	- дескриптор разрешения;
+- `Providers` - список провайдеров (providers), используемых приложением;
+- `Receivers` - список получателей (receivers), используемых приложением;
+- `RiskIndicator` - словарь с показателями риска `APK` (structure) и `PERM` (permissions):
+	- `APK` - показывает используемые компоненты и их количество (например, `"EXECUTABLE": 3`);
+	- `PERM` - показывает типы разрешений и их количество (например, `"DANGEROUS": 11`);
+- `Services` - список служб (services), используемых приложением;
+- `StringsInformation` - список примечательных строк, найденных в приложении;
+- `TargetSdkVersion` - версия Android, на которой приложение было протестировано;
+- `VTAndroidInfo` - версия Androguard, используемая сервисом VirusTotal;
+- `certificate` - сведения о сертификате приложения в виде словаря с полями:
+	- `Issuer` - словарь с отличительными (уникальными) именами и значениями. Типичными записями являются `DN` (отличительное (уникальное) имя), `CN` (общее имя), `O` (организация);
+	- `Subject` - словарь с RDN (перечнем уникальных имен) эмитента сертификата;
+	- `serialnumber` - серийный номер сертификата;
+	- `thumbprint` - хэш сертификата в шестнадцатеричном виде;
+	- `validfrom` - дата начала действия сертификата в [формате](http://strftime.org/) "%H:%M %p %m/%d/%Y";
+	- `validto` - срок действия сертификата, в формате "%H:%M %p %m/%d/%Y";
+- `intent-filters` - фильтр предполагаемых действий приложения исходя из активностей (activities), получателей (receivers) и служб (services).
+
+##### Информация об APK файлах в виде JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "androguard": {
+        "Activities": ["<strings>"],
+        "AndroguardVersion": "<string>",
+        "AndroidApplication": <int>,
+        "AndroidApplicationError": <boolean>,
+        "AndroidApplicationInfo": "<string>",
+        "AndroidVersionCode": "<string>",
+        "AndroidVersionName": "<string>",
+        "Libraries": ["<strings>"],
+        "Main Activity": "<string>",
+        "MinSdkVersion": "<string>",
+        "Package": "<string>",
+        "Permissions": {"<string>": ["<strings>"], ... },
+        "Providers": ["<strings>"],
+        "Receivers": ["<strings>"],
+        "RiskIndicator": {"APK": {"<string>": <int>, ... },
+                          "PERM": {"<string>": <int>, ... }},
+        "Services": ["<strings>"],
+        "StringsInformation": ["<strings>"],
+        "TargetSdkVersion": "<string>",
+        "VTAndroidInfo": <float>,
+        "certificate": {"Issuer": {"DN": "<string>", "O": "<string>", ... },
+                        "Subject": {"DN": "<string>","O": "<string>", ... },
+                        "serialnumber": "<string>",
+                        "thumbprint": "<string>",
+                        "validfrom": "<string:%H:%M %p %m/%d/%Y>",
+                        "validto": "<string:%H:%M %p %m/%d/%Y>"},
+        "intent-filters": {"Activities": {"<string>": {"action": ["<strings>"],
+                                                       "category": ["<string>"]},
+                                           ... },
+                           "Receivers": {"<string>": {"action": ["<strings>"],
+                                                      "category": ["<string>"]},
+                                          ... },
+                           "Services": {"<string>": {"action": ["<strings>"],
+                                                     "category": ["<string>"]},
+                                         ...}
+      }
+    }
+  }
+}
+```
+
+### <a name="asf_info"> asf_info </a>
+#### Информация о Microsoft Advanced Streaming/Systems Format (ASF) файлах
+
+`asf_info` показывает информацию о Microsoft ASF files (.asf, .wma, .wmv).
+
+- `content_encryption_object` - информация о том, как зашифрован файл:
+	- `key_id` - ID тиспользуемого ключа;
+	- `license_url` - url-адрес лицензии;
+	- `protection_type` - тип используемой защиты (например, "DRM");
+	- `secret_data` - байты, содержащие секретные данные;
+- `extended_content_encryption_object` - расширенная информация о том, как зашифрован файл:
+	- `CHECKSUM` - контрольная сумма данных;
+	- `KID` - ID тиспользуемого ключа;
+	- `EncodeType` - тип кодирования;
+	- `LAINFO` - информация о лицензионном соглашении;
+	- `DRMHeader` - заголовок, используемый в DRM;
+- `script_command_objects` - скрипты, используемые в файле:
+	- `action` - действие, которое необходимо выполнить;
+	- `type` - тип действия (например, `URL`, `FILENAME`, `EVENT`);
+	- `trigger_time` - время активации скрипта.
+
+##### Информация об ASF файлах в виде JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "asf_info": {
+        "content_encryption_object": {"key_id": "<string>",
+                                      "license_url": "<string>",
+                                      "protection_type": "<string>",
+                                      "secret_data": "<string>"},
+        "extended_content_encryption_object": {"CHECKSUM": "<string>",
+                                               "DRMHeader": "<string>",
+                                               "EncodeType": "<string>",
+                                               "KID": "<string>",
+                                               "LAINFO":"<string>"},
+        "script_command_objects": [{"action": "<string>",
+                                    "trigger_time": <int>,
+                                    "type":"URL"}, ... ]}
+    }
+  }
+}
+```
+
+### <a name="authentihash"> authentihash </a>
+#### Хэш для проверки PE-файлов
+
+`authentihash` - это хэш sha256, используемый корпорацией Microsoft для проверки того, что соответствующие разделы образа PE-файла не были изменены.
+
+##### JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "authentihash": "<string>",
+    }
+  }
+}
+```
+
+### <a name="bundle_info"> bundle_info </a>
+#### Информация о сжатых файлах
+
+`bundle_info` предоставляет информацию о сжатых файлах (ZIP, TAR, GZIP и т. д.).
+
+- `beginning` - распакованный заголовок файла для некоторых форматов файлов (GZIP, ZLIB);
+- `extensions` - расширения файлов и их количество внутри пакета;
+- `file_types` - типы файлов и их количество внутри пакета;
+- `highest_datetime` - самая последняя дата в содержащихся файлах, в [формате](http://strftime.org/) "%H:%M %p %m/%d/%Y";
+- `lowest_datetime` - самая старая дата в содержащихся файлах, в формате "%H:%M %p %m/%d/%Y";
+- `num_children` - сколько файлов и каталогов находится внутри пакета;
+- `tags` - интересные замечания о содержании (например, `"contains-pe"`);
+- `type` - тип пакета (например, "ZIP");
+- `uncompressed_size` - несжатый размер содержимого внутри сжатого файла;
+- `vhash` - хэш подобия (нечеткий хэш) для этого типа файлов.
+
+##### Информация о сжатых файлах в виде JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "bundle_info": {
+        "beginning": "<string>",
+        "extensions": {"<string>": <int>, ... },
+        "file_types": {"<string>": <int>, ... },
+        "highest_datetime": "<string:%Y-%m-%d %H:%M:%S>",
+        "lowest_datetime": "<string:%Y-%m-%d %H:%M:%S>",
+        "num_children": <int>,
+        "tags": ["<strings>"],
+        "type": "<string>",
+        "uncompressed_size": <int>,
+        "vhash": "<string>"
+      }
+    }
+  }
+}
+```
