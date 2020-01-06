@@ -895,7 +895,7 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 ## <a name="votes"> Голоса (votes) </a>
 
 
-# <a name="endpoint"> Основные конечные точки API </a>
+# <a name="endpoints"> Основные конечные точки API </a>
 
 ## <a name="files_api"> Files </a>
 
