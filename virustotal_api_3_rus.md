@@ -829,7 +829,7 @@ with open("<путь к файлу>", "rb") as file:
 
 Получение URL для загрузки файла больше 32 МБ.
 
-**GET**: `https://www.virustotal.com/api/v3/files/upload_url`
+**GET:** `https://www.virustotal.com/api/v3/files/upload_url`
 
 ##### cURL
 ```curl
@@ -870,7 +870,7 @@ response = requests.get(api_url, headers=headers)
 
 Получение информации о файле.
 
-**GET**: `https://www.virustotal.com/api/v3/files/{id}`
+**GET:** `https://www.virustotal.com/api/v3/files/{id}`
 
 ##### cURL
 ```curl
@@ -989,4 +989,17 @@ response = requests.get(api_url, headers=headers)
     }
   }
 }
+```
+
+### <a name="post_files_analyse)"> POST /files/{id}/analyse
+
+Повторный анализ файла в VirusTotal/
+
+**POST:** `https://www.virustotal.com/api/v3/files/{id}/analyse`
+
+##### cURL
+```curl
+curl --request POST \
+  --url https://www.virustotal.com/api/v3/files/{id}/analyse \
+  --header 'x-apikey: <your API key>'
 ```
