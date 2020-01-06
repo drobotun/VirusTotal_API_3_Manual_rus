@@ -1179,7 +1179,7 @@ import requests
     ...
 api_url = "https://www.virustotal.com/api/v3/files/{id}/comments"
 headers = {"x-apikey" : "<ключ доступа к API>"}
-query = {"limit": <str(limit)>, "cursor": "<cursor>"}
+query = {"limit": "<limit)>", "cursor": "<cursor>"}
 response = requests.get(api_url, headers=headers, params=query)
 ```
 
