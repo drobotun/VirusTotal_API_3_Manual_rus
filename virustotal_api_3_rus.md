@@ -767,6 +767,63 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 #### Информация о файлах ISO=образов
 
 
+### <a name="jar_info"> jar_info </a>
+#### Информация о файлах Java Archive
+
+
+### <a name="macho_info"> macho_info </a>
+#### Информация о файлах Apple MachO
+
+
+### <a name="magic"> magic </a>
+#### Идентификация файлов по "магическому числу"
+
+
+### <a name="office_info"> office_info </a>
+#### Информация о структуре файлов Microsoft Office
+
+
+### <a name="openxml_info"> openxml_info </a>
+#### Информация об Microsoft OpenXML файлах
+
+
+### <a name="packers"> packers </a>
+#### Информация об упаковщике, используемом в файле
+
+
+### <a name="pdf_info"> pdf_info </a>
+#### Информация об Adobe PDF файлах
+
+
+### <a name="pe_info"> pe_info </a>
+#### Информация о файлах формата Microsoft Windows Portable Executable
+
+
+### <a name="rombios_info"> rombios_info </a>
+#### Информация о BIOS, EFI, UEFI и связанны[ с ними архивах
+
+
+### <a name="rtf_info"> rtf_info </a>
+#### Информация о файлах формата Microsoft Rich Text
+
+
+### <a name="signature_info"> signature_info </a>
+#### Информация о подписи PE-файлов
+
+
+### <a name="ssdeep"> ssdeep </a>
+#### CTPH хэш содержимого файла
+
+
+### <a name="swf_info"> swf_info </a>
+#### Информация о Adobe Shockwave Flash файлах
+
+
+### <a name="trid"> trid </a>
+#### Тип файла идентифицированный с помощью утилиты [TrID](http://mark0.net/soft-trid-e.html)
+
+
+
 
 
 
@@ -991,9 +1048,11 @@ response = requests.get(api_url, headers=headers)
 }
 ```
 
-### <a name="post_files_analyse)"> POST /files/{id}/analyse
+### <a name="post_files_analyse)"> POST /files/{id}/analyse </a>
 
 Повторный анализ файла в VirusTotal/
+>##### :warning: Осторожно!
+>Эта функция API может привести к отказу в обслуживании инфраструктуры сканирования в случае неправильного использования. Пожалуйста, свяжитесь с нами, если вы собираетесь сканировать более 50 тысяч файлов в день.
 
 **POST:** `https://www.virustotal.com/api/v3/files/{id}/analyse`
 
@@ -1002,4 +1061,33 @@ response = requests.get(api_url, headers=headers)
 curl --request POST \
   --url https://www.virustotal.com/api/v3/files/{id}/analyse \
   --header 'x-apikey: <your API key>'
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/analyse"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+response = requests.post(api_url, headers=headers)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла.
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API.
+
+Файлы, которые уже были загружены в VirusTotal, можно повторно проанализировать, не загружая их снова, используя эту функцию. Ответом является дескриптор объекта для нового анализа, как и в функции [**POST** /files](#post_files). Идентификатор, содержащийся в дескрипторе, можно использовать с функции [**GET** /analyses/{id}](#get_analyses_id) для получения информации о результатах анализа.
+
+##### Пример ответа
+```
+{
+  "data": {
+    "type": "analysis",
+    "id": "NjY0MjRlOTFjMDIyYTkyNWM0NjU2NWQzYWNlMzFmZmI6MTQ3NTA0ODI3Nw=="
+  }
+}
 ```
