@@ -652,7 +652,6 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 
 `class_info` предоставляет информацию о Java байткод-файлах.
 
-
 - `constants` - константы, используемые в классе;
 - `extends` -  класс, от которого наследован данный класс;
 - `implements` - интерфейсы реализованные в классе;
@@ -678,6 +677,67 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
         "platform": "<string>",
         "provides": ["<strings>"],
         "requires": ["<strings>"]
+      }
+    }
+  }
+}
+```
+
+### <a name="deb_info"> deb_info </a>
+#### Информация о Debian пакетах
+
+`deb_info` - предоставляет информацию о [Debian пакетах](https://wiki.debian.org/Packaging).
+
+- `changelog` - информация об изменениях в версии пакета:
+	- `Author` - имя автора;
+	- `Date` дата в [формате](http://strftime.org/) "%a, %d %b %Y %H:%M%S %z";
+	- `Debian revision` - ревизия;
+	- `Debian version` - версия;
+	- `Distributions` - тип распространения;
+	- `Full version` - полная версия системы;
+	- `Package` - тип пакета;
+	- `Urgency` - уровень срочности изменений;
+	- `Version history` - история версий;
+- `control_metadata` - общие (неизменные) поля пакета:
+	- `Maintainer` - идентификатор того, кто осуществляет поддержку пакета;
+	- `Description` - дескриптор пакета;
+	- `Package` - имя пакета;
+	- `Depends` - зависимости пакета;
+	- `Version` - версия пакета;
+	- `Architecture` - архитектура для запуска этого пакета (например, `"i386"`);
+- `control_scripts` - сценарии для запуска в операциях управления пакетами:
+	- `postinst` - скрипт, выполняемый после инсталляции;
+	- `postrm` - скрипт, выполняемый после удаления пакета;
+- `structural_metadata`:
+	- `contained_files` - количество файлов в пакете;
+	- `contained_items` - количество пунктов в пакете;
+	- `max_date` - дата самого старого файла в формате "%Y-%m-%d %H:%M%S";
+	- `min_date` - самая последняя дата файла в формате "%Y-%m-%d %H:%M%S".
+
+##### Информация о Debian пакете в виде JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "deb_info": {
+        "changelog": {"Author": "<string>",
+                      "Date": "<string:%a, %d %b %Y %H:%M%S %z>",
+                      "Debian revision": "<string>",
+                      "Debian version": "<string>",
+                      "Distributions": "<string>",
+                      "Full version": "<string>",
+                      "Package": "<string>",
+                      "Urgency": "<string>",
+                      "Version history": "<string>"},
+        "control_metadata": {"<string>": "<string>", ... },
+        "control_scripts": {"postinst": "<string>",
+                            "postrm": "<string>"},
+        "structural_metadata": {"contained_files": <int>,
+                                "contained_items": <int>,
+                                "max_date": "<string:%Y-%m-%d %H:%M%S>",
+                                "min_date": "<string:%Y-%m-%d %H:%M%S>"}
       }
     }
   }
