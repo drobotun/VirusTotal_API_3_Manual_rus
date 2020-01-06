@@ -792,10 +792,10 @@ curl --request POST \
 
 ##### Python
 ```python
-api_url = 'https://www.virustotal.com/api/v3/files'
-headers = {'x-apikey' : '<ключ доступа к API>'}
-with open('<путь к файлу>', 'rb') as file:
-    files = {'file': ('<путь к файлу>', file)}
+api_url = "https://www.virustotal.com/api/v3/files"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+with open("<путь к файлу>", "rb") as file:
+    files = {"file": ("<путь к файлу>", file)}
     response = requests.post(api_url, headers=headers, files=files)
 ```
 
