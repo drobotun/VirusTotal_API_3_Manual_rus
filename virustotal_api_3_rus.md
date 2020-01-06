@@ -897,7 +897,7 @@ response = requests.get(api_url, headers=headers)
 - **x-apikey** - ключ доступа к API.
 
 ##### Пример ответа
-```json
+```
 {    
   "type": "file",
   "id": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
@@ -918,7 +918,7 @@ response = requests.get(api_url, headers=headers)
           "method": "blacklist",
           "result": null
         }
-    ...
+          ...
       },
       "last_analysis_stats": {
         "harmless": 0,
