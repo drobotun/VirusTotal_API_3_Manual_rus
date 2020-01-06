@@ -646,3 +646,40 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
   }
 }
 ```
+
+### <a name="class_info"> class_info </a>
+#### Информация о классах Java в байткод-файлах
+
+`class_info` предоставляет информацию о Java байткод-файлах.
+
+
+- `constants` - константы, используемые в классе;
+- `extends` -  класс, от которого наследован данный класс;
+- `implements` - интерфейсы реализованные в классе;
+- `methods` - методы, принадлежащие к классу;
+- `name` - имя класса;
+- `platform` - платформа в виде строки, полученной из старшего и младшего номера версии;
+- `provides` - представленные классы, поля и методы;
+- `requires` - обязательные классы, поля и методы.
+
+##### Информация о Java классе в виде JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "class_info": {
+        "constants": ["<strings>"],
+        "extends": "<string>",
+        "implements": ["<strings>"],
+        "methods": ["<strings>"],
+        "name": "<string>",
+        "platform": "<string>",
+        "provides": ["<strings>"],
+        "requires": ["<strings>"]
+      }
+    }
+  }
+}
+```
