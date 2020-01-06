@@ -1179,7 +1179,7 @@ import requests
     ...
 api_url = "https://www.virustotal.com/api/v3/files/{id}/comments"
 headers = {"x-apikey" : "<ключ доступа к API>"}
-query = {'limit': str(limit), 'cursor': cursor}
+query = {"limit": <str(limit)>, "cursor": "<cursor>"}
 response = requests.get(api_url, headers=headers, params=query)
 ```
 
@@ -1192,3 +1192,76 @@ response = requests.get(api_url, headers=headers, params=query)
 ##### Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
+
+### <a name="post_files_comments"> POST /files/{id}/comments </a>
+
+Добавление комментария для файла.
+
+**POST:** `https://www.virustotal.com/api/v3/files/{id}/comments`
+
+##### cURL
+```curl
+curl --request POST \
+  --url https://www.virustotal.com/api/v3/files/{id}/comments \
+  --header 'x-apikey: <your API key>' \
+  --data '{"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}'
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/comments"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+comments = {"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}
+response = requests.post(api_url, headers=headers, json=comments)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
+- **data** - комментарий (json)/
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+С помощью этой функции вы можете опубликовать комментарий для данного файла. Тело POST-запроса должно быть JSON-представлением комментария. Обратите внимание, что вам не нужно указывать идентификатор объекта, так как он автоматически генерируется для новых комментариев.
+
+Любое слово, начинающееся с `#` в тексте вашего комментария, будет считаться тегом и добавляться в атрибут тега комментария.
+
+##### Пример запроса
+```
+{
+  "data": {
+    "type": "comment",
+    "attributes": {
+    	"text": "Lorem #ipsum dolor sit ..."
+    }
+  }
+}
+```
+
+##### Пример ответа
+```
+{
+  "data": {
+    "type": "comment",
+    "id": "<comment's ID>",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/comments/<comment's ID>"
+    },
+    "attributes": {
+      "date": 1521725475,
+      "tags": ["ipsum"],
+      "html": "Lorem #ipsum dolor sit ...",
+      "text": "Lorem #ipsum dolor sit ...",
+      "votes": {
+        "abuse": 0,
+        "negative": 0,
+        "positive": 0
+      }
+    }
+  }
+}
+```
