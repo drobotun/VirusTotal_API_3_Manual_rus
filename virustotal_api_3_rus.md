@@ -1,4 +1,4 @@
-![](https://i.imgur.com/6nji8Ec.png)
+[![](https://i.imgur.com/6nji8Ec.png)](https://www.virustotal.com)
 
 # Содержание
 
@@ -80,6 +80,8 @@
 	- [**POST** /files/{id}/comments](#post_files_comments)
 	- [**GET** /files/{id}/votes](#get_files_votes)
 	- [**POST** /files/{id}/votes](#post_files_votes)
+	- [**GET** /files/{id}/download_url](#get_download_url)
+	- [**GET** /files/{id}/download](#get_download)
 	- [**GET** /files/{id}/{relationship}](#get_files_relationship)
 	- [**GET** /file_behaviours/{sandbox_id}/pcap](#get_file_behaviours)
 - [URLs]()
@@ -1220,7 +1222,7 @@ response = requests.post(api_url, headers=headers, json=comments)
 ##### Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
-- **data** - комментарий (json)/
+- **data** - комментарий (json).
 
 ##### Заголовок запроса
 
@@ -1265,3 +1267,162 @@ response = requests.post(api_url, headers=headers, json=comments)
   }
 }
 ```
+
+### <a name="get_files_votes"> GET /files/{id}/votes </a>
+
+Получение результатов голосования для файла
+
+**GET:** `https://www.virustotal.com/api/v3/files/id/votes`
+
+##### cURL
+```curl
+curl --request GET \
+  --url https://www.virustotal.com/api/v3/files/{id}/votes \
+  --header 'x-apikey: <your API key>'
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/comments"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+query = {"limit": "<limit)>", "cursor": "<cursor>"}
+response = requests.get(api_url, headers=headers, params=query)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
+- **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
+- **cursor** - курсор продолжения (string, необязательный параметр).
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+### <a name="post_files_votes"> POST /files/{id}/votes </a>
+
+Добавление голоса для файла.
+
+**POST:** `https://www.virustotal.com/api/v3/files/{id}/comments`
+
+##### cURL
+```curl
+curl --request POST \
+  --url https://www.virustotal.com/api/v3/files/{id}/votes \
+  --header 'x-apikey: <your API key>' \
+  --data '{"data": {"type": "vote", "attributes": {"verdict": "malicious"}}}''
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/votes"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+votes = {"data": {"type": "vote", "attributes": {"verdict": "malicious"}}}
+response = requests.post(api_url, headers=headers, json=votes)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
+- **data** - голос (json).
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+С помощью этой функции вы можете опубликовать свой голос за данный файл. Тело для запроса POST должно быть JSON-представлением объекта голосования. Обратите внимание, однако, что вам не нужно указывать идентификатор объекта, так как они автоматически генерируются для новых голосов.
+
+Атрибут `verdict` должен быть либо `harmless`, либо `malicious`.
+
+##### Пример ответа
+```
+{
+  "data": {
+    "type": "vote",
+    "attributes": {
+    	"verdict": "harmless"
+    }
+  }
+}
+```
+
+### <a name="get_download_url"> GET /files/{id}/download_url </a>
+
+Получение URL для загрузки файла.
+
+>##### :warning: Требуются особые привилегии
+>
+>Эта функция доступна только для пользователей со специальными привилегиями.
+
+**GET** `https://www.virustotal.com/api/v3/files/id/download_url`
+
+##### cURL
+```curl
+curl --request GET \
+  --url https://www.virustotal.com/api/v3/files/{id}/download_url \
+  --header 'x-apikey: <your API key>'
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/download_url"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+response = requests.post(api_url, headers=headers)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+Эта функция возвращает подписанный URL, с которого можно загрузить указанный файл. Получение URL считается загрузкой файла в квоте, даже если вы на самом деле не загружаете файл. URL можно использовать для загрузки файла несколько раз, не потребляя никакой квоты. Срок действия URL истекает через 1 час.
+
+##### Пример ответа
+```
+{
+  "data": "https://vtsamples.commondatastorage.googleapis.com/275a..fd0f?GoogleAccessId=758681729565-rc7fcckv235v1@developer.gserviceaccount.com&Expires=1524733537&Signature=GRs9WLy...oHA%3D"
+}
+```
+
+### <a name="get_download"> GET /files/{id}/download </a>
+
+Загрузка файла.
+
+>##### :warning: Требуются особые привилегии
+>
+>Эта функция доступна только для пользователей со специальными привилегиями.
+
+##### cURL
+```curl
+curl --request GET \
+  --url https://www.virustotal.com/api/v3/files/{id}/download \
+  --header 'x-apikey: <your API key>'
+```
+
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/download"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+response = requests.post(api_url, headers=headers)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+Эта функция похожа на [GET /files/{id}/download_url](#get_download_ur), но она перенаправляет вас на URL загрузки файла. URL загрузки, на который вы перенаправлены, может быть использован повторно столько раз, сколько вы хотите в течение 1 часа. После этого срока действие URL истекает и он больше не может быть использован.
