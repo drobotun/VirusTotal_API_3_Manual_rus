@@ -1373,7 +1373,7 @@ import requests
     ...
 api_url = "https://www.virustotal.com/api/v3/files/{id}/download_url"
 headers = {"x-apikey" : "<ключ доступа к API>"}
-response = requests.post(api_url, headers=headers)
+response = requests.get(api_url, headers=headers)
 ```
 
 ##### Параметры запроса
@@ -1414,7 +1414,7 @@ import requests
     ...
 api_url = "https://www.virustotal.com/api/v3/files/{id}/download"
 headers = {"x-apikey" : "<ключ доступа к API>"}
-response = requests.post(api_url, headers=headers)
+response = requests.get(api_url, headers=headers)
 ```
 
 ##### Параметры запроса
@@ -1427,13 +1427,43 @@ response = requests.post(api_url, headers=headers)
 
 Эта функция похожа на [GET /files/{id}/download_url](#get_download_ur), но она перенаправляет вас на URL загрузки файла. URL загрузки, на который вы перенаправлены, может быть использован повторно столько раз, сколько вы хотите в течение 1 часа. После этого срока действие URL истекает и он больше не может быть использован.
 
-### <a name="get_files_relationship"> GET /files/{id}/{relationship} </a>
+### <a name="get_files_relationship"> ![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/{relationship} </a>
 
 Получение объектов, связанных с файлом.
 
 **GET:** `https://www.virustotal.com/api/v3/files/{id}/{relationship}`
 
+##### cURL
+```curl
+curl --request GET \
+  --url https://www.virustotal.com/api/v3/files/{id}/{relationship} \
+  --header 'x-apikey: <your API key>'
+```
 
+##### Python
+```python
+import requests
+    ...
+api_url = "https://www.virustotal.com/api/v3/files/{id}/{relationship}"
+headers = {"x-apikey" : "<ключ доступа к API>"}
+query = {"limit": "<limit)>", "cursor": "<cursor>"}
+response = requests.get(api_url, headers=headers)
+```
+
+##### Параметры запроса
+
+- **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
+- **relationship** - наименование отношения (см. таблицу ниже);
+- **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
+- **cursor** - курсор продолжения (string, необязательный параметр).
+
+##### Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+Объекты типа `file` имеют ряд отношений с другими файлами и объектами. Как уже упоминалось в разделе "[Отношения](#relationships)", эти связанные объекты можно получить, отправив GET-запросы на URL, соответствующий нужному отношению.
+
+Некоторые отношения доступны только тем пользователям, которые имеют доступ к VirusTotal Intelligence.
 
 Отношения, поддерживаемые объектами файла:
 
@@ -1443,4 +1473,26 @@ response = requests.post(api_url, headers=headers)
 `behaviours` | Отчеты о поведении для файла. См. "[Поведение файлов (file behaviour)](#file_behaviour)" | Все пользователи
 `bundled_files` | Файлы, собранные в одном файле. | Все пользователи
 `carbonblack_children` | Файлы, полученные из файла Carbon Black | Только для пользователей `intelligence`
+`carbonblack_parents` | Файлы Carbon Black, из которых был получен файл | Только для пользователей `intelligence`
+`comments` | Комментарии к файлу | Все пользователи
+`compressed_parents` | Сжатые файлы, содержащие этот файл | Все пользователи
+`contacted_domains` | Домены, с которыми связан файл | Все пользователи
+`contacted_ips` | IP-адреса, с которыми связан файл | Все пользователи
+`contacted_urls` | URL, с которыми связан файл | Все пользователи
+`email_parents` | Файлы электронной почты, содержащие этот файл | Только для пользователей `intelligence`
+`embedded_domains` | Имена доменов, содержащиеся в файле | Только для пользователей `intelligence`
+`embedded_ips` | IP-адреса, содержащиеся в файле | Только для пользователей `intelligence`
+`execution_parents` | Файлы, которые запустили файл | Все пользователи
+`graphs` | Графики, включающие файл | Все пользователи
+`itw_urls` | URL "in the wild", откуда был загружен файл | Все пользователи
+`overlay_parents` | Файлы, содержащие файл в виде оверлея | Все пользователи
+`pcap_parents` | Файлы PCAP, содержащие этот файл | Все пользователи
+`pe_resource_parents` | PE-файлы, содержащие файл в качестве ресурса | Все пользователи
+`similar_files` | Файлы, похожие на данный файл | Только для пользователей `intelligence`
+`submissions` | Представления файла | Только для пользователей `intelligence`
+`screenshots` | Скриншоты, связанные с песочницей, в которой выполнялся файла | Все пользователи
+`votes` | Результаты голосования для файла | Все пользователи
+
+
+
 
