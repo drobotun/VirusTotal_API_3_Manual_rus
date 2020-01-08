@@ -1426,3 +1426,21 @@ response = requests.post(api_url, headers=headers)
 - **x-apikey** - ключ доступа к API (string).
 
 Эта функция похожа на [GET /files/{id}/download_url](#get_download_ur), но она перенаправляет вас на URL загрузки файла. URL загрузки, на который вы перенаправлены, может быть использован повторно столько раз, сколько вы хотите в течение 1 часа. После этого срока действие URL истекает и он больше не может быть использован.
+
+### <a name="get_files_relationship"> GET /files/{id}/{relationship} </a>
+
+Получение объектов, связанных с файлом.
+
+**GET:** `https://www.virustotal.com/api/v3/files/{id}/{relationship}`
+
+
+
+Отношения, поддерживаемые объектами файла:
+
+Отношения | Описание | Доступность
+----------|----------|------------
+`analyses` | Объект `analyses` для файла | Только для пользователей `intelligence`
+`behaviours` | Отчеты о поведении для файла. См. "[Поведение файлов (file behaviour)](#file_behaviour)" | Все пользователи
+`bundled_files` | Файлы, собранные в одном файле. | Все пользователи
+`carbonblack_children` | Файлы, полученные из файла Carbon Black | Только для пользователей `intelligence`
+
