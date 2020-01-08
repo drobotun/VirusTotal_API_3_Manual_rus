@@ -72,10 +72,10 @@
 [**Основные конечные точки API**](#endpoints)
 
 - [files](#files_api)
-	- [**POST** /files](#post_files)
+	- [![](https://i.imgur.com/CWgYjh1.png) /files](#post_files)
 	- [**GET** /files/upload_url](#get_files_upload_url)
 	- [**GET** /files/{id}](#get_files_id)
-	- [**POST** /files/{id}/analyse](#post_files_analyse)
+	- [![](https://i.imgur.com/CWgYjh1.png) /files/{id}/analyse](#post_files_analyse)
 	- [**GET** /files/{id}/comments](#get_files_comments)
 	- [**POST** /files/{id}/comments](#post_files_comments)
 	- [**GET** /files/{id}/votes](#get_files_votes)
