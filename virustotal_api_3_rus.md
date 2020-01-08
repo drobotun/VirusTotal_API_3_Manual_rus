@@ -71,29 +71,29 @@
 
 [**Основные конечные точки API**](#endpoints)
 
-- [files](#files_api)
+- [**files**](#files_api)
 	- [![](https://i.imgur.com/CWgYjh1.png) /files](#post_files)
-	- [**GET** /files/upload_url](#get_files_upload_url)
-	- [**GET** /files/{id}](#get_files_id)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/upload_url](#get_files_upload_url)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/{id}](#get_files_id)
 	- [![](https://i.imgur.com/CWgYjh1.png) /files/{id}/analyse](#post_files_analyse)
-	- [**GET** /files/{id}/comments](#get_files_comments)
-	- [**POST** /files/{id}/comments](#post_files_comments)
-	- [**GET** /files/{id}/votes](#get_files_votes)
-	- [**POST** /files/{id}/votes](#post_files_votes)
-	- [**GET** /files/{id}/download_url](#get_download_url)
-	- [**GET** /files/{id}/download](#get_download)
-	- [**GET** /files/{id}/{relationship}](#get_files_relationship)
-	- [**GET** /file_behaviours/{sandbox_id}/pcap](#get_file_behaviours)
-- [URLs]()
-	- [**POST** /urls](#post_urls)
-	- [**GET** /urls/{id}](#get_urls_id)
-	- [**POST** /urls/{id}/analyse](#post_urls_analyse)
-	- [**GET** /urls/{id}/comments](#get_urls_comments)
-	- [**POST** /urls/{id}/comments](#post_urls_comments)
-	- [**GET** /urls/{id}/votes](#get_urls_votes)
-	- [**POST** /urls/{id}/votes](#post_urrls_votes)
-	- [**GET** /urls/{id}/network_location](#get_urls_network_location)
-	- [**GET** /urls/{id}/{relationship}](#get_urls_relationship)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/comments](#get_files_comments)
+	- [![](https://i.imgur.com/CWgYjh1.png) /files/{id}/comments](#post_files_comments)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/votes](#get_files_votes)
+	- [![](https://i.imgur.com/CWgYjh1.png) /files/{id}/votes](#post_files_votes)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/download_url](#get_download_url)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/download](#get_download)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/{relationship}](#get_files_relationship)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /file_behaviours/{sandbox_id}/pcap](#get_file_behaviours)
+- [**URLs**]()
+	- [![](https://i.imgur.com/CWgYjh1.png) /urls](#post_urls)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /urls/{id}](#get_urls_id)
+	- [![](https://i.imgur.com/CWgYjh1.png) /urls/{id}/analyse](#post_urls_analyse)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /urls/{id}/comments](#get_urls_comments)
+	- [![](https://i.imgur.com/CWgYjh1.png) /urls/{id}/comments](#post_urls_comments)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /urls/{id}/votes](#get_urls_votes)
+	- [![](https://i.imgur.com/CWgYjh1.png) /urls/{id}/votes](#post_urrls_votes)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /urls/{id}/network_location](#get_urls_network_location)
+	- [![](https://i.imgur.com/CBcN0Fh.png) /urls/{id}/{relationship}](#get_urls_relationship)
 
 # <a name="intro"> Вступление </a>
 
@@ -952,7 +952,7 @@ with open("<путь к файлу>", "rb") as file:
 }
 ```
 
-### <a name="get_files_upload_url"> GET /files/upload_url </a>
+### <a name="get_files_upload_url"> ![](https://i.imgur.com/CBcN0Fh.png) /files/upload_url </a>
 
 Получение URL для загрузки файла больше 32 МБ.
 
@@ -993,7 +993,7 @@ response = requests.get(api_url, headers=headers)
 }
 ```
 
-### <a name="get_files_id"> GET /files/{id} </a>
+### <a name="get_files_id"> ![](https://i.imgur.com/CBcN0Fh.png) /files/{id} </a>
 
 Получение информации о файле.
 
@@ -1118,7 +1118,7 @@ response = requests.get(api_url, headers=headers)
 }
 ```
 
-### <a name="post_files_analyse"> POST /files/{id}/analyse </a>
+### <a name="post_files_analyse"> ![](https://i.imgur.com/CWgYjh1.png) /files/{id}/analyse </a>
 
 Повторный анализ файла в VirusTotal/
 >##### :warning: Осторожно!
@@ -1162,7 +1162,7 @@ response = requests.post(api_url, headers=headers)
 }
 ```
 
-### <a name="get_files_comments"> GET /files/{id}/comments </a>
+### <a name="get_files_comments"> ![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/comments </a>
 
 Получение комментариев для файла
 
@@ -1195,7 +1195,7 @@ response = requests.get(api_url, headers=headers, params=query)
 
 - **x-apikey** - ключ доступа к API (string).
 
-### <a name="post_files_comments"> POST /files/{id}/comments </a>
+### <a name="post_files_comments"> ![](https://i.imgur.com/CWgYjh1.png) /files/{id}/comments </a>
 
 Добавление комментария для файла.
 
@@ -1268,7 +1268,7 @@ response = requests.post(api_url, headers=headers, json=comments)
 }
 ```
 
-### <a name="get_files_votes"> GET /files/{id}/votes </a>
+### <a name="get_files_votes"> ![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/votes </a>
 
 Получение результатов голосования для файла
 
@@ -1301,7 +1301,7 @@ response = requests.get(api_url, headers=headers, params=query)
 
 - **x-apikey** - ключ доступа к API (string).
 
-### <a name="post_files_votes"> POST /files/{id}/votes </a>
+### <a name="post_files_votes"> ![](https://i.imgur.com/CWgYjh1.png) /files/{id}/votes </a>
 
 Добавление голоса для файла.
 
@@ -1350,7 +1350,7 @@ response = requests.post(api_url, headers=headers, json=votes)
 }
 ```
 
-### <a name="get_download_url"> GET /files/{id}/download_url </a>
+### <a name="get_download_url"> ![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/download_url </a>
 
 Получение URL для загрузки файла.
 
@@ -1393,7 +1393,7 @@ response = requests.post(api_url, headers=headers)
 }
 ```
 
-### <a name="get_download"> GET /files/{id}/download </a>
+### <a name="get_download"> ![](https://i.imgur.com/CBcN0Fh.png) /files/{id}/download </a>
 
 Загрузка файла.
 
