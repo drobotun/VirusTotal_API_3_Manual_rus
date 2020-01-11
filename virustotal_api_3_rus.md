@@ -749,6 +749,12 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 ### <a name="dmg_info"> dmg_info </a>
 #### Информация о монтируемых образах дисков macOS
 
+`dmg_info` сообщает данные о структуре [файлов Apple.dmg](https://en.wikipedia.org/wiki/Apple_Disk_Image). Большая часть данных поступает из метаданных внутренних файлов, которые могут содержаться в некоторых файлах, а в других - нет.
+
+- `blkx` - список блоков в образе. Каждая запись содержит:
+	- attributes: in hex format;
+	- 
+
 
 ### <a name="dot_net_guids"> dot_net_guids </a>
 #### Идентификаторы для сборок Microsoft .NET
