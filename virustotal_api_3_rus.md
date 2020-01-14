@@ -752,13 +752,84 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 `dmg_info` сообщает данные о структуре [файлов Apple.dmg](https://en.wikipedia.org/wiki/Apple_Disk_Image). Большая часть данных поступает из метаданных внутренних файлов, которые могут содержаться в некоторых файлах, а в других - нет.
 
 - `blkx` - список блоков в образе. Каждая запись содержит:
-	- attributes: in hex format;
-	- 
+	- `attributes` - в формате шестнадцатеричного числа;
+	- `name` - имя блока;
+- `data_fork_length` - размер данных форка;
+- `data_fork_offset` - смещение данных форка;
+- `dmg_version` - версия DMG-файла;
+- `hfs` - информация об HFS-элементах. В зависимости от конкретного случая могут присутствовать различные поля:
+	- `info_plist` - содержимое списка свойств (plist) данного блока;
+	- `main_executable` - основной исполняемый файл этого блока;
+		- `id` - идентификатор;
+		- `path` - путь в пакете;
+		- `sha256` - хэш содержимого;
+		- `size` - размер файла в байтах;
+	- `num_files` - количество файлов;
+	- `unreadable_files` - количество нечитаемых файлов;
+- `plist` - содержит сведения о конфигурации приложения, такие как идентификатор пакета, номер версии и отображаемое имя;
+- `plist_keys` - ключи от записи plist;
+- `running_data_fork_offset` - смещение начала используемых данных форка (обычно 0);
+- `resourcefork_keys` - ключи, найденные в ресурсах форка;
+- `rsrc_fork_length` - длина ресурсов форка;
+- `rsrc_fork_offset` - смещение ресурсов форка;
+- `xml_lenght` - размер списка свойств в DMG;
+- `xml_offset` - смещение списка свойств в DMG.
 
+##### Apple .dmg-файл
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "dmg_info": {
+        "blkx": [{"attributes": "<string>", "name": "<string>"}, ... ],
+        "data_fork_length": <int>,
+        "data_fork_offset": <int>,
+        "dmg_version": <int>,
+        "hfs": {"info_plist": {"<string>": <value>, ... },
+                "main_executable": {"id": <int>,
+                                    "path": "<string>",
+                                    "sha256": "<string>",
+                                    "size": <int>},
+                "<string>": <value>,
+                ... },
+        "plst": [{"attributes": "<string>", "name": "<string>"}],
+        "plst_keys": ["<strings>"],
+        "running_data_fork_offset": <int>,
+        "resourcefork_keys": ["<strings>"],
+        "rsrc_fork_length": <int>,
+        "rsrc_fork_offset": <int>,
+        "xml_length": <int>,
+        "xml_offset": <int>
+      }
+    }
+  }
+}
+```
 
 ### <a name="dot_net_guids"> dot_net_guids </a>
 #### Идентификаторы для сборок Microsoft .NET
 
+- `dot_net_guids` - список [идентификаторов для сборок Microsoft .NET](https://www.virusbulletin.com/virusbulletin/2015/06/using-net-guids-help-hunt-malware/);
+- `mvid` - ModuleVersionID, генерируемый во время сборки, в результате чего для каждой сборки создается новый идентификатор GUID;
+- `typelib_id` - TypeLibID (если имеется), созданный Visual Studio при создании нового проекта по умолчанию.
+
+##### ID сборки Microsoft .NET в виде JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "dot_net_guids": {
+        "mvid": "<string>",
+        "typelib_id": "<string>"
+      }
+    }
+  }
+}
+```
 
 ### <a name="elf_info"> elf_info </a>
 #### Информация о Unix ELF-файлах
