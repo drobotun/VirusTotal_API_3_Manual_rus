@@ -834,9 +834,139 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 ### <a name="elf_info"> elf_info </a>
 #### Информация о Unix ELF-файлах
 
+`elf_info` возвращает информацию о [Unix ELF file format](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format).
+
+- `exports` - список экспортируемых элементов. Каждый элемент содержит имя и тип.
+- `header` - некоторые описательные метаданные о файле:
+	- `type` - тип файла (например "EXEC" (исполняемый файл);
+	- `hdr_version` - версия заголовка;
+	- `num_prog_headers` - количество записей в заголовке программы;
+	- `os_abi` - тип бинарного интерфейса приложения (например "UNIX-Linux");
+	- `obj_version` - `0x1` для оригинальных ELF-файлов;
+	- `machine` - платформа (например "Advanced Micro Devices X86-64");
+	- `entrypoint` - точка входа;
+	- `num_section_headers` - число секций в заголовке;
+	- `abi_version` - версия бинарного интерфейса приложения;
+	- `data` - выравнивание данных в памяти (например "little endian");
+	- `class` - класс файла (например "ELF32");
+- `imports` - список импортируемых элементов. Каждый элемент содержит имя и тип;
+- `sections` - секции ELF-файла:
+	- `name` - имя секции;
+	- `address` - виртуальный адрес секции;
+	- `flags` - атрибуты секции;
+	- `offset` - смещение секции;
+	- `type` - тип секции;
+	- `size` - размер секции в байтах;
+- `segments` - они же заголовки программ. каждый элемент содержит тип сегмента и список ресурсов, задействованных в этом сегменте;
+- `shared_libraries` - список общих библиотек, используемых этим исполняемым файлом.
+
+##### Формат ELF-файла
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "elf_info": {
+        "exports": [["<string>", "<string>"], ... ],
+        "header": {"type": "<string>",
+                   "hdr_version": "<string>",
+                   "num_prog_headers": <int>,
+                   "os_abi": "<string>",
+                   "obj_version": "<string>",
+                   "machine": "<string>",
+                   "entrypoint": <int>,
+                   "num_section_headers" <int>,
+                   "abi_version": 0,
+                   "data": "<string>",
+                   "class": "<string>"},
+        "imports": [["<string>", "<string>"], ... ],
+        "sections": [{"name": "<string>",
+                      "address": <int>,
+                      "flags": "<string>",
+                      "offset": <int>,
+                      "type": "<string>",
+                      "size": <int>}, ... ],
+        "segments": [["<string>", ["<strings>"]], ... ],
+        "shared_libraries": ["<strings>"]
+      }
+    }
+  }
+}
+```
 
 ### <a name="exiftool"> exiftool </a>
 #### Информация о метаданных EXIF из файлов
+
+`exiftool` это утилита для извлечения метаданных EXIF из файлов различных форматов. Представляемые метаданные могут различаться в зависимости от типа файла, и, учитывая природу метаданных EXIF, соcтав отображаемых полей может различаться.
+
+Например:
+
+- поля для Microsoft Windows PE-файлов:
+```
+CharacterSet, CodeSize, CompanyName, EntryPoint, FileDescription, FileFlagsMask,
+FileOS, FileSize, FileSubtype, FileType, FileTypeExtension, FileVersion,
+FileVersionNumber, ImageVersion, InitializedDataSize, InternalName, LanguageCode,
+LegalCopyright, LinkerVersion, MIMEType, MachineType, OSVersion, ObjectFileType,
+OriginalFileName,, PEType, ProductName, ProductVersion, ProductVersionNumber,
+Subsystem, SubsystemVersion, TimeStamp, UninitializedDataSize
+```
+- поля для JPEG-файлов:
+```
+Aperture, ApertureValue, BitsPerSample, BrightnessValue, CircleOfConfusion,
+ColorComponents, ColorSpace, Compression, CreateDate, DateTimeOriginal,
+DeviceType, EncodingProcess, ExifByteOrder, ExifImageHeight, ExifImageWidth,
+ExifVersion, ExposureCompensation, ExposureMode, ExposureProgram, ExposureTime,
+FNumber, FOV, FaceDetect, FileType, FileTypeExtension, Flash, FlashpixVersion,
+FocalLength, FocalLength35efl, FocalLengthIn35mmFormat, HyperfocalDistance,
+ISO, ImageHeight, ImageSize, ImageUniqueID, ImageWidth, InteropIndex,
+InteropVersion, LightValue, MIMEType, Make, MakerNoteVersion, MaxApertureValue,
+Megapixels, MeteringMode, Model, ModifyDate, Orientation, RawDataByteOrder,
+RawDataCFAPattern, ResolutionUnit, ScaleFactor35efl, SceneCaptureType,
+ShutterSpeed, ShutterSpeedValue, Software, SubSecCreateDate,
+SubSecDateTimeOriginal, SubSecModifyDate, SubSecTime, SubSecTimeDigitized,
+SubSecTimeOriginal, ThumbnailImage, ThumbnailLength, ThumbnailOffset,
+TimeStamp, WhiteBalance, XResolution, YCbCrPositioning, YCbCrSubSampling,
+YResolution
+```
+- поля для PDF_файла:
+```
+CreateDate, Creator, CreatorTool, DocumentID, FileType, FileTypeExtension,
+Linearized, MIMEType, ModifyDate, PDFVersion, PageCount, Producer, XMPToolkit
+```
+
+##### JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "exiftool": {
+         "<string>": "<string>", ... 
+      }
+    }
+  }
+}
+```
+
+### <a name="image_code_injections"> image_code_injections </a>
+#### Инъекция кода в файл изображения
+
+`image_code_injections` возвращает содержимое внедренного кода в файлах изображений.
+
+##### JSON
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "image_code_injections": "<string>"
+    }
+  }
+}
+```
 
 ### <a name="ipa_info"> ipa_info </a>
 #### Информация об iOS App Store Package файле
@@ -857,6 +987,20 @@ POST https://www.virustotal.com/api/v3/files/{id}/comments
 ### <a name="magic"> magic </a>
 #### Идентификация файлов по "магическому числу"
 
+`magic` дает предположение о типе файла, основываясь на популярном инструменте синтаксического анализа из UNIX (команда `file`).
+
+##### Предполагаемый тип файла
+```
+{
+  "data": {
+		...
+    "attributes" : {
+      ...
+      "magic": "<string>",
+    }
+  }
+}
+```
 
 ### <a name="office_info"> office_info </a>
 #### Информация о структуре файлов Microsoft Office
