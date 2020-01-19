@@ -735,12 +735,89 @@ POST /urls
       --header 'x-apikey: <your API key>' \
       --form url='<url>'
 
-..rubric:: Python
+.. rubric:: Python
 
-..code-block:: python
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls"
+	headers = {"x-apikey" : "<ключ доступа к API>"}
+	data = {'url': url}
+    response = requests.get(api_url, headers=headers)
+
+.. rubric:: Параметры запроса
+
+- **url** - URL-адрес, который должен быть проанализирован.
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+URL-адреса могут быть отправлены в VirusTotal путем отправки POST-запросов. Каждый POST-запрос должен иметь поле с именем ``url``, содержащие URL-адрес, который должен быть проанализирован.
+
+Результатом, возвращаемым этой функцией, является дескриптор объекта для нового анализа. Идентификатор, содержащийся в дескрипторе, можно использовать с конечной точкой GET /analyses/{id} для получения информации о результатах анализа.
+
+Для анализа URL-адреса, ранее отправленного в VirusTotal, можно использовать POST /urls/{id}/analyse.
+
+- ``id`` - идентификатор для последующего использования с другими вызовами;
+- ``type`` - значение ``analysis``.
+
+.. rubric:: Структура ответа
+
+::
+
+    {
+      "data": {"id": "<string>", "type": "analysis"}
+    }
+
+Domains (Функции для работы с доменами)
+---------------------------------------
+
+GET /domains/{domain}
+~~~~~~~~~~~~~~~~~~~~~
+
+Получение информации об Internet-домене.
+
+|GET| ``https://www.virustotal.com/api/v3/domains/{domain}``
 
 
+GET /domains/{domain}/comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Получение комментариев для Internet-домена.
+
+|GET| ``https://www.virustotal.com/api/v3/domains/domain/comments``
+
+
+POST /domains/{domain}/comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Добавление комментария для Internet-домена.
+
+|POST| ``https://www.virustotal.com/api/v3/domains/domain/comments``
+
+
+GET /domains/{domain}/{relationship}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Получение объектов, связанных с Internet-доменом.
+
+|GET| ``https://www.virustotal.com/api/v3/domains/{domain}/{relationship}``
+
+
+GET /domains/{domain}/votes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|GET| ``https://www.virustotal.com/api/v3/domains/{domain}/votes``
+
+
+POST /domains/{domain}/votes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Добавить голос за имя хоста или домена.
+
+|POST| ``https://www.virustotal.com/api/v3/domains/{domain}/votes``
 
 
 .. |POST| image:: https://i.imgur.com/CWgYjh1.png

@@ -107,6 +107,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#post-urls">POST /urls</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#domains">Domains (Функции для работы с доменами)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-domains-domain">GET /domains/{domain}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-domains-domain-comments">GET /domains/{domain}/comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-domains-domain-comments">POST /domains/{domain}/comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-domains-domain-relationship">GET /domains/{domain}/{relationship}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-domains-domain-votes">GET /domains/{domain}/votes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-domains-domain-votes">POST /domains/{domain}/votes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -854,8 +863,68 @@
   <span class="o">--</span><span class="n">form</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;&lt;url&gt;&#39;</span>
 </pre></div>
 </div>
-<p>..rubric:: Python</p>
-<p>..code-block:: python</p>
+<p class="rubric">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/urls&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Параметры запроса</p>
+<ul class="simple">
+<li><p><strong>url</strong> - URL-адрес, который должен быть проанализирован.</p></li>
+</ul>
+<p class="rubric">Заголовок запроса</p>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>URL-адреса могут быть отправлены в VirusTotal путем отправки POST-запросов. Каждый POST-запрос должен иметь поле с именем <code class="docutils literal notranslate"><span class="pre">url</span></code>, содержащие URL-адрес, который должен быть проанализирован.</p>
+<p>Результатом, возвращаемым этой функцией, является дескриптор объекта для нового анализа. Идентификатор, содержащийся в дескрипторе, можно использовать с конечной точкой GET /analyses/{id} для получения информации о результатах анализа.</p>
+<p>Для анализа URL-адреса, ранее отправленного в VirusTotal, можно использовать POST /urls/{id}/analyse.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> - идентификатор для последующего использования с другими вызовами;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - значение <code class="docutils literal notranslate"><span class="pre">analysis</span></code>.</p></li>
+</ul>
+<p class="rubric">Структура ответа</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="domains">
+<h2>Domains (Функции для работы с доменами)<a class="headerlink" href="#domains" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="get-domains-domain">
+<h3>GET /domains/{domain}<a class="headerlink" href="#get-domains-domain" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение информации об Internet-домене.</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/domains/{domain}</span></code></p>
+</div>
+<div class="section" id="get-domains-domain-comments">
+<h3>GET /domains/{domain}/comments<a class="headerlink" href="#get-domains-domain-comments" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение комментариев для Internet-домена.</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/domains/domain/comments</span></code></p>
+</div>
+<div class="section" id="post-domains-domain-comments">
+<h3>POST /domains/{domain}/comments<a class="headerlink" href="#post-domains-domain-comments" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Добавление комментария для Internet-домена.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/domains/domain/comments</span></code></p>
+</div>
+<div class="section" id="get-domains-domain-relationship">
+<h3>GET /domains/{domain}/{relationship}<a class="headerlink" href="#get-domains-domain-relationship" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение объектов, связанных с Internet-доменом.</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/domains/{domain}/{relationship}</span></code></p>
+</div>
+<div class="section" id="get-domains-domain-votes">
+<h3>GET /domains/{domain}/votes<a class="headerlink" href="#get-domains-domain-votes" title="Ссылка на этот заголовок">¶</a></h3>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/domains/{domain}/votes</span></code></p>
+</div>
+<div class="section" id="post-domains-domain-votes">
+<h3>POST /domains/{domain}/votes<a class="headerlink" href="#post-domains-domain-votes" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Добавить голос за имя хоста или домена.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/domains/{domain}/votes</span></code></p>
 </div>
 </div>
 </div>
