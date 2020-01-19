@@ -133,7 +133,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#domains">Домены (domains)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#communicating-files">communicating_files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">communicating_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">communicating_files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloaded-files">downloaded_files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#graphs">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referrer-files">referrer_files</a></li>
@@ -921,6 +921,22 @@
 <div class="section" id="packers">
 <h3>packers<a class="headerlink" href="#packers" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Информация об упаковщике, используемом в файле.</p>
+<p><code class="docutils literal notranslate"><span class="pre">packers</span></code> - определtybt упаковщиков PE-файлов, используемых в Windows с помощью нескольких утилит и антивирусных средств.</p>
+<ul class="simple">
+<li><p>ключи - это названия утилит, значения - это идентифицированные упаковщики.</p></li>
+</ul>
+<p class="rubric">PEiD идентификатор упаковщика</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;packers&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="o">...</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="pdf-info">
 <h3>pdf_info<a class="headerlink" href="#pdf-info" title="Ссылка на этот заголовок">¶</a></h3>
@@ -945,6 +961,19 @@
 <div class="section" id="ssdeep">
 <h3>ssdeep<a class="headerlink" href="#ssdeep" title="Ссылка на этот заголовок">¶</a></h3>
 <p>CTPH хэш содержимого файла.</p>
+<p><cite>ssdeep</cite> - программа для вычисления <a class="reference external" href="https://ssdeep-project.github.io/ssdeep/index.html">контекстно-зависимого кусочного хэша</a>. Также называемый нечеткими хэшем, он позволяет идентифицировать похожие файлы.</p>
+<p class="rubric">ssdeep</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;ssdeep&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="swf-info">
 <h3>swf_info<a class="headerlink" href="#swf-info" title="Ссылка на этот заголовок">¶</a></h3>
@@ -953,15 +982,43 @@
 <div class="section" id="trid">
 <h3>trid<a class="headerlink" href="#trid" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Тип файла идентифицированный с помощью утилиты <a class="reference external" href="http://mark0.net/soft-trid-e.html">TrID</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">trid</span></code> - утилита, предназначенная для идентификации типов файлов по их бинарным сигнатурам. Может дать несколько результатов, упорядоченных от более высокой до более низкой вероятности идентификации формата файла (в процентах).</p>
+<p class="rubric">TrID</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;trid&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;file_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;probability&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;</span><span class="p">},</span> <span class="o">...</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="file-behaviour">
 <h2>Поведение файлов (file behaviour)<a class="headerlink" href="#file-behaviour" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Отчеты о поведении файлов.</p>
+<p>Отчеты о поведении файлов получаются либо с помощью функции GET /files/{id}/behavior, либо с помощью анализа поведения в песочнице . Они суммируют наблюдаемое поведение во время выполнения или открытия файла. Обратите внимание, что некоторые из этих действий могут быть инициированы дочерними элементами рассматриваемого файла.</p>
+<p>Объект <code class="docutils literal notranslate"><span class="pre">file_behaviour</span></code> содержит следующие атрибуты:</p>
 <div class="section" id="dnslookup">
 <h3>DnsLookup<a class="headerlink" href="#dnslookup" title="Ссылка на этот заголовок">¶</a></h3>
+<p>DNS-запросы.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code> <em>&lt;string&gt;</em> - имя хоста DNS-запроса;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resolved_ips</span></code> <em>&lt;string array&gt;</em> - все разрешенные IP-адреса могут быть пустыми на NX домене.</p></li>
+</ul>
 </div>
 <div class="section" id="droppedfile">
 <h3>DroppedFile<a class="headerlink" href="#droppedfile" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Сброшенные файлы - это файлы, специально созданные и записанные во время анализа поведения. Это может быть результатом загрузки содержимого из интернета и записи его в файл, распаковки файла, сброса некоторого содержимого в файл и т. д.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> <em>&lt;string&gt;</em> - полный путь к файлу, включая имя файла;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sha256</span></code> <em>&lt;string&gt;</em> - SHA-256 хэш файла.</p></li>
+</ul>
 </div>
 <div class="section" id="behaviourtag">
 <h3>BehaviourTag<a class="headerlink" href="#behaviourtag" title="Ссылка на этот заголовок">¶</a></h3>
@@ -993,8 +1050,8 @@
 <div class="section" id="communicating-files">
 <h3>communicating_files<a class="headerlink" href="#communicating-files" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
-<div class="section" id="id5">
-<h3>communicating_files<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="section" id="id6">
+<h3>communicating_files<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
 <div class="section" id="downloaded-files">
 <h3>downloaded_files<a class="headerlink" href="#downloaded-files" title="Ссылка на этот заголовок">¶</a></h3>

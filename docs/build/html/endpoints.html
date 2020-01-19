@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="prev" title="Вступление" href="intro.html" /> 
+    <link rel="prev" title="Объекты API" href="objects.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,93 +86,25 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Вступление</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html">Объекты API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Основные функции VirusTotal API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#files">Files (Функции для работы с файлами)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#post-files">POST /files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#curl">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">Пример ответа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files">POST /files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-upload-url">GET /files/upload_url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id">GET /files/{id}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files-id-analyse">POST /files/{id}/analyse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-comments">GET /files/{id}/comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files-id-comments">POST /files/{id}/comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-votes">GET /files/{id}/votes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files-id-votes">POST /files/{id}/votes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-download-url">GET /files/{id}/download_url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-download">GET /files/{id}/download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-relationship">GET /files/{id}/{relationship}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-file-behaviours-sandbox-id-pcap">GET /file_behaviours/{sandbox_id}/pcap</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-upload-url">GET /files/upload_url</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Пример ответа</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-id">GET /files/{id}</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">Пример ответа</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#post-files-id-analyse">POST /files/{id}/analyse</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">Пример ответа</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-id-comments">GET /files/{id}/comments</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21">Заголовок запроса</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#post-files-id-comments">POST /files/{id}/comments</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id22">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id23">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id24">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id25">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id26">Пример запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id27">Пример ответа</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-id-votes">GET /files/{id}/votes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id28">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id29">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id30">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id31">Заголовок запроса</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#post-files-id-votes">POST /files/{id}/votes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id32">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id33">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id34">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id35">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id36">Пример ответа</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-id-download-url">GET /files/{id}/download_url</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id37">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id38">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id39">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id40">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id41">Пример ответа</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-id-download">GET /files/{id}/download</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id42">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id43">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id44">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id45">Заголовок запроса</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#get-files-id-relationship">GET /files/{id}/{relationship}</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id46">cURL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id47">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id48">Параметры запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id49">Заголовок запроса</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id50">Отношения, поддерживаемые объектами файла:</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#urls-url">URLs (Функции для работы с URL-адресами)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post-urls">POST /urls</a></li>
 </ul>
 </li>
 </ul>
@@ -250,17 +182,14 @@
 <h3>POST /files<a class="headerlink" href="#post-files" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Загрузка и анализ файла.</p>
 <p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files</span></code></p>
-<div class="section" id="curl">
-<h4>cURL<a class="headerlink" href="#curl" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
   <span class="o">--</span><span class="n">form</span> <span class="n">file</span><span class="o">=@/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="python">
-<h4>Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files&quot;</span>
@@ -270,24 +199,18 @@
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h4>Параметры запроса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>file</strong> - файл для сканирования.</p></li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h4>Заголовок запроса<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>Файлы могут быть загружены в VirusTotal путем отправки POST-запросов, закодированных как <code class="docutils literal notranslate"><span class="pre">multipart/form-data</span></code> в конечную точку <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files</span></code>. Каждый POST-запрос должен иметь поле с именем <code class="docutils literal notranslate"><span class="pre">file</span></code>, содержащее файл для анализа. Общий размер полезной нагрузки не может превышать 32 МБ. Для загрузки больших файлов см. <a class="reference internal" href="#get-files-upload-url">GET /files/upload_url</a>.</p>
 <p>Результат, возвращаемый этой функцией, является дескриптором объекта для нового анализа. Идентификатор, содержащийся в дескрипторе, можно использовать с функцией GET /analyses/{id} для получения информации о результатах анализа этого файла.</p>
 <p>Для анализа файла, который ранее уже был загружен в VirusTotal, можно использовать <a class="reference internal" href="#post-files-id-analyse">POST /files/{id}/analyse</a>.</p>
-</div>
-<div class="section" id="id3">
-<h4>Пример ответа<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span>
@@ -297,21 +220,17 @@
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="get-files-upload-url">
 <h3>GET /files/upload_url<a class="headerlink" href="#get-files-upload-url" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Получение URL для загрузки файла больше 32 МБ.</p>
 <p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/upload_url</span></code></p>
-<div class="section" id="id4">
-<h4>cURL<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">upload_url</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id5">
-<h4>Python<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/upload_url&quot;</span>
@@ -319,9 +238,7 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id6">
-<h4>Заголовок запроса<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
@@ -335,30 +252,25 @@
 <li><p>Движки некоторых антивирусов не могут проверять определенные типы файлов, в то время как они смогут проверить внутренние файлы, если они будут отправлены;</p></li>
 <li><p>При сканировании большого пакета вы теряете контекст, в котором конкретный внутренний файл вызывает обнаружение.</p></li>
 </ul>
-</div>
-<div class="section" id="id7">
-<h4>Пример ответа<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h4>
+<hr class="docutils" />
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.virustotal.com/_ah/upload/AMmfu6b-_DXUeFe36Sb3b0F4B8mH9Nb-CHbRoUNVOPwG/&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="get-files-id">
 <h3>GET /files/{id}<a class="headerlink" href="#get-files-id" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Получение информации о файле.</p>
 <p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}</span></code></p>
-<div class="section" id="id8">
-<h4>cURL<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id9">
-<h4>Python<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">&quot;</span>
@@ -366,21 +278,15 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id10">
-<h4>Параметры запроса<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
 </ul>
-</div>
-<div class="section" id="id11">
-<h4>Заголовок запроса<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
-</div>
-<div class="section" id="id12">
-<h4>Пример ответа<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85&quot;</span><span class="p">,</span>
@@ -475,22 +381,18 @@
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="post-files-id-analyse">
 <h3>POST /files/{id}/analyse<a class="headerlink" href="#post-files-id-analyse" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Повторный анализ файла в VirusTotal/
 .. warning:: Эта функция API может привести к отказу в обслуживании инфраструктуры сканирования в случае неправильного использования. Пожалуйста, свяжитесь с нами, если вы собираетесь сканировать более 50 тысяч файлов в день.</p>
 <p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/analyse</span></code></p>
-<div class="section" id="id13">
-<h4>cURL<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">analyse</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id14">
-<h4>Python<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/analyse&quot;</span>
@@ -498,22 +400,16 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id15">
-<h4>Параметры запроса<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
 </ul>
-</div>
-<div class="section" id="id16">
-<h4>Заголовок запроса<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>Файлы, которые уже были загружены в VirusTotal, можно повторно проанализировать, не загружая их снова, используя эту функцию. Ответом является дескриптор объекта для нового анализа, как и в функции <a class="reference internal" href="#post-files">POST /files</a>. Идентификатор, содержащийся в дескрипторе, можно использовать с функцией GET /analyses/{id} для получения информации о результатах анализа.</p>
-</div>
-<div class="section" id="id17">
-<h4>Пример ответа<a class="headerlink" href="#id17" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span>
@@ -523,21 +419,17 @@
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="get-files-id-comments">
 <h3>GET /files/{id}/comments<a class="headerlink" href="#get-files-id-comments" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Получение комментариев для файла</p>
 <p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/comments</span></code></p>
-<div class="section" id="id18">
-<h4>cURL<a class="headerlink" href="#id18" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">comments</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id19">
-<h4>Python<a class="headerlink" href="#id19" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/comments&quot;</span>
@@ -546,37 +438,29 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id20">
-<h4>Параметры запроса<a class="headerlink" href="#id20" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
 <li><p><strong>limit</strong> - максимальное число комментариев в ответе (int_32, необязательный параметр);</p></li>
 <li><p><strong>cursor</strong> - курсор продолжения (string, необязательный параметр).</p></li>
 </ul>
-</div>
-<div class="section" id="id21">
-<h4>Заголовок запроса<a class="headerlink" href="#id21" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
-</div>
 </div>
 <div class="section" id="post-files-id-comments">
 <h3>POST /files/{id}/comments<a class="headerlink" href="#post-files-id-comments" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Добавление комментария для файла.</p>
 <p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/comments</span></code></p>
-<div class="section" id="id22">
-<h4>cURL<a class="headerlink" href="#id22" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">comments</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
   <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;data&quot;: {&quot;type&quot;: &quot;comment&quot;, &quot;attributes&quot;: {&quot;text&quot;: &quot;Lorem ipsum dolor sit ...&quot;}}}&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id23">
-<h4>Python<a class="headerlink" href="#id23" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/comments&quot;</span>
@@ -585,24 +469,18 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">comments</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id24">
-<h4>Параметры запроса<a class="headerlink" href="#id24" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
 <li><p><strong>data</strong> - комментарий (json).</p></li>
 </ul>
-</div>
-<div class="section" id="id25">
-<h4>Заголовок запроса<a class="headerlink" href="#id25" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>С помощью этой функции вы можете опубликовать комментарий для данного файла. Тело POST-запроса должно быть JSON-представлением комментария. Обратите внимание, что вам не нужно указывать идентификатор объекта, так как он автоматически генерируется для новых комментариев.</p>
 <p>Любое слово, начинающееся с <code class="docutils literal notranslate"><span class="pre">#</span></code> в тексте вашего комментария, будет считаться тегом и добавляться в атрибут тега комментария.</p>
-</div>
-<div class="section" id="id26">
-<h4>Пример запроса<a class="headerlink" href="#id26" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример запроса</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;comment&quot;</span><span class="p">,</span>
@@ -613,9 +491,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id27">
-<h4>Пример ответа<a class="headerlink" href="#id27" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;comment&quot;</span><span class="p">,</span>
@@ -639,21 +515,17 @@
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="get-files-id-votes">
 <h3>GET /files/{id}/votes<a class="headerlink" href="#get-files-id-votes" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Получение результатов голосования для файла</p>
 <p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/votes</span></code></p>
-<div class="section" id="id28">
-<h4>cURL<a class="headerlink" href="#id28" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">votes</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id29">
-<h4>Python<a class="headerlink" href="#id29" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/comments&quot;</span>
@@ -662,37 +534,29 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id30">
-<h4>Параметры запроса<a class="headerlink" href="#id30" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
 <li><p><strong>limit</strong> - максимальное число комментариев в ответе (int_32, необязательный параметр);</p></li>
 <li><p><strong>cursor</strong> - курсор продолжения (string, необязательный параметр).</p></li>
 </ul>
-</div>
-<div class="section" id="id31">
-<h4>Заголовок запроса<a class="headerlink" href="#id31" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
-</div>
 </div>
 <div class="section" id="post-files-id-votes">
 <h3>POST /files/{id}/votes<a class="headerlink" href="#post-files-id-votes" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Добавление голоса для файла.</p>
 <p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/comments</span></code></p>
-<div class="section" id="id32">
-<h4>cURL<a class="headerlink" href="#id32" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">votes</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
   <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;data&quot;: {&quot;type&quot;: &quot;vote&quot;, &quot;attributes&quot;: {&quot;verdict&quot;: &quot;malicious&quot;}}}&#39;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id33">
-<h4>Python<a class="headerlink" href="#id33" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/votes&quot;</span>
@@ -701,24 +565,18 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">votes</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id34">
-<h4>Параметры запроса<a class="headerlink" href="#id34" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
 <li><p><strong>data</strong> - голос (json).</p></li>
 </ul>
-</div>
-<div class="section" id="id35">
-<h4>Заголовок запроса<a class="headerlink" href="#id35" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>С помощью этой функции вы можете опубликовать свой голос за данный файл. Тело для запроса POST должно быть JSON-представлением объекта голосования. Обратите внимание, однако, что вам не нужно указывать идентификатор объекта, так как они автоматически генерируются для новых голосов.</p>
 <p>Атрибут <code class="docutils literal notranslate"><span class="pre">verdict</span></code> должен быть либо <code class="docutils literal notranslate"><span class="pre">harmless</span></code>, либо <code class="docutils literal notranslate"><span class="pre">malicious</span></code>.</p>
-</div>
-<div class="section" id="id36">
-<h4>Пример ответа<a class="headerlink" href="#id36" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vote&quot;</span><span class="p">,</span>
@@ -730,7 +588,6 @@
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="get-files-id-download-url">
 <h3>GET /files/{id}/download_url<a class="headerlink" href="#get-files-id-download-url" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Получение URL для загрузки файла.</p>
@@ -738,17 +595,14 @@
 <p class="admonition-title">Примечание</p>
 <p>Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.</p>
 </div>
-<p><strong>GET</strong> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/download_url</span></code></p>
-<div class="section" id="id37">
-<h4>cURL<a class="headerlink" href="#id37" title="Ссылка на этот заголовок">¶</a></h4>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/download_url</span></code></p>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">download_url</span> \
  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id38">
-<h4>Python<a class="headerlink" href="#id38" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/download_url&quot;</span>
@@ -756,27 +610,20 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id39">
-<h4>Параметры запроса<a class="headerlink" href="#id39" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
 </ul>
-</div>
-<div class="section" id="id40">
-<h4>Заголовок запроса<a class="headerlink" href="#id40" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>Эта функция возвращает подписанный URL, с которого можно загрузить указанный файл. Получение URL считается загрузкой файла в квоте, даже если вы на самом деле не загружаете файл. URL можно использовать для загрузки файла несколько раз, не потребляя никакой квоты. Срок действия URL истекает через 1 час.</p>
-</div>
-<div class="section" id="id41">
-<h4>Пример ответа<a class="headerlink" href="#id41" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Пример ответа</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;https://vtsamples.commondatastorage.googleapis.com/275a..fd0f?GoogleAccessId=758681729565-rc7fcckv235v1@developer.gserviceaccount.com&amp;Expires=1524733537&amp;Signature=GRs9WLy...oHA%3D&quot;</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="get-files-id-download">
@@ -786,17 +633,14 @@
 <p class="admonition-title">Примечание</p>
 <p>Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.</p>
 </div>
-<p><strong>GET</strong> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/download</span></code></p>
-<div class="section" id="id42">
-<h4>cURL<a class="headerlink" href="#id42" title="Ссылка на этот заголовок">¶</a></h4>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/download</span></code></p>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">download</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id43">
-<h4>Python<a class="headerlink" href="#id43" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/download&quot;</span>
@@ -804,35 +648,27 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id44">
-<h4>Параметры запроса<a class="headerlink" href="#id44" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
 </ul>
-</div>
-<div class="section" id="id45">
-<h4>Заголовок запроса<a class="headerlink" href="#id45" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>Эта функция похожа на <a class="reference internal" href="#get-files-id-download-url">GET /files/{id}/download_url</a>, но она перенаправляет вас на URL загрузки файла. URL загрузки, на который вы перенаправлены, может быть использован повторно столько раз, сколько вы хотите в течение 1 часа. После этого срока действие URL истекает и он больше не может быть использован.</p>
 </div>
-</div>
 <div class="section" id="get-files-id-relationship">
 <h3>GET /files/{id}/{relationship}<a class="headerlink" href="#get-files-id-relationship" title="Ссылка на этот заголовок">¶</a></h3>
 <p>Получение объектов, связанных с файлом.</p>
 <p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/{relationship}</span></code></p>
-<div class="section" id="id46">
-<h4>cURL<a class="headerlink" href="#id46" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">cURL</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
   <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">relationship</span><span class="p">}</span> \
   <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id47">
-<h4>Python<a class="headerlink" href="#id47" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Python</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
     <span class="o">...</span>
 <span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/</span><span class="si">{relationship}</span><span class="s2">&quot;</span>
@@ -841,26 +677,20 @@
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id48">
-<h4>Параметры запроса<a class="headerlink" href="#id48" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Параметры запроса</p>
 <ul class="simple">
 <li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
 <li><p><strong>relationship</strong> - наименование отношения (см. таблицу ниже);</p></li>
 <li><p><strong>limit</strong> - максимальное число комментариев в ответе (int_32, необязательный параметр);</p></li>
 <li><p><strong>cursor</strong> - курсор продолжения (string, необязательный параметр).</p></li>
 </ul>
-</div>
-<div class="section" id="id49">
-<h4>Заголовок запроса<a class="headerlink" href="#id49" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Заголовок запроса</p>
 <ul class="simple">
 <li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
 </ul>
 <p>Объекты типа <code class="docutils literal notranslate"><span class="pre">file</span></code> имеют ряд отношений с другими файлами и объектами. Как уже упоминалось в разделе «Отношения», эти связанные объекты можно получить, отправив GET-запросы на URL, соответствующий нужному отношению.</p>
 <p>Некоторые отношения доступны только тем пользователям, которые имеют доступ к VirusTotal Intelligence.</p>
-</div>
-<div class="section" id="id50">
-<h4>Отношения, поддерживаемые объектами файла:<a class="headerlink" href="#id50" title="Ссылка на этот заголовок">¶</a></h4>
+<p class="rubric">Отношения, поддерживаемые объектами файла:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
@@ -969,6 +799,63 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="get-file-behaviours-sandbox-id-pcap">
+<h3>GET /file_behaviours/{sandbox_id}/pcap<a class="headerlink" href="#get-file-behaviours-sandbox-id-pcap" title="Ссылка на этот заголовок">¶</a></h3>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/file_behaviours/{sandbox_id}/pcap</span></code></p>
+<p class="rubric">cURL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">file_behaviours</span><span class="o">/</span><span class="p">{</span><span class="n">sandbox_id</span><span class="p">}</span><span class="o">/</span><span class="n">pcap</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+<p class="rubric">Python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/file_behaviours/</span><span class="si">{sandbox_id}</span><span class="s2">/pcap&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Параметры запроса</p>
+<ul class="simple">
+<li><p><strong>sandbox_id</strong> - идентификатор, полученный из функции <a class="reference internal" href="#get-files-id-relationship">GET /files/{id}/{relationship}</a>, с <code class="docutils literal notranslate"><span class="pre">параметром</span> <span class="pre">relationship</span></code> равным <code class="docutils literal notranslate"><span class="pre">behaviours</span></code>.</p></li>
+</ul>
+<p class="rubric">Заголовок запроса</p>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="urls-url">
+<h2>URLs (Функции для работы с URL-адресами)<a class="headerlink" href="#urls-url" title="Ссылка на этот заголовок">¶</a></h2>
+<p>VirusTotal анализирует не только файлы, но и URL-адреса. В этом разделе описаны функции API для анализа URL-адресов и получения информации о них.</p>
+<p class="rubric">Идентификатр URL-адреса</p>
+<p>Всякий раз, когда мы говорим об идентификаторе URL-адреса в этой документации, мы имеем в виду последовательность символов, которые однозначно идентифицируют конкретный URL. Эти идентификаторы могут принимать две формы:</p>
+<ul class="simple">
+<li><p>SHA-256 хэш от строки канонического URL-адреса;</p></li>
+<li><p>Строка, полученная в результате кодирования URL-адреса в base64 (без заполнения символами <code class="docutils literal notranslate"><span class="pre">&quot;=&quot;</span></code>).</p></li>
+</ul>
+<p>Все идентификаторы URL-адресов, возвращаемые API VirusTotal, находятся в первой форме, и если у вас есть один из этих идентификаторов, вы можете использовать его в последующих вызовах API, которым требуется идентификатор URL-адреса. Однако создание таких идентификаторов самостоятельно может быть затруднено из-за алгоритма канонизации, который должен быть применен к URL-адресу перед вычислением SHA-256 хэша. Канонизация гарантирует, что два URL-адреса, отличающиеся только незначительными аспектами, например некоторыми экранированными символами, имеют один и тот же идентификатор. По этой причине мы предлагаем возможность идентификации URL-адреса путем кодирования его в base64 и использования результирующей строки в качестве идентификатора. В таких случаях URL-адрес не нужно канонизировать, это делается на стороне сервера VirusTotal.</p>
+<p>Обратите внимание, что мы используем неупакованную кодировку base64, как определено в <a class="reference external" href="https://tools.ietf.org/html/rfc4648#section-3.2">разделе 3.2 RFC 4648</a>, что означает, что полученные идентификаторы URL-адресов не должны быть дополнены символами <code class="docutils literal notranslate"><span class="pre">&quot;=&quot;</span></code>, как это обычно происходит с данными, закодированными в base64.</p>
+<p>Вот один из примеров того, как сгенерировать идентификатор URL-адреса:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
+  <span class="o">...</span>
+<span class="n">url_id</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="s2">&quot;&lt;строка с url-адресом&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="post-urls">
+<h3>POST /urls<a class="headerlink" href="#post-urls" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Анализ URL-адреса.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/urls</span></code></p>
+<p class="rubric">cURL</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">urls</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
+  <span class="o">--</span><span class="n">form</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;&lt;url&gt;&#39;</span>
+</pre></div>
+</div>
+<p>..rubric:: Python</p>
+<p>..code-block:: python</p>
 </div>
 </div>
 </div>
@@ -982,7 +869,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="intro.html" class="btn btn-neutral float-left" title="Вступление" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="objects.html" class="btn btn-neutral float-left" title="Объекты API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

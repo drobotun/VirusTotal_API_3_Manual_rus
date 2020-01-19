@@ -13,8 +13,8 @@ POST /files
 
 |POST| ``https://www.virustotal.com/api/v3/files``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request POST \
@@ -22,8 +22,8 @@ cURL
       --header 'x-apikey: <your API key>' \
       --form file=@/path/to/file
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -34,13 +34,11 @@ Python
         files = {"file": ("<путь к файлу>", file)}
         response = requests.post(api_url, headers=headers, files=files)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **file** - файл для сканирования.
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -50,8 +48,8 @@ Python
 
 Для анализа файла, который ранее уже был загружен в VirusTotal, можно использовать `POST /files/{id}/analyse`_.
 
-Пример ответа
-"""""""""""""
+.. rubric:: Пример ответа
+
 ::
 
     {
@@ -68,16 +66,16 @@ GET /files/upload_url
 
 |GET| ``https://www.virustotal.com/api/v3/files/upload_url``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
    curl --request GET \
      --url https://www.virustotal.com/api/v3/files/upload_url \
      --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -86,8 +84,7 @@ Python
     headers = {"x-apikey" : "<ключ доступа к API>"}
     response = requests.get(api_url, headers=headers)
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -99,8 +96,10 @@ Python
 - Движки некоторых антивирусов не могут проверять определенные типы файлов, в то время как они смогут проверить внутренние файлы, если они будут отправлены;
 - При сканировании большого пакета вы теряете контекст, в котором конкретный внутренний файл вызывает обнаружение.
 
-Пример ответа
-"""""""""""""
+=======
+
+.. rubric:: Пример ответа
+
 ::
 
     {
@@ -115,16 +114,16 @@ GET /files/{id}
 
 |GET| ``https://www.virustotal.com/api/v3/files/{id}``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request GET \
       --url https://www.virustotal.com/api/v3/files/{id} \
       --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -133,18 +132,16 @@ Python
     headers = {"x-apikey" : "<ключ доступа к API>"}
     response = requests.get(api_url, headers=headers)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
-Пример ответа
-"""""""""""""
+.. rubric:: Пример ответа
+
 ::
 
     {    
@@ -247,16 +244,16 @@ POST /files/{id}/analyse
 
 |POST| ``https://www.virustotal.com/api/v3/files/{id}/analyse``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request POST \
       --url https://www.virustotal.com/api/v3/files/{id}/analyse \
       --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -265,20 +262,18 @@ Python
     headers = {"x-apikey" : "<ключ доступа к API>"}
     response = requests.post(api_url, headers=headers)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
 Файлы, которые уже были загружены в VirusTotal, можно повторно проанализировать, не загружая их снова, используя эту функцию. Ответом является дескриптор объекта для нового анализа, как и в функции `POST /files`_. Идентификатор, содержащийся в дескрипторе, можно использовать с функцией GET /analyses/{id} для получения информации о результатах анализа.
 
-Пример ответа
-"""""""""""""
+.. rubric:: Пример ответа
+
 ::
 
     {
@@ -295,16 +290,16 @@ GET /files/{id}/comments
 
 |GET| ``https://www.virustotal.com/api/v3/files/{id}/comments``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request GET \
       --url https://www.virustotal.com/api/v3/files/{id}/comments \
       --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -314,15 +309,13 @@ Python
     query = {"limit": "<limit)>", "cursor": "<cursor>"}
     response = requests.get(api_url, headers=headers, params=query)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
 - **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
 - **cursor** - курсор продолжения (string, необязательный параметр).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -333,8 +326,8 @@ POST /files/{id}/comments
 
 |POST| ``https://www.virustotal.com/api/v3/files/{id}/comments``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request POST \
@@ -342,8 +335,8 @@ cURL
       --header 'x-apikey: <your API key>' \
       --data '{"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -353,14 +346,12 @@ Python
     comments = {"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}
     response = requests.post(api_url, headers=headers, json=comments)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
 - **data** - комментарий (json).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -368,8 +359,8 @@ Python
 
 Любое слово, начинающееся с ``#`` в тексте вашего комментария, будет считаться тегом и добавляться в атрибут тега комментария.
 
-Пример запроса
-""""""""""""""
+.. rubric:: Пример запроса
+
 ::
 
     {
@@ -381,8 +372,8 @@ Python
       }
     }
 
-Пример ответа
-"""""""""""""
+.. rubric:: Пример ответа
+
 ::
 
     {
@@ -413,16 +404,16 @@ GET /files/{id}/votes
 
 |GET| ``https://www.virustotal.com/api/v3/files/id/votes``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request GET \
       --url https://www.virustotal.com/api/v3/files/{id}/votes \
       --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -432,15 +423,13 @@ Python
     query = {"limit": "<limit)>", "cursor": "<cursor>"}
     response = requests.get(api_url, headers=headers, params=query)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
 - **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
 - **cursor** - курсор продолжения (string, необязательный параметр).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -451,8 +440,8 @@ POST /files/{id}/votes
 
 |POST| ``https://www.virustotal.com/api/v3/files/{id}/comments``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request POST \
@@ -460,8 +449,8 @@ cURL
       --header 'x-apikey: <your API key>' \
       --data '{"data": {"type": "vote", "attributes": {"verdict": "malicious"}}}''
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -471,14 +460,12 @@ Python
     votes = {"data": {"type": "vote", "attributes": {"verdict": "malicious"}}}
     response = requests.post(api_url, headers=headers, json=votes)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
 - **data** - голос (json).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -486,8 +473,8 @@ Python
 
 Атрибут ``verdict`` должен быть либо ``harmless``, либо ``malicious``.
 
-Пример ответа
-"""""""""""""
+.. rubric:: Пример ответа
+
 ::
 
     {
@@ -506,18 +493,18 @@ GET /files/{id}/download_url
 
 .. note:: Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.
 
-**GET** ``https://www.virustotal.com/api/v3/files/id/download_url``
+|GET| ``https://www.virustotal.com/api/v3/files/id/download_url``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request GET \
       --url https://www.virustotal.com/api/v3/files/{id}/download_url \
      --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -526,20 +513,18 @@ Python
     headers = {"x-apikey" : "<ключ доступа к API>"}
     response = requests.get(api_url, headers=headers)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
 Эта функция возвращает подписанный URL, с которого можно загрузить указанный файл. Получение URL считается загрузкой файла в квоте, даже если вы на самом деле не загружаете файл. URL можно использовать для загрузки файла несколько раз, не потребляя никакой квоты. Срок действия URL истекает через 1 час.
 
-Пример ответа
-"""""""""""""
+.. rubric:: Пример ответа
+
 ::
 
     {
@@ -553,19 +538,19 @@ GET /files/{id}/download
 
 .. note:: Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.
 
-**GET** ``https://www.virustotal.com/api/v3/files/id/download``
+|GET| ``https://www.virustotal.com/api/v3/files/id/download``
 
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request GET \
       --url https://www.virustotal.com/api/v3/files/{id}/download \
       --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -574,13 +559,11 @@ Python
     headers = {"x-apikey" : "<ключ доступа к API>"}
     response = requests.get(api_url, headers=headers)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -593,16 +576,16 @@ GET /files/{id}/{relationship}
 
 |GET| ``https://www.virustotal.com/api/v3/files/{id}/{relationship}``
 
-cURL
-""""
+.. rubric:: cURL
+
 ::
 
     curl --request GET \
       --url https://www.virustotal.com/api/v3/files/{id}/{relationship} \
       --header 'x-apikey: <your API key>'
 
-Python
-""""""
+.. rubric:: Python
+
 .. code-block:: python
 
     import requests
@@ -612,16 +595,14 @@ Python
     query = {"limit": "<limit)>", "cursor": "<cursor>"}
     response = requests.get(api_url, headers=headers)
 
-Параметры запроса
-"""""""""""""""""
+.. rubric:: Параметры запроса
 
 - **id** - SHA-256, SHA-1 или MD5 идентификатор файла (string);
 - **relationship** - наименование отношения (см. таблицу ниже);
 - **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
 - **cursor** - курсор продолжения (string, необязательный параметр).
 
-Заголовок запроса
-"""""""""""""""""
+.. rubric:: Заголовок запроса
 
 - **x-apikey** - ключ доступа к API (string).
 
@@ -629,8 +610,7 @@ Python
 
 Некоторые отношения доступны только тем пользователям, которые имеют доступ к VirusTotal Intelligence.
 
-Отношения, поддерживаемые объектами файла:
-""""""""""""""""""""""""""""""""""""""""""
+.. rubric:: Отношения, поддерживаемые объектами файла:
 
 .. table::
 
@@ -683,6 +663,85 @@ Python
     +------------------------+---------------------------------------------------------------+------------------------------------------+
     |``votes``               | Результаты голосования для файла                              | Все пользователи                         |
     +------------------------+---------------------------------------------------------------+------------------------------------------+
+
+GET /file_behaviours/{sandbox_id}/pcap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|GET| ``https://www.virustotal.com/api/v3/file_behaviours/{sandbox_id}/pcap``
+
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/file_behaviours/{sandbox_id}/pcap \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/file_behaviours/{sandbox_id}/pcap"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    response = requests.get(api_url, headers=headers)
+
+.. rubric:: Параметры запроса
+
+- **sandbox_id** - идентификатор, полученный из функции `GET /files/{id}/{relationship}`_, с ``параметром relationship`` равным ``behaviours``.
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+URLs (Функции для работы с URL-адресами)
+----------------------------------------
+
+VirusTotal анализирует не только файлы, но и URL-адреса. В этом разделе описаны функции API для анализа URL-адресов и получения информации о них.
+
+.. rubric:: Идентификатр URL-адреса
+
+Всякий раз, когда мы говорим об идентификаторе URL-адреса в этой документации, мы имеем в виду последовательность символов, которые однозначно идентифицируют конкретный URL. Эти идентификаторы могут принимать две формы:
+
+- SHA-256 хэш от строки канонического URL-адреса;
+- Строка, полученная в результате кодирования URL-адреса в base64 (без заполнения символами ``"="``).
+
+Все идентификаторы URL-адресов, возвращаемые API VirusTotal, находятся в первой форме, и если у вас есть один из этих идентификаторов, вы можете использовать его в последующих вызовах API, которым требуется идентификатор URL-адреса. Однако создание таких идентификаторов самостоятельно может быть затруднено из-за алгоритма канонизации, который должен быть применен к URL-адресу перед вычислением SHA-256 хэша. Канонизация гарантирует, что два URL-адреса, отличающиеся только незначительными аспектами, например некоторыми экранированными символами, имеют один и тот же идентификатор. По этой причине мы предлагаем возможность идентификации URL-адреса путем кодирования его в base64 и использования результирующей строки в качестве идентификатора. В таких случаях URL-адрес не нужно канонизировать, это делается на стороне сервера VirusTotal.
+
+Обратите внимание, что мы используем неупакованную кодировку base64, как определено в `разделе 3.2 RFC 4648 <https://tools.ietf.org/html/rfc4648#section-3.2>`_, что означает, что полученные идентификаторы URL-адресов не должны быть дополнены символами ``"="``, как это обычно происходит с данными, закодированными в base64.
+
+Вот один из примеров того, как сгенерировать идентификатор URL-адреса:
+
+.. code-block:: python
+
+    import base64
+      ...
+    url_id = base64.urlsafe_b64encode("<строка с url-адресом>").strip("=")
+
+POST /urls
+~~~~~~~~~~
+
+Анализ URL-адреса.
+
+|POST| ``https://www.virustotal.com/api/v3/urls``
+
+.. rubric:: cURL
+
+::
+
+    curl --request POST \
+      --url https://www.virustotal.com/api/v3/urls \
+      --header 'x-apikey: <your API key>' \
+      --form url='<url>'
+
+..rubric:: Python
+
+..code-block:: python
+
+
+
+
 
 .. |POST| image:: https://i.imgur.com/CWgYjh1.png
 .. |GET| image:: https://i.imgur.com/CBcN0Fh.png
