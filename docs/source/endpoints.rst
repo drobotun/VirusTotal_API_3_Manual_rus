@@ -700,7 +700,8 @@ URLs (Функции для работы с URL-адресами)
 
 VirusTotal анализирует не только файлы, но и URL-адреса. В этом разделе описаны функции API для анализа URL-адресов и получения информации о них.
 
-.. rubric:: Идентификатр URL-адреса
+Идентификатор URL-адреса
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Всякий раз, когда мы говорим об идентификаторе URL-адреса в этой документации, мы имеем в виду последовательность символов, которые однозначно идентифицируют конкретный URL. Эти идентификаторы могут принимать две формы:
 
@@ -744,7 +745,7 @@ POST /urls
     api_url = "https://www.virustotal.com/api/v3/urls"
 	headers = {"x-apikey" : "<ключ доступа к API>"}
 	data = {'url': url}
-    response = requests.get(api_url, headers=headers)
+    response = requests.post(api_url, headers=headers, data=data)
 
 .. rubric:: Параметры запроса
 
@@ -769,6 +770,49 @@ URL-адреса могут быть отправлены в VirusTotal путе
 
     {
       "data": {"id": "<string>", "type": "analysis"}
+    }
+
+POST /urls/{id}
+~~~~~~~~~~~~~~~
+
+Получение информации об URL-адресе.
+
+|GET| ``https://www.virustotal.com/api/v3/urls/{id}``
+
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/urls/{id} \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls{id}"
+	headers = {"x-apikey" : "<ключ доступа к API>"}
+	response = requests.get(api_url, headers=headers)
+	
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL-адреса.
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+.. rubric:: Структура ответа
+
+::
+
+    {
+      "data": <URL OBJECT>
     }
 
 Domains (Функции для работы с доменами)
