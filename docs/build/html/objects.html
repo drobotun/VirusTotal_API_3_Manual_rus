@@ -1,0 +1,1079 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Объекты API &mdash; документация Документация API VirusTotal 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Основные функции VirusTotal API" href="endpoints.html" />
+    <link rel="prev" title="Вступление" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Документация API VirusTotal
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Вступление</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Объекты API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#files">Файлы (files)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#androguard">androguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asf-info">asf_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentihash">authentihash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bundle-info">bundle_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-info">class_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deb-info">deb_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dmg-info">dmg_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dot-net-guids">dot_net_guids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elf-info">elf_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exiftool">exiftool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image-code-injections">image_code_injections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ipa-info">ipa_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#isoimage-info">isoimage_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jar-info">jar_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macho-info">macho_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#magic">magic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#office-info">office_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openxml-info">openxml_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packers">packers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pdf-info">pdf_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pe-info">pe_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rombios-info">rombios_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rtf-info">rtf_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signature-info">signature_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssdeep">ssdeep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#swf-info">swf_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trid">trid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#file-behaviour">Поведение файлов (file behaviour)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dnslookup">DnsLookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#droppedfile">DroppedFile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#behaviourtag">BehaviourTag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filecopy">FileCopy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#httpconversation">HttpConversation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iptraffic">IpTraffic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permissioncheck">PermissionCheck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sms">Sms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verdicttag">VerdictTag</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#domains">Домены (domains)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#communicating-files">communicating_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">communicating_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloaded-files">downloaded_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphs">graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referrer-files">referrer_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolutions">resolutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#siblings">siblings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ip-ip-addresses">IP-адреса (IP addresses)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#url-urls">URL (URLs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submissions">Представления (submissions)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#screenshots">Скриншоты (screenshots)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#votes">Голоса (votes)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Основные функции VirusTotal API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Документация API VirusTotal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Объекты API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/objects.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>Объекты API<a class="headerlink" href="#api" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="files">
+<h2>Файлы (files)<a class="headerlink" href="#files" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Файлы являются одним из наиболее важных типов объектов в VirusTotal API. У нас есть огромный набор данных из более чем 2 миллиардов файлов, которые были проанализированы VirusTotal на протяжении многих лет. Объект <code class="docutils literal notranslate"><span class="pre">file</span></code> может быть получен либо путем загрузки нового файла в VirusTotal, либо путем поиска уже существующего хэша файла, либо другими способами при поиске в службах VT Enterprise services. В объекте <code class="docutils literal notranslate"><span class="pre">file</span></code> вы найдете некоторые релевантные базовые атрибуты о файле и его связи с VirusTotal:</p>
+<ul class="simple">
+<li><p>хэш-суммы файлов, такие как <code class="docutils literal notranslate"><span class="pre">md5</span></code>, <code class="docutils literal notranslate"><span class="pre">sha1</span></code> и <code class="docutils literal notranslate"><span class="pre">sha256</span></code>, которые однозначно идентифицируют файл;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - размер файла;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_submission_date</span></code> - дата и время когда файл был впервые получен в VirusTotal (как временная метка UNIX);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_analysis_date</span></code> - дата и время последнего анализа файла (как временная метка UNIX);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_modification_date</span></code> - дата и время последнего изменения файла (как временная метка UNIX);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">times_submitted</span></code> - число загрузок файла на сервер;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_analysis_results</span></code> - результаты последнего анализа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">names</span></code> - имя файла <code class="docutils literal notranslate"><span class="pre">meaningful_name</span></code>, которое мы считаем наиболее содержательным;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">downloadable</span></code> - показывает возможность скачивания файла с сервера;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unique_sources</span></code> - указывает, из скольких различных источников был получен файл.</p></li>
+</ul>
+<p class="rubric">JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;SHA256&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/&lt;SHA256&gt;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;md5&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;sha1&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;sha256&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;first_submission_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;unix_timestamp&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;last_submission_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;unix_timestamp&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;last_modification_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;unix_timestamp&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;times_submitted&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;last_analysis_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;unix_timestamp&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;last_analysis_results&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">objects</span><span class="o">&gt;</span> <span class="p">],</span>
+      <span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">strings</span><span class="o">&gt;</span> <span class="p">],</span>
+      <span class="s2">&quot;meaningful_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;downloadable&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;unique_sources&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="o">...</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>В словаре атрибутов присутствует также поля с информацией, извлеченной из самого файла. Эта информация раскрыта в следующих ключах:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type_description</span></code> - описание типа файла, с коротким его представлением <code class="docutils literal notranslate"><span class="pre">type_tag</span></code>, который можно использовать для поиска файлов этого типа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">creation_date</span></code> - извлекается, когда это возможно, из файла и указывает метку времени компиляции или сборки, может быть подделан создателями вредоносных программ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_votes</span></code> - общее количество голосов по результатам голосования пользователей VirusTotal Community. Поле <code class="docutils literal notranslate"><span class="pre">reputation</span></code> рассчитывается на основе голосов, полученных файлом, и репутации пользователей;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vhash</span></code> - значение т. н. нечеткого хэша, определяемого по алгоритму кластеризации, основанного на простом структурном хэше признаков, и который позволяет находить похожие файлы;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tags</span></code> - извлекаются из разных частей отчета и являются метками, которые помогают вам искать похожие образцы.</p></li>
+</ul>
+<p class="rubric">JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;type_description&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type_tag&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;creation_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;unix_timestamp&gt;&quot;</span><span class="p">,</span>
+
+      <span class="s2">&quot;ssdeep&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;vhash&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;vhash&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;authentihash&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+
+      <span class="s2">&quot;reputation&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;total_votes&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;harmless&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;malicious&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="p">},</span>
+      <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;strings&gt;&quot;</span> <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Кроме того, VirusTotal вместе с каждым антивирусным сканированием запускает набор утилит, позволяющих собирать дополнительную информацию о файле. Вся эта информация содержится в поле <code class="docutils literal notranslate"><span class="pre">attributes</span></code> вместе с остальными ранее описанными полями.</p>
+<div class="section" id="androguard">
+<h3>androguard<a class="headerlink" href="#androguard" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация об Android файлах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">androguard</span></code> показывает информацию о файлах Android APK, DEX и XML, извлеченных с помощью утилиты Androguard.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Activities</span></code> - список активностей (activities) приложения;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AndroguardVersion</span></code> - версия используемой утилиты Androguard;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AndroidApplication</span></code> - тип файла Android в формате целого числа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AndroidApplicationError</span></code> - логическое переменная со значением <cite>False</cite>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AndroidApplicationInfo</span></code> - тип файла Android («APK»,» DEX»,»XML»);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AndroidVersionCode</span></code> - код версии Android, считанный из манифеста;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AndroidVersionName</span></code> - имя версии Android, считанное из манифеста;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Libraries</span></code> - список библиотек, используемых приложением;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">Activity</span></code> - название основной активности (activitie), прочитанное из манифеста;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MinSdkVersion</span></code> - минимальная поддерживаемая версия SDK;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Package</span></code> - имя пакета, считанное из манифеста;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Permissions</span></code> - словарь с разрешениями, используемыми в качестве ключа и списка с 3 элементами в качестве значения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>тип разрешения (например, <code class="docutils literal notranslate"><span class="pre">normal</span></code>, <code class="docutils literal notranslate"><span class="pre">dangerous</span></code>);</p></li>
+<li><p>короткий дескриптор разрешения;</p></li>
+<li><p>дескриптор разрешения;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Providers</span></code> - список провайдеров (providers), используемых приложением;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Receivers</span></code> - список получателей (receivers), используемых приложением;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RiskIndicator</span></code> - словарь с показателями риска <code class="docutils literal notranslate"><span class="pre">APK</span></code> (structure) и <code class="docutils literal notranslate"><span class="pre">PERM</span></code> (permissions):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">APK</span></code> - показывает используемые компоненты и их количество (например, <code class="docutils literal notranslate"><span class="pre">&quot;EXECUTABLE&quot;:</span> <span class="pre">3</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PERM</span></code> - показывает типы разрешений и их количество (например, <code class="docutils literal notranslate"><span class="pre">&quot;DANGEROUS&quot;:</span> <span class="pre">11</span></code>);</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Services</span></code> - список служб (services), используемых приложением;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StringsInformation</span></code> - список примечательных строк, найденных в приложении;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetSdkVersion</span></code> - версия Android, на которой приложение было протестировано;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VTAndroidInfo</span></code> - версия Androguard, используемая сервисом VirusTotal;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">certificate</span></code> - сведения о сертификате приложения в виде словаря с полями:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Issuer</span></code> - словарь с отличительными (уникальными) именами и значениями. Типичными записями являются <code class="docutils literal notranslate"><span class="pre">DN</span></code> (отличительное (уникальное) имя), <code class="docutils literal notranslate"><span class="pre">CN</span></code> (общее имя), <code class="docutils literal notranslate"><span class="pre">O</span></code> (организация);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Subject</span></code> - словарь с RDN (перечнем уникальных имен) эмитента сертификата;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serialnumber</span></code> - серийный номер сертификата;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thumbprint</span></code> - хэш сертификата в шестнадцатеричном виде;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validfrom</span></code> - дата начала действия сертификата в <a class="reference external" href="http://strftime.org/">формате</a> «%H:%M %p %m/%d/%Y»;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">validto</span></code> - срок действия сертификата, в формате «%H:%M %p %m/%d/%Y»;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent-filters</span></code> - фильтр предполагаемых действий приложения исходя из активностей (activities), получателей (receivers) и служб (services).</p></li>
+</ul>
+<p class="rubric">Информация об APK файлах в виде JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;androguard&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Activities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;AndroguardVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AndroidApplication&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;AndroidApplicationError&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;AndroidApplicationInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AndroidVersionCode&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AndroidVersionName&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Libraries&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Main Activity&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MinSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Package&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Permissions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span> <span class="o">...</span> <span class="p">},</span>
+        <span class="s2">&quot;Providers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Receivers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;RiskIndicator&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;APK&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+                          <span class="s2">&quot;PERM&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span> <span class="p">}},</span>
+        <span class="s2">&quot;Services&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;StringsInformation&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;TargetSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;VTAndroidInfo&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;certificate&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Issuer&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;DN&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+                        <span class="s2">&quot;Subject&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;DN&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+                        <span class="s2">&quot;serialnumber&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;thumbprint&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;validfrom&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:%H:%M %p %m/</span><span class="si">%d</span><span class="s2">/%Y&gt;&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;validto&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:%H:%M %p %m/</span><span class="si">%d</span><span class="s2">/%Y&gt;&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;intent-filters&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Activities&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+                                                       <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">]},</span>
+                                           <span class="o">...</span> <span class="p">},</span>
+                           <span class="s2">&quot;Receivers&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+                                                      <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">]},</span>
+                                          <span class="o">...</span> <span class="p">},</span>
+                           <span class="s2">&quot;Services&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+                                                     <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">]},</span>
+                                         <span class="o">...</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="asf-info">
+<h3>asf_info<a class="headerlink" href="#asf-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о Microsoft Advanced Streaming/Systems Format (ASF) файлах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">asf_info</span></code> показывает информацию о Microsoft ASF files (.asf, .wma, .wmv).</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">content_encryption_object</span></code> - информация о том, как зашифрован файл:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key_id</span></code> - ID тиспользуемого ключа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">license_url</span></code> - url-адрес лицензии;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protection_type</span></code> - тип используемой защиты (например, «DRM»);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secret_data</span></code> - байты, содержащие секретные данные;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extended_content_encryption_object</span></code> - расширенная информация о том, как зашифрован файл:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CHECKSUM</span></code> - контрольная сумма данных;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KID</span></code> - ID тиспользуемого ключа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EncodeType</span></code> - тип кодирования;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LAINFO</span></code> - информация о лицензионном соглашении;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DRMHeader</span></code> - заголовок, используемый в DRM;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">script_command_objects</span></code> - скрипты, используемые в файле:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">action</span></code> - действие, которое необходимо выполнить;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - тип действия (например, <cite>URL</cite>, <cite>FILENAME</cite>, <cite>EVENT</cite>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trigger_time</span></code> - время активации скрипта.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p class="rubric">Информация об ASF файлах в виде JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;asf_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;content_encryption_object&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;license_url&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;protection_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;secret_data&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;extended_content_encryption_object&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;CHECKSUM&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;DRMHeader&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;EncodeType&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;KID&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;LAINFO&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;script_command_objects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;trigger_time&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;URL&quot;</span><span class="p">},</span> <span class="o">...</span> <span class="p">]}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="authentihash">
+<h3>authentihash<a class="headerlink" href="#authentihash" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Хэш для проверки PE-файлов.</p>
+<p><code class="docutils literal notranslate"><span class="pre">authentihash</span></code> - это хэш sha256, используемый корпорацией Microsoft для проверки того, что соответствующие разделы образа PE-файла не были изменены.</p>
+<p class="rubric">JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;authentihash&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bundle-info">
+<h3>bundle_info<a class="headerlink" href="#bundle-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о сжатых файлах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bundle_info</span></code> предоставляет информацию о сжатых файлах (ZIP, TAR, GZIP и т. д.).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">beginning</span></code> - распакованный заголовок файла для некоторых форматов файлов (GZIP, ZLIB);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extensions</span></code> - расширения файлов и их количество внутри пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file_types</span></code> - типы файлов и их количество внутри пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">highest_datetime</span></code> - самая последняя дата в содержащихся файлах, в <a class="reference external" href="http://strftime.org/">формате</a> «%H:%M %p %m/%d/%Y»;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lowest_datetime</span></code> - самая старая дата в содержащихся файлах, в формате «%H:%M %p %m/%d/%Y»;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_children</span></code> - сколько файлов и каталогов находится внутри пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tags</span></code> - интересные замечания о содержании (например, <cite>«contains-pe»</cite>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - тип пакета (например, «ZIP»);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uncompressed_size</span></code> - несжатый размер содержимого внутри сжатого файла;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vhash</span></code> - хэш подобия (нечеткий хэш) для этого типа файлов.</p></li>
+</ul>
+<p class="rubric">Информация о сжатых файлах в виде JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;bundle_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;beginning&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extensions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+        <span class="s2">&quot;file_types&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+        <span class="s2">&quot;highest_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lowest_datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;num_children&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;uncompressed_size&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;vhash&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-info">
+<h3>class_info<a class="headerlink" href="#class-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о классах Java в байткод-файлах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">class_info</span></code> предоставляет информацию о Java байткод-файлах.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">constants</span></code> - константы, используемые в классе;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extends</span></code> -  класс, от которого наследован данный класс;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">implements</span></code> - интерфейсы реализованные в классе;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">methods</span></code> - методы, принадлежащие к классу;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - имя класса;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">platform</span></code> - платформа в виде строки, полученной из старшего и младшего номера версии;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">provides</span></code> - представленные классы, поля и методы;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requires</span></code> - обязательные классы, поля и методы.</p></li>
+</ul>
+<p class="rubric">Информация о Java классе в виде JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;class_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;constants&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;extends&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;implements&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;methods&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;platform&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;provides&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;requires&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deb-info">
+<h3>deb_info<a class="headerlink" href="#deb-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о Debian пакетах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">deb_info</span></code> - предоставляет информацию о <a class="reference external" href="https://wiki.debian.org/Packaging">Debian пакетах</a>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">changelog</span></code> - информация об изменениях в версии пакета:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Author</span></code> - имя автора;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code> дата в <a class="reference external" href="http://strftime.org/">формате</a> «%a, %d %b %Y %H:%M%S %z»;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Debian</span> <span class="pre">revision</span></code> - ревизия;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Debian</span> <span class="pre">version</span></code> - версия;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Distributions</span></code> - тип распространения;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Full</span> <span class="pre">version</span></code> - полная версия системы;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Package</span></code> - тип пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Urgency</span></code> - уровень срочности изменений;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Version</span> <span class="pre">history</span></code> - история версий;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">control_metadata</span></code> - общие (неизменные) поля пакета:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Maintainer</span></code> - идентификатор того, кто осуществляет поддержку пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Description</span></code> - дескриптор пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Package</span></code> - имя пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> - зависимости пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Version</span></code> - версия пакета;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Architecture</span></code> - архитектура для запуска этого пакета (например, <code class="docutils literal notranslate"><span class="pre">&quot;i386&quot;</span></code>);</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">control_scripts</span></code> - сценарии для запуска в операциях управления пакетами:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">postinst</span></code> - скрипт, выполняемый после инсталляции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postrm</span></code> - скрипт, выполняемый после удаления пакета;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">structural_metadata</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">contained_files</span></code> - количество файлов в пакете;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contained_items</span></code> - количество пунктов в пакете;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_date</span></code> - дата самого старого файла в формате «%Y-%m-%d %H:%M%S»;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_date</span></code> - самая последняя дата файла в формате «%Y-%m-%d %H:%M%S».</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p class="rubric">Информация о Debian пакете в виде JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;deb_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;changelog&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;Author&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M%S %z&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Debian revision&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Debian version&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Distributions&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Full version&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Package&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Urgency&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Version history&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;control_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+        <span class="s2">&quot;control_scripts&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;postinst&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;postrm&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;structural_metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;contained_files&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                                <span class="s2">&quot;contained_items&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                                <span class="s2">&quot;max_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M%S&gt;&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;min_date&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string:%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M%S&gt;&quot;</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dmg-info">
+<h3>dmg_info<a class="headerlink" href="#dmg-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о монтируемых образах дисков macOS.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dmg_info</span></code> сообщает данные о структуре <a class="reference external" href="https://en.wikipedia.org/wiki/Apple_Disk_Image">файлов Apple.dmg</a>). Большая часть данных поступает из метаданных внутренних файлов, которые могут содержаться в некоторых файлах, а в других - нет.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">blkx</span></code> - список блоков в образе. Каждая запись содержит:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">attributes</span></code> - в формате шестнадцатеричного числа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - имя блока;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_fork_length</span></code> - размер данных форка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_fork_offset</span></code> - смещение данных форка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dmg_version</span></code> - версия DMG-файла;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hfs</span></code> - информация об HFS-элементах. В зависимости от конкретного случая могут присутствовать различные поля:</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">info_plist</span></code> - содержимое списка свойств (plist) данного блока;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main_executable</span></code> - основной исполняемый файл этого блока:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> - идентификатор;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> - путь в пакете;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sha256</span></code> - хэш содержимого;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - размер файла в байтах;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_files</span></code> - количество файлов;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unreadable_files</span></code> - количество нечитаемых файлов;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plist</span></code> - содержит сведения о конфигурации приложения, такие как идентификатор пакета, номер версии и отображаемое имя;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plist_keys</span></code> - ключи от записи <code class="docutils literal notranslate"><span class="pre">plist</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">running_data_fork_offset</span></code> - смещение начала используемых данных форка (обычно 0);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resourcefork_keys</span></code> - ключи, найденные в ресурсах форка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsrc_fork_length</span></code> - длина ресурсов форка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsrc_fork_offset</span></code> - смещение ресурсов форка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml_lenght</span></code> - размер списка свойств в DMG;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml_offset</span></code> - смещение списка свойств в DMG.</p></li>
+</ul>
+<p class="rubric">Apple .dmg-файл</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;dmg_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;blkx&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">},</span> <span class="o">...</span> <span class="p">],</span>
+        <span class="s2">&quot;data_fork_length&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;data_fork_offset&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;dmg_version&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;hfs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;info_plist&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span> <span class="p">},</span>
+                <span class="s2">&quot;main_executable&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                                    <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;sha256&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">},</span>
+                <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="o">...</span> <span class="p">},</span>
+        <span class="s2">&quot;plst&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">}],</span>
+        <span class="s2">&quot;plst_keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;running_data_fork_offset&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;resourcefork_keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;rsrc_fork_length&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;rsrc_fork_offset&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;xml_length&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;xml_offset&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dot-net-guids">
+<h3>dot_net_guids<a class="headerlink" href="#dot-net-guids" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Идентификаторы для сборок Microsoft .NET.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dot_net_guids</span></code> - список <a class="reference external" href="https://www.virusbulletin.com/virusbulletin/2015/06/using-net-guids-help-hunt-malware/">идентификаторов для сборок Microsoft .NET</a>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mvid</span></code> - ModuleVersionID, генерируемый во время сборки, в результате чего для каждой сборки создается новый идентификатор GUID;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">typelib_id</span></code> - TypeLibID (если имеется), созданный Visual Studio при создании нового проекта по умолчанию.</p></li>
+</ul>
+<p class="rubric">ID сборки Microsoft .NET в виде JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;dot_net_guids&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mvid&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;typelib_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elf-info">
+<h3>elf_info<a class="headerlink" href="#elf-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о Unix ELF-файлах.</p>
+<p><code class="docutils literal notranslate"><span class="pre">elf_info</span></code> возвращает информацию о <a class="reference external" href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">Unix ELF file format</a>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">exports</span></code> - список экспортируемых элементов. Каждый элемент содержит имя и тип.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code> - некоторые описательные метаданные о файле:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - тип файла (например <code class="docutils literal notranslate"><span class="pre">&quot;EXEC&quot;</span></code> (исполняемый файл);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hdr_version</span></code> - версия заголовка;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_prog_headers</span></code> - количество записей в заголовке программы;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os_abi</span></code> - тип бинарного интерфейса приложения (например <code class="docutils literal notranslate"><span class="pre">&quot;UNIX-Linux&quot;</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obj_version</span></code> - <code class="docutils literal notranslate"><span class="pre">0x1</span></code> для оригинальных ELF-файлов;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">machine</span></code> - платформа (например <code class="docutils literal notranslate"><span class="pre">&quot;Advanced</span> <span class="pre">Micro</span> <span class="pre">Devices</span> <span class="pre">X86-64&quot;</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> - точка входа;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_section_headers</span></code> - число секций в заголовке;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">abi_version</span></code> - версия бинарного интерфейса приложения;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - выравнивание данных в памяти (например <code class="docutils literal notranslate"><span class="pre">&quot;little</span> <span class="pre">endian&quot;</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span></code> - класс файла (например <code class="docutils literal notranslate"><span class="pre">&quot;ELF32&quot;</span></code>);</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imports</span></code> - список импортируемых элементов. Каждый элемент содержит имя и тип;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sections</span></code> - секции ELF-файла:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - имя секции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">address</span></code> - виртуальный адрес секции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flags</span></code> - атрибуты секции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offset</span></code> - смещение секции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - тип секции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - размер секции в байтах;</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">segments</span></code> - они же заголовки программ. каждый элемент содержит тип сегмента и список ресурсов, задействованных в этом сегменте;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shared_libraries</span></code> - список общих библиотек, используемых этим исполняемым файлом.</p></li>
+</ul>
+<p class="rubric">Формат ELF-файла</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;elf_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;exports&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">],</span> <span class="o">...</span> <span class="p">],</span>
+        <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;hdr_version&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;num_prog_headers&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                   <span class="s2">&quot;os_abi&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;obj_version&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;machine&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;entrypoint&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                   <span class="s2">&quot;num_section_headers&quot;</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                   <span class="s2">&quot;abi_version&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;imports&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">],</span> <span class="o">...</span> <span class="p">],</span>
+        <span class="s2">&quot;sections&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                      <span class="s2">&quot;flags&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+                      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">},</span> <span class="o">...</span> <span class="p">],</span>
+        <span class="s2">&quot;segments&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">]],</span> <span class="o">...</span> <span class="p">],</span>
+        <span class="s2">&quot;shared_libraries&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;strings&gt;&quot;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exiftool">
+<h3>exiftool<a class="headerlink" href="#exiftool" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о метаданных EXIF из файлов.</p>
+<p><code class="docutils literal notranslate"><span class="pre">exiftool</span></code> это утилита для извлечения метаданных EXIF из файлов различных форматов. Представляемые метаданные могут различаться в зависимости от типа файла, и, учитывая природу метаданных EXIF, соcтав отображаемых полей может различаться.</p>
+<p>Например:</p>
+<ul class="simple">
+<li><p>поля для Microsoft Windows PE-файлов:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CharacterSet</span><span class="p">,</span> <span class="n">CodeSize</span><span class="p">,</span> <span class="n">CompanyName</span><span class="p">,</span> <span class="n">EntryPoint</span><span class="p">,</span> <span class="n">FileDescription</span><span class="p">,</span> <span class="n">FileFlagsMask</span><span class="p">,</span>
+<span class="n">FileOS</span><span class="p">,</span> <span class="n">FileSize</span><span class="p">,</span> <span class="n">FileSubtype</span><span class="p">,</span> <span class="n">FileType</span><span class="p">,</span> <span class="n">FileTypeExtension</span><span class="p">,</span> <span class="n">FileVersion</span><span class="p">,</span>
+<span class="n">FileVersionNumber</span><span class="p">,</span> <span class="n">ImageVersion</span><span class="p">,</span> <span class="n">InitializedDataSize</span><span class="p">,</span> <span class="n">InternalName</span><span class="p">,</span> <span class="n">LanguageCode</span><span class="p">,</span>
+<span class="n">LegalCopyright</span><span class="p">,</span> <span class="n">LinkerVersion</span><span class="p">,</span> <span class="n">MIMEType</span><span class="p">,</span> <span class="n">MachineType</span><span class="p">,</span> <span class="n">OSVersion</span><span class="p">,</span> <span class="n">ObjectFileType</span><span class="p">,</span>
+<span class="n">OriginalFileName</span><span class="p">,,</span> <span class="n">PEType</span><span class="p">,</span> <span class="n">ProductName</span><span class="p">,</span> <span class="n">ProductVersion</span><span class="p">,</span> <span class="n">ProductVersionNumber</span><span class="p">,</span>
+<span class="n">Subsystem</span><span class="p">,</span> <span class="n">SubsystemVersion</span><span class="p">,</span> <span class="n">TimeStamp</span><span class="p">,</span> <span class="n">UninitializedDataSize</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>поля для JPEG-файлов:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Aperture</span><span class="p">,</span> <span class="n">ApertureValue</span><span class="p">,</span> <span class="n">BitsPerSample</span><span class="p">,</span> <span class="n">BrightnessValue</span><span class="p">,</span> <span class="n">CircleOfConfusion</span><span class="p">,</span>
+<span class="n">ColorComponents</span><span class="p">,</span> <span class="n">ColorSpace</span><span class="p">,</span> <span class="n">Compression</span><span class="p">,</span> <span class="n">CreateDate</span><span class="p">,</span> <span class="n">DateTimeOriginal</span><span class="p">,</span>
+<span class="n">DeviceType</span><span class="p">,</span> <span class="n">EncodingProcess</span><span class="p">,</span> <span class="n">ExifByteOrder</span><span class="p">,</span> <span class="n">ExifImageHeight</span><span class="p">,</span> <span class="n">ExifImageWidth</span><span class="p">,</span>
+<span class="n">ExifVersion</span><span class="p">,</span> <span class="n">ExposureCompensation</span><span class="p">,</span> <span class="n">ExposureMode</span><span class="p">,</span> <span class="n">ExposureProgram</span><span class="p">,</span> <span class="n">ExposureTime</span><span class="p">,</span>
+<span class="n">FNumber</span><span class="p">,</span> <span class="n">FOV</span><span class="p">,</span> <span class="n">FaceDetect</span><span class="p">,</span> <span class="n">FileType</span><span class="p">,</span> <span class="n">FileTypeExtension</span><span class="p">,</span> <span class="n">Flash</span><span class="p">,</span> <span class="n">FlashpixVersion</span><span class="p">,</span>
+<span class="n">FocalLength</span><span class="p">,</span> <span class="n">FocalLength35efl</span><span class="p">,</span> <span class="n">FocalLengthIn35mmFormat</span><span class="p">,</span> <span class="n">HyperfocalDistance</span><span class="p">,</span>
+<span class="n">ISO</span><span class="p">,</span> <span class="n">ImageHeight</span><span class="p">,</span> <span class="n">ImageSize</span><span class="p">,</span> <span class="n">ImageUniqueID</span><span class="p">,</span> <span class="n">ImageWidth</span><span class="p">,</span> <span class="n">InteropIndex</span><span class="p">,</span>
+<span class="n">InteropVersion</span><span class="p">,</span> <span class="n">LightValue</span><span class="p">,</span> <span class="n">MIMEType</span><span class="p">,</span> <span class="n">Make</span><span class="p">,</span> <span class="n">MakerNoteVersion</span><span class="p">,</span> <span class="n">MaxApertureValue</span><span class="p">,</span>
+<span class="n">Megapixels</span><span class="p">,</span> <span class="n">MeteringMode</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">ModifyDate</span><span class="p">,</span> <span class="n">Orientation</span><span class="p">,</span> <span class="n">RawDataByteOrder</span><span class="p">,</span>
+<span class="n">RawDataCFAPattern</span><span class="p">,</span> <span class="n">ResolutionUnit</span><span class="p">,</span> <span class="n">ScaleFactor35efl</span><span class="p">,</span> <span class="n">SceneCaptureType</span><span class="p">,</span>
+<span class="n">ShutterSpeed</span><span class="p">,</span> <span class="n">ShutterSpeedValue</span><span class="p">,</span> <span class="n">Software</span><span class="p">,</span> <span class="n">SubSecCreateDate</span><span class="p">,</span>
+<span class="n">SubSecDateTimeOriginal</span><span class="p">,</span> <span class="n">SubSecModifyDate</span><span class="p">,</span> <span class="n">SubSecTime</span><span class="p">,</span> <span class="n">SubSecTimeDigitized</span><span class="p">,</span>
+<span class="n">SubSecTimeOriginal</span><span class="p">,</span> <span class="n">ThumbnailImage</span><span class="p">,</span> <span class="n">ThumbnailLength</span><span class="p">,</span> <span class="n">ThumbnailOffset</span><span class="p">,</span>
+<span class="n">TimeStamp</span><span class="p">,</span> <span class="n">WhiteBalance</span><span class="p">,</span> <span class="n">XResolution</span><span class="p">,</span> <span class="n">YCbCrPositioning</span><span class="p">,</span> <span class="n">YCbCrSubSampling</span><span class="p">,</span>
+<span class="n">YResolution</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>поля для PDF_файла:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CreateDate</span><span class="p">,</span> <span class="n">Creator</span><span class="p">,</span> <span class="n">CreatorTool</span><span class="p">,</span> <span class="n">DocumentID</span><span class="p">,</span> <span class="n">FileType</span><span class="p">,</span> <span class="n">FileTypeExtension</span><span class="p">,</span>
+<span class="n">Linearized</span><span class="p">,</span> <span class="n">MIMEType</span><span class="p">,</span> <span class="n">ModifyDate</span><span class="p">,</span> <span class="n">PDFVersion</span><span class="p">,</span> <span class="n">PageCount</span><span class="p">,</span> <span class="n">Producer</span><span class="p">,</span> <span class="n">XMPToolkit</span>
+</pre></div>
+</div>
+<p class="rubric">JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+               <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;exiftool&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="o">...</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="image-code-injections">
+<h3>image_code_injections<a class="headerlink" href="#image-code-injections" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Инъекция кода в файл изображения.</p>
+<p><code class="docutils literal notranslate"><span class="pre">image_code_injections</span></code> возвращает содержимое внедренного кода в файлах изображений.</p>
+<p class="rubric">JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;image_code_injections&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ipa-info">
+<h3>ipa_info<a class="headerlink" href="#ipa-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация об iOS App Store Package файле.</p>
+</div>
+<div class="section" id="isoimage-info">
+<h3>isoimage_info<a class="headerlink" href="#isoimage-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о файлах ISO=образов.</p>
+</div>
+<div class="section" id="jar-info">
+<h3>jar_info<a class="headerlink" href="#jar-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о файлах Java Archive.</p>
+</div>
+<div class="section" id="macho-info">
+<h3>macho_info<a class="headerlink" href="#macho-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о файлах Apple MachO.</p>
+</div>
+<div class="section" id="magic">
+<h3>magic<a class="headerlink" href="#magic" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Идентификация файлов по «магическому числу».</p>
+<p><code class="docutils literal notranslate"><span class="pre">magic</span></code> дает предположение о типе файла, основываясь на популярном инструменте синтаксического анализа из UNIX (команда <code class="docutils literal notranslate"><span class="pre">file</span></code>).</p>
+<p class="rubric">Предполагаемый тип файла</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="o">...</span>
+    <span class="s2">&quot;attributes&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;magic&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="office-info">
+<h3>office_info<a class="headerlink" href="#office-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о структуре файлов Microsoft Office.</p>
+</div>
+<div class="section" id="openxml-info">
+<h3>openxml_info<a class="headerlink" href="#openxml-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация об Microsoft OpenXML файлах.</p>
+</div>
+<div class="section" id="packers">
+<h3>packers<a class="headerlink" href="#packers" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация об упаковщике, используемом в файле.</p>
+</div>
+<div class="section" id="pdf-info">
+<h3>pdf_info<a class="headerlink" href="#pdf-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация об Adobe PDF файлах.</p>
+</div>
+<div class="section" id="pe-info">
+<h3>pe_info<a class="headerlink" href="#pe-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о файлах формата Microsoft Windows Portable Executable.</p>
+</div>
+<div class="section" id="rombios-info">
+<h3>rombios_info<a class="headerlink" href="#rombios-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о BIOS, EFI, UEFI и связанных с ними архивах.</p>
+</div>
+<div class="section" id="rtf-info">
+<h3>rtf_info<a class="headerlink" href="#rtf-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о файлах формата Microsoft Rich Text.</p>
+</div>
+<div class="section" id="signature-info">
+<h3>signature_info<a class="headerlink" href="#signature-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о подписи PE-файлов.</p>
+</div>
+<div class="section" id="ssdeep">
+<h3>ssdeep<a class="headerlink" href="#ssdeep" title="Ссылка на этот заголовок">¶</a></h3>
+<p>CTPH хэш содержимого файла.</p>
+</div>
+<div class="section" id="swf-info">
+<h3>swf_info<a class="headerlink" href="#swf-info" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Информация о Adobe Shockwave Flash файлах.</p>
+</div>
+<div class="section" id="trid">
+<h3>trid<a class="headerlink" href="#trid" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Тип файла идентифицированный с помощью утилиты <a class="reference external" href="http://mark0.net/soft-trid-e.html">TrID</a>.</p>
+</div>
+</div>
+<div class="section" id="file-behaviour">
+<h2>Поведение файлов (file behaviour)<a class="headerlink" href="#file-behaviour" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="dnslookup">
+<h3>DnsLookup<a class="headerlink" href="#dnslookup" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="droppedfile">
+<h3>DroppedFile<a class="headerlink" href="#droppedfile" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="behaviourtag">
+<h3>BehaviourTag<a class="headerlink" href="#behaviourtag" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="filecopy">
+<h3>FileCopy<a class="headerlink" href="#filecopy" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="httpconversation">
+<h3>HttpConversation<a class="headerlink" href="#httpconversation" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="iptraffic">
+<h3>IpTraffic<a class="headerlink" href="#iptraffic" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="permissioncheck">
+<h3>PermissionCheck<a class="headerlink" href="#permissioncheck" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="process">
+<h3>Process<a class="headerlink" href="#process" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="sms">
+<h3>Sms<a class="headerlink" href="#sms" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="verdicttag">
+<h3>VerdictTag<a class="headerlink" href="#verdicttag" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="domains">
+<h2>Домены (domains)<a class="headerlink" href="#domains" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="communicating-files">
+<h3>communicating_files<a class="headerlink" href="#communicating-files" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3>communicating_files<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="downloaded-files">
+<h3>downloaded_files<a class="headerlink" href="#downloaded-files" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="graphs">
+<h3>graphs<a class="headerlink" href="#graphs" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="referrer-files">
+<h3>referrer_files<a class="headerlink" href="#referrer-files" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="resolutions">
+<h3>resolutions<a class="headerlink" href="#resolutions" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="siblings">
+<h3>siblings<a class="headerlink" href="#siblings" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="ip-ip-addresses">
+<h2>IP-адреса (IP addresses)<a class="headerlink" href="#ip-ip-addresses" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="url-urls">
+<h2>URL (URLs)<a class="headerlink" href="#url-urls" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="submissions">
+<h2>Представления (submissions)<a class="headerlink" href="#submissions" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="screenshots">
+<h2>Скриншоты (screenshots)<a class="headerlink" href="#screenshots" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="votes">
+<h2>Голоса (votes)<a class="headerlink" href="#votes" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="endpoints.html" class="btn btn-neutral float-right" title="Основные функции VirusTotal API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="Вступление" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

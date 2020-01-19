@@ -1,0 +1,1021 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Основные функции VirusTotal API &mdash; документация Документация API VirusTotal 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Вступление" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Документация API VirusTotal
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Вступление</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Основные функции VirusTotal API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#files">Files (Функции для работы с файлами)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post-files">POST /files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#curl">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-upload-url">GET /files/upload_url</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id">GET /files/{id}</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files-id-analyse">POST /files/{id}/analyse</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-comments">GET /files/{id}/comments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Заголовок запроса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files-id-comments">POST /files/{id}/comments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Пример запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-votes">GET /files/{id}/votes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id28">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">Заголовок запроса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#post-files-id-votes">POST /files/{id}/votes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id32">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-download-url">GET /files/{id}/download_url</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id37">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id41">Пример ответа</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-download">GET /files/{id}/download</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id42">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id43">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id44">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id45">Заголовок запроса</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-files-id-relationship">GET /files/{id}/{relationship}</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id46">cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id47">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id48">Параметры запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id49">Заголовок запроса</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id50">Отношения, поддерживаемые объектами файла:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Документация API VirusTotal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Основные функции VirusTotal API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/endpoints.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virustotal-api">
+<h1>Основные функции VirusTotal API<a class="headerlink" href="#virustotal-api" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="files">
+<h2>Files (Функции для работы с файлами)<a class="headerlink" href="#files" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Файлы являются одним из наиболее важных типов объектов в API VirusTotal. У нас есть огромный набор данных из более чем 2 миллиардов файлов, которые были проанализированы VirusTotal на протяжении многих лет. В этом разделе описываются функции API для анализа новых файлов и получения информации о любом файле в нашем наборе данных.</p>
+<div class="section" id="post-files">
+<h3>POST /files<a class="headerlink" href="#post-files" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Загрузка и анализ файла.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files</span></code></p>
+<div class="section" id="curl">
+<h4>cURL<a class="headerlink" href="#curl" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
+  <span class="o">--</span><span class="n">form</span> <span class="n">file</span><span class="o">=@/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python">
+<h4>Python<a class="headerlink" href="#python" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;&lt;путь к файлу&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;&lt;путь к файлу&gt;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Параметры запроса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>file</strong> - файл для сканирования.</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h4>Заголовок запроса<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>Файлы могут быть загружены в VirusTotal путем отправки POST-запросов, закодированных как <code class="docutils literal notranslate"><span class="pre">multipart/form-data</span></code> в конечную точку <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files</span></code>. Каждый POST-запрос должен иметь поле с именем <code class="docutils literal notranslate"><span class="pre">file</span></code>, содержащее файл для анализа. Общий размер полезной нагрузки не может превышать 32 МБ. Для загрузки больших файлов см. <a class="reference internal" href="#get-files-upload-url">GET /files/upload_url</a>.</p>
+<p>Результат, возвращаемый этой функцией, является дескриптором объекта для нового анализа. Идентификатор, содержащийся в дескрипторе, можно использовать с функцией GET /analyses/{id} для получения информации о результатах анализа этого файла.</p>
+<p>Для анализа файла, который ранее уже был загружен в VirusTotal, можно использовать <a class="reference internal" href="#post-files-id-analyse">POST /files/{id}/analyse</a>.</p>
+</div>
+<div class="section" id="id3">
+<h4>Пример ответа<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;NjY0MjRlOTFjMDIyYTkyNWM0NjU2NWQzYWNlMzFmZmI6MTQ3NTA0ODI3Nw==&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-files-upload-url">
+<h3>GET /files/upload_url<a class="headerlink" href="#get-files-upload-url" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение URL для загрузки файла больше 32 МБ.</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/upload_url</span></code></p>
+<div class="section" id="id4">
+<h4>cURL<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">upload_url</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h4>Python<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/upload_url&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h4>Заголовок запроса<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>Для загрузки файлов размером менее 32 МБ вы можете просто использовать функцию <a class="reference internal" href="#post-files">POST /files</a>, но для файлов большего размера необъодимо сначала получить специальный URL загрузки, а затем отправить POST-запрос  на этот URL. Этот POST-запрос должен иметь тот же формат, что и для функции <a class="reference internal" href="#post-files">POST /files</a>. Каждый полученный URL можно использовать только один раз.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Файлы размером более 200 МБ. Обратите внимание, что файлы размером более 200 МБ, как правило, представляют собой пакеты какого-либо вида (сжатые файлы, ISO-образы и т. д.) в этих случаях имеет смысл загрузить внутренние файлы отдельно по нескольким причинам:</p>
+</div>
+<ul class="simple">
+<li><p>Движки некоторых антивирусов, как правило, имеют проблемы с производительностью при сканировании больших файлов (из-за больших тайм-аутов, некоторые из них могут даже не сканировать их);</p></li>
+<li><p>Движки некоторых антивирусов не могут проверять определенные типы файлов, в то время как они смогут проверить внутренние файлы, если они будут отправлены;</p></li>
+<li><p>При сканировании большого пакета вы теряете контекст, в котором конкретный внутренний файл вызывает обнаружение.</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h4>Пример ответа<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.virustotal.com/_ah/upload/AMmfu6b-_DXUeFe36Sb3b0F4B8mH9Nb-CHbRoUNVOPwG/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-files-id">
+<h3>GET /files/{id}<a class="headerlink" href="#get-files-id" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение информации о файле.</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}</span></code></p>
+<div class="section" id="id8">
+<h4>cURL<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h4>Python<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h4>Параметры запроса<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h4>Заголовок запроса<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h4>Пример ответа<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;first_seen_itw_date&quot;</span><span class="p">:</span> <span class="mi">1075654056</span><span class="p">,</span>
+      <span class="s2">&quot;first_submission_date&quot;</span><span class="p">:</span> <span class="mi">1170892383</span><span class="p">,</span>
+      <span class="s2">&quot;last_analysis_date&quot;</span><span class="p">:</span> <span class="mi">1502355193</span><span class="p">,</span>
+      <span class="s2">&quot;last_analysis_results&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;AVG&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;undetected&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;engine_name&quot;</span><span class="p">:</span> <span class="s2">&quot;AVG&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;engine_update&quot;</span><span class="p">:</span> <span class="s2">&quot;20170810&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;engine_version&quot;</span><span class="p">:</span> <span class="s2">&quot;8.0.1489.320&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">}</span>
+          <span class="o">...</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;last_analysis_stats&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;harmless&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;malicious&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;suspicious&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type-unsupported&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;undetected&quot;</span><span class="p">:</span> <span class="mi">59</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;last_submission_date&quot;</span><span class="p">:</span> <span class="mi">1502355193</span><span class="p">,</span>
+      <span class="s2">&quot;magic&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;md5&quot;</span><span class="p">:</span> <span class="s2">&quot;76cdb2bad9582d23c1f6f4d868218d6c&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;zipnew.dat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;327916-1502345099.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ac3plug.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;IMG_6937.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DOC952.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;20170801486960.zip&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;nsrl_info&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;filenames&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;WINDOWS DIALUP.ZIP&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;kemsetup.ZIP&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Data_Linux.zip&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;2003.zip&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;_6A271FB199E041FC82F4D282E68B01D6&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;products&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;Master Hacker Internet Terrorism (Core Publishing Inc.)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Read Rabbits Math Ages 6-9 (Smart Saver)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Neverwinter Nights Gold (Atari)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Limited Edition Print Workshop 2004 (ValuSoft)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Crysis (Electronic Arts Inc.)&quot;</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;reputation&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">889</span><span class="p">,</span>
+      <span class="s2">&quot;sha1&quot;</span><span class="p">:</span> <span class="s2">&quot;b04f3ee8f5e43fa3b162981b50bb72fe1acabb33&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;sha256&quot;</span><span class="p">:</span> <span class="s2">&quot;8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+      <span class="s2">&quot;ssdeep&quot;</span><span class="p">:</span> <span class="s2">&quot;3:pjt/l:Nt&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;software-collection&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nsrl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;attachment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;trusted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;via-tor&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;times_submitted&quot;</span><span class="p">:</span> <span class="mi">26471</span><span class="p">,</span>
+      <span class="s2">&quot;total_votes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;harmless&quot;</span><span class="p">:</span> <span class="mi">639</span><span class="p">,</span>
+        <span class="s2">&quot;malicious&quot;</span><span class="p">:</span> <span class="mi">958</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;trid&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;file_type&quot;</span><span class="p">:</span> <span class="s2">&quot;ZIP compressed archive (empty)&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;probability&quot;</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;trusted_verdict&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;lprn_spotlightstory_015.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dl.google.com/dl/spotlight/test/lprn_spotlightstory/9/lprn_spotlightstory_015.zip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;organization&quot;</span><span class="p">:</span> <span class="s2">&quot;Google&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verdict&quot;</span><span class="p">:</span> <span class="s2">&quot;goodware&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;type_description&quot;</span><span class="p">:</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="post-files-id-analyse">
+<h3>POST /files/{id}/analyse<a class="headerlink" href="#post-files-id-analyse" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Повторный анализ файла в VirusTotal/
+.. warning:: Эта функция API может привести к отказу в обслуживании инфраструктуры сканирования в случае неправильного использования. Пожалуйста, свяжитесь с нами, если вы собираетесь сканировать более 50 тысяч файлов в день.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/analyse</span></code></p>
+<div class="section" id="id13">
+<h4>cURL<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">analyse</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h4>Python<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/analyse&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h4>Параметры запроса<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h4>Заголовок запроса<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>Файлы, которые уже были загружены в VirusTotal, можно повторно проанализировать, не загружая их снова, используя эту функцию. Ответом является дескриптор объекта для нового анализа, как и в функции <a class="reference internal" href="#post-files">POST /files</a>. Идентификатор, содержащийся в дескрипторе, можно использовать с функцией GET /analyses/{id} для получения информации о результатах анализа.</p>
+</div>
+<div class="section" id="id17">
+<h4>Пример ответа<a class="headerlink" href="#id17" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;NjY0MjRlOTFjMDIyYTkyNWM0NjU2NWQzYWNlMzFmZmI6MTQ3NTA0ODI3Nw==&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-files-id-comments">
+<h3>GET /files/{id}/comments<a class="headerlink" href="#get-files-id-comments" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение комментариев для файла</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/comments</span></code></p>
+<div class="section" id="id18">
+<h4>cURL<a class="headerlink" href="#id18" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">comments</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h4>Python<a class="headerlink" href="#id19" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/comments&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;limit)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;cursor&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;cursor&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h4>Параметры запроса<a class="headerlink" href="#id20" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
+<li><p><strong>limit</strong> - максимальное число комментариев в ответе (int_32, необязательный параметр);</p></li>
+<li><p><strong>cursor</strong> - курсор продолжения (string, необязательный параметр).</p></li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h4>Заголовок запроса<a class="headerlink" href="#id21" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="post-files-id-comments">
+<h3>POST /files/{id}/comments<a class="headerlink" href="#post-files-id-comments" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Добавление комментария для файла.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/comments</span></code></p>
+<div class="section" id="id22">
+<h4>cURL<a class="headerlink" href="#id22" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">comments</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
+  <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;data&quot;: {&quot;type&quot;: &quot;comment&quot;, &quot;attributes&quot;: {&quot;text&quot;: &quot;Lorem ipsum dolor sit ...&quot;}}}&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h4>Python<a class="headerlink" href="#id23" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/comments&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">comments</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;comment&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Lorem ipsum dolor sit ...&quot;</span><span class="p">}}}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">comments</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h4>Параметры запроса<a class="headerlink" href="#id24" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
+<li><p><strong>data</strong> - комментарий (json).</p></li>
+</ul>
+</div>
+<div class="section" id="id25">
+<h4>Заголовок запроса<a class="headerlink" href="#id25" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>С помощью этой функции вы можете опубликовать комментарий для данного файла. Тело POST-запроса должно быть JSON-представлением комментария. Обратите внимание, что вам не нужно указывать идентификатор объекта, так как он автоматически генерируется для новых комментариев.</p>
+<p>Любое слово, начинающееся с <code class="docutils literal notranslate"><span class="pre">#</span></code> в тексте вашего комментария, будет считаться тегом и добавляться в атрибут тега комментария.</p>
+</div>
+<div class="section" id="id26">
+<h4>Пример запроса<a class="headerlink" href="#id26" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Lorem #ipsum dolor sit ...&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h4>Пример ответа<a class="headerlink" href="#id27" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;comment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;comment&#39;s ID&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/comments/&lt;comment&#39;s ID&gt;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="mi">1521725475</span><span class="p">,</span>
+      <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ipsum&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;html&quot;</span><span class="p">:</span> <span class="s2">&quot;Lorem #ipsum dolor sit ...&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Lorem #ipsum dolor sit ...&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;votes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;abuse&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-files-id-votes">
+<h3>GET /files/{id}/votes<a class="headerlink" href="#get-files-id-votes" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение результатов голосования для файла</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/votes</span></code></p>
+<div class="section" id="id28">
+<h4>cURL<a class="headerlink" href="#id28" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">votes</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id29">
+<h4>Python<a class="headerlink" href="#id29" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/comments&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;limit)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;cursor&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;cursor&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id30">
+<h4>Параметры запроса<a class="headerlink" href="#id30" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
+<li><p><strong>limit</strong> - максимальное число комментариев в ответе (int_32, необязательный параметр);</p></li>
+<li><p><strong>cursor</strong> - курсор продолжения (string, необязательный параметр).</p></li>
+</ul>
+</div>
+<div class="section" id="id31">
+<h4>Заголовок запроса<a class="headerlink" href="#id31" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="post-files-id-votes">
+<h3>POST /files/{id}/votes<a class="headerlink" href="#post-files-id-votes" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Добавление голоса для файла.</p>
+<p><img alt="POST" src="https://i.imgur.com/CWgYjh1.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/comments</span></code></p>
+<div class="section" id="id32">
+<h4>cURL<a class="headerlink" href="#id32" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">POST</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">votes</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span> \
+  <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;data&quot;: {&quot;type&quot;: &quot;vote&quot;, &quot;attributes&quot;: {&quot;verdict&quot;: &quot;malicious&quot;}}}&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id33">
+<h4>Python<a class="headerlink" href="#id33" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/votes&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">votes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vote&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;verdict&quot;</span><span class="p">:</span> <span class="s2">&quot;malicious&quot;</span><span class="p">}}}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">votes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id34">
+<h4>Параметры запроса<a class="headerlink" href="#id34" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
+<li><p><strong>data</strong> - голос (json).</p></li>
+</ul>
+</div>
+<div class="section" id="id35">
+<h4>Заголовок запроса<a class="headerlink" href="#id35" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>С помощью этой функции вы можете опубликовать свой голос за данный файл. Тело для запроса POST должно быть JSON-представлением объекта голосования. Обратите внимание, однако, что вам не нужно указывать идентификатор объекта, так как они автоматически генерируются для новых голосов.</p>
+<p>Атрибут <code class="docutils literal notranslate"><span class="pre">verdict</span></code> должен быть либо <code class="docutils literal notranslate"><span class="pre">harmless</span></code>, либо <code class="docutils literal notranslate"><span class="pre">malicious</span></code>.</p>
+</div>
+<div class="section" id="id36">
+<h4>Пример ответа<a class="headerlink" href="#id36" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vote&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;verdict&quot;</span><span class="p">:</span> <span class="s2">&quot;harmless&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-files-id-download-url">
+<h3>GET /files/{id}/download_url<a class="headerlink" href="#get-files-id-download-url" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение URL для загрузки файла.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.</p>
+</div>
+<p><strong>GET</strong> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/download_url</span></code></p>
+<div class="section" id="id37">
+<h4>cURL<a class="headerlink" href="#id37" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">download_url</span> \
+ <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id38">
+<h4>Python<a class="headerlink" href="#id38" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/download_url&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id39">
+<h4>Параметры запроса<a class="headerlink" href="#id39" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
+</ul>
+</div>
+<div class="section" id="id40">
+<h4>Заголовок запроса<a class="headerlink" href="#id40" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>Эта функция возвращает подписанный URL, с которого можно загрузить указанный файл. Получение URL считается загрузкой файла в квоте, даже если вы на самом деле не загружаете файл. URL можно использовать для загрузки файла несколько раз, не потребляя никакой квоты. Срок действия URL истекает через 1 час.</p>
+</div>
+<div class="section" id="id41">
+<h4>Пример ответа<a class="headerlink" href="#id41" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;https://vtsamples.commondatastorage.googleapis.com/275a..fd0f?GoogleAccessId=758681729565-rc7fcckv235v1@developer.gserviceaccount.com&amp;Expires=1524733537&amp;Signature=GRs9WLy...oHA%3D&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-files-id-download">
+<h3>GET /files/{id}/download<a class="headerlink" href="#get-files-id-download" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Загрузка файла.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.</p>
+</div>
+<p><strong>GET</strong> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/id/download</span></code></p>
+<div class="section" id="id42">
+<h4>cURL<a class="headerlink" href="#id42" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">download</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id43">
+<h4>Python<a class="headerlink" href="#id43" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/download&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id44">
+<h4>Параметры запроса<a class="headerlink" href="#id44" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string).</p></li>
+</ul>
+</div>
+<div class="section" id="id45">
+<h4>Заголовок запроса<a class="headerlink" href="#id45" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>Эта функция похожа на <a class="reference internal" href="#get-files-id-download-url">GET /files/{id}/download_url</a>, но она перенаправляет вас на URL загрузки файла. URL загрузки, на который вы перенаправлены, может быть использован повторно столько раз, сколько вы хотите в течение 1 часа. После этого срока действие URL истекает и он больше не может быть использован.</p>
+</div>
+</div>
+<div class="section" id="get-files-id-relationship">
+<h3>GET /files/{id}/{relationship}<a class="headerlink" href="#get-files-id-relationship" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Получение объектов, связанных с файлом.</p>
+<p><img alt="GET" src="https://i.imgur.com/CBcN0Fh.png" /> <code class="docutils literal notranslate"><span class="pre">https://www.virustotal.com/api/v3/files/{id}/{relationship}</span></code></p>
+<div class="section" id="id46">
+<h4>cURL<a class="headerlink" href="#id46" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">request</span> <span class="n">GET</span> \
+  <span class="o">--</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">virustotal</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">relationship</span><span class="p">}</span> \
+  <span class="o">--</span><span class="n">header</span> <span class="s1">&#39;x-apikey: &lt;your API key&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id47">
+<h4>Python<a class="headerlink" href="#id47" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+    <span class="o">...</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://www.virustotal.com/api/v3/files/</span><span class="si">{id}</span><span class="s2">/</span><span class="si">{relationship}</span><span class="s2">&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-apikey&quot;</span> <span class="p">:</span> <span class="s2">&quot;&lt;ключ доступа к API&gt;&quot;</span><span class="p">}</span>
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;limit)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;cursor&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;cursor&gt;&quot;</span><span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id48">
+<h4>Параметры запроса<a class="headerlink" href="#id48" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>id</strong> - SHA-256, SHA-1 или MD5 идентификатор файла (string);</p></li>
+<li><p><strong>relationship</strong> - наименование отношения (см. таблицу ниже);</p></li>
+<li><p><strong>limit</strong> - максимальное число комментариев в ответе (int_32, необязательный параметр);</p></li>
+<li><p><strong>cursor</strong> - курсор продолжения (string, необязательный параметр).</p></li>
+</ul>
+</div>
+<div class="section" id="id49">
+<h4>Заголовок запроса<a class="headerlink" href="#id49" title="Ссылка на этот заголовок">¶</a></h4>
+<ul class="simple">
+<li><p><strong>x-apikey</strong> - ключ доступа к API (string).</p></li>
+</ul>
+<p>Объекты типа <code class="docutils literal notranslate"><span class="pre">file</span></code> имеют ряд отношений с другими файлами и объектами. Как уже упоминалось в разделе «Отношения», эти связанные объекты можно получить, отправив GET-запросы на URL, соответствующий нужному отношению.</p>
+<p>Некоторые отношения доступны только тем пользователям, которые имеют доступ к VirusTotal Intelligence.</p>
+</div>
+<div class="section" id="id50">
+<h4>Отношения, поддерживаемые объектами файла:<a class="headerlink" href="#id50" title="Ссылка на этот заголовок">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 49%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Отношения</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>Доступность</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">analyses</span></code></p></td>
+<td><p>Объект <code class="docutils literal notranslate"><span class="pre">analyses</span></code> для файла</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">behaviours</span></code></p></td>
+<td><p>Отчеты о поведении для файла.</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bundled_files</span></code></p></td>
+<td><p>Файлы, собранные в одном файле.</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">carbonblack_children</span></code></p></td>
+<td><p>Файлы, полученные из файла Carbon Black</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">carbonblack_parents</span></code></p></td>
+<td><p>Файлы Carbon Black, из которых был получен файл</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">comments</span></code></p></td>
+<td><p>Комментарии к файлу</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">compressed_parents</span></code></p></td>
+<td><p>Сжатые файлы, содержащие этот файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contacted_domains</span></code></p></td>
+<td><p>Домены, с которыми связан файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contacted_ips</span></code></p></td>
+<td><p>IP-адреса, с которыми связан файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contacted_urls</span></code></p></td>
+<td><p>URL, с которыми связан файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">email_parents</span></code></p></td>
+<td><p>Файлы электронной почты, содержащие этот файл</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">embedded_domains</span></code></p></td>
+<td><p>Имена доменов, содержащиеся в файле</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">embedded_ips</span></code></p></td>
+<td><p>IP-адреса, содержащиеся в файле</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">execution_parents</span></code></p></td>
+<td><p>Файлы, которые запустили файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">graphs</span></code></p></td>
+<td><p>Графики, включающие файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">itw_urls</span></code></p></td>
+<td><p>URL «in the wild», откуда был загружен файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">overlay_parents</span></code></p></td>
+<td><p>Файлы, содержащие файл в виде оверлея</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pcap_parents</span></code></p></td>
+<td><p>Файлы PCAP, содержащие этот файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pe_resource_parents</span></code></p></td>
+<td><p>PE-файлы, содержащие файл в качестве ресурса</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">similar_files</span></code></p></td>
+<td><p>Файлы, похожие на данный файл</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">submissions</span></code></p></td>
+<td><p>Представления файла</p></td>
+<td><p>Только для пользователей <strong>Intelligence</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">screenshots</span></code></p></td>
+<td><p>Скриншоты, связанные с песочницей, в которой выполнялся файл</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">votes</span></code></p></td>
+<td><p>Результаты голосования для файла</p></td>
+<td><p>Все пользователи</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="Вступление" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
