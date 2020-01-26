@@ -667,19 +667,165 @@ ipa_info
 isoimage_info
 ~~~~~~~~~~~~~
 
-Информация о файлах ISO=образов.
+Информация о файлах ISO-образов.
 
+``isoimage_info`` - возвращает информацию о структуре ISO-файлов.
+
+- ``application_id`` - приложение, использованное для создания файла;
+- ``created`` - время создания файла в `формате <http://strftime.org/>`_ "%Y-%m-%d %H:%M:%S";
+- ``effective`` - фактическая дата тома в формате "%Y-%m-%d %H:%M:%S";
+- ``expires`` - дата истечения срока действия тома в формате "%Y-%m-%d %H:%M:%S";
+- ``file_structure_version`` - версия файловой структуры;
+- ``max_date`` - самая "свежая" дата, содержащаяся в файле в формате "%Y-%m-%d %H:%M:%S";
+- ``min_date`` - самая старая содержащаяся дата файла в формате "%Y-%m-%d %H:%M:%S";
+- ``modified`` - дата последней модификации в формате "%Y-%m-%d %H:%M:%S";
+- ``num_files`` - количество файлов содержащихся ISO-образе;
+- ``system_id`` - имя системы, которая может работать с начальными секторами (например ``"Win32"``);
+- ``total_size`` - размер всех разделов в этом логическом томе;
+- ``type_code`` - код типа формата (например ``"CD001"``);
+- ``volume_id`` - идентификатор тома;
+- ``volume_set_id`` - идентификатор объединенного тома.
+
+.. rubric:: Файл ISO-образа
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "isoimage_info": {
+            "application_id": "<string>",
+            "created": "<string:%Y-%m-%d %H:%M:%S>",
+            "effective": "<string:%Y-%m-%d %H:%M:%S>",
+            "expires": "<string:%Y-%m-%d %H:%M:%S>",
+            "file_structure_version": <int>,
+            "max_date": "<string:%Y-%m-%d %H:%M:%S>",
+            "min_date": "<string:%Y-%m-%d %H:%M:%S>",
+            "modified": "<string:%Y-%m-%d %H:%M:%S>",
+            "num_files": <int>,
+            "system_id": "<string>",
+            "total_size": <int>,
+            "type_code": "<string>",
+            "volume_id": "<string>",
+            "volume_set_id": "<string>"
+          }
+        }
+      }
+    }
 
 jar_info
 ~~~~~~~~
 
 Информация о файлах Java Archive.
 
+``jar_info`` возвращает информацию о Java jar-файлах.
+
+- ``filenames`` - имена содержащихся файлов;
+- ``files_by_type`` - типы и количество типов файлов, содержащихся в jar-файле;
+- ``manifest`` - содержимое манифеста Jar;
+- ``max_date`` - самая старая содержащаяся дата файла в `формате <http://strftime.org/>`_"%Y-%m-%d %H:%M:%S";
+- ``max_depth`` - максимальная глубина каталога jar-файла;
+- ``min_date`` - самая "свежая" дата, содержащаяся в файле в формате "%Y-%m-%d %H:%M:%S";
+- ``packages`` - предполагаемые пакеты, используемые в пакете .class-файлов;
+- ``strings`` - примечательные строки, найденные в пакете .class-файлов;
+- ``total_dirs`` - количество каталогов в пакете;
+- ``total_files`` - количество файлов в пакете.
+
+.. rubric:: Java .jar-файлы
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "jar_info": {
+            "filenames": ["<strings>"],
+            "files_by_type": {"<string>": <int>, ... },
+            "manifest": "<string>",
+            "max_date": "<string:%Y-%m-%d %H:%M:%S>",
+            "max_depth": <int>,
+            "min_date": "<string:%Y-%m-%d %H:%M:%S>",
+            "packages": ["<strings>"],
+            "strings": ["<strings>"],
+            "total_dirs": <int>,
+            "total_files": <int>
+          }
+        }
+      }
+    }
 
 macho_info
 ~~~~~~~~~~
 
 Информация о файлах Apple MachO.
+
+``macho_info`` возвращает информацию о файлах `формата Apple MachO <https://en.wikipedia.org/wiki/Mach-O>`_. Это список, содержащий элементы для каждого приложения:
+
+- ``libs`` - библиотек, используемые в файле;
+- ``headers`` - некоторые описательные метаданные о файле:
+	
+	- ``cpu_type`` - основной тип процессора (например ``i386``);
+	- ``cpu_subtype`` - подтип процессора (например ``I386_ALL``);
+	- ``magic`` - "магический" идентификатор приложения;
+	- ``size_cmds`` - размер команд;
+	- ``num_cmds`` - число команд;
+	- ``flags`` флаги файлов (например ``DYLDLINK``, ``NOUNDEFS``);
+	- ``file_type`` - тип файла (например ``dynamically bound shared library``);
+		
+- ``commands`` - список команд загрузки. Каждая запись отображается как значение ключа ``type``;
+- ``segments`` - список сегментов файла:
+	
+	- ``name`` - имя сегмента;
+	- ``fileoff`` - физический адрес сегмента;
+	- ``vm size`` - размер виртуального адреса;
+	- ``vmaddr`` - виртуальный адрес;
+	- ``filesize`` - размер сегмента;
+	- ``sections`` - секции сегмента:
+		
+		- ``type`` - тип секции;
+		- ``flags`` - флаги секции (например ``S_8BYTE_LITERALS``);
+		- ``name`` - имя секции;
+			
+	- ``vhash`` - vhash файла;
+	- ``tags`` - общие замечания о файле (например ``64 bits``).
+		
+.. rubric:: Формат файла Apple MachO
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "macho_info": [
+            {"libs": ["<strings>"],
+             "headers": {"cpu_subtype": "<string>",
+                         "magic": "<string>",
+                         "size_cmds": <int>,
+                         "file_type": "<string>",
+                         "num_cmds": <int>,
+                         "flags": ["<strings>"],
+                         "cpu_type": "<string>"},
+             "commands": [{"type": "<string>"}, ... ],
+             "segments": [{"name": "<string>",
+                           "fileoff": "<string>",
+                           "vmsize": "<string>",
+                           "filesize": "<string>",
+                           "vmaddr": "<string>"}, ... ],
+             "sections": [{"type": "<string>",
+                           "flags": ["<strings>"],
+                           "name": "<string>"}, ... ],
+             "vhash": "<string>",
+             "tags": ["<strings>"]} ...
+          ]
+        }
+      }
+    }
 
 magic
 ~~~~~
@@ -743,6 +889,64 @@ pdf_info
 
 Информация об Adobe PDF файлах.
 
+``pdf_info`` возвращает информацию о структуре `файлов PDF <https://en.wikipedia.org/wiki/PDF>`_:
+
+- ``acroform`` - содержание Acroforms;
+- ``automation`` - автоматическое действие, выполняемое при просмотре документа;
+- ``embedded_file`` - содержимое встроенного файла;
+- ``encrypted`` - документ имеет DRM или нуждается в пароле для чтения;
+- ``flash`` - содержит встроенный Flash;
+- ``header`` - заголовок документа (например ``%PDF-1.7``);
+- ``javascript`` - документ содержит JavaScript;
+- ``jbig2_compression`` - документ сжат с применением JBIG2;
+- ``js`` - документ содержит JavaScript;
+- ``num_endobj`` - количество завершений объекта;
+- ``num_endstream`` - количество завершений потока;
+- ``num_launch_actions`` - количество запускаемых действий;
+- ``num_obj`` - количество объектов;
+- ``num_object_streams`` - количество потоков объектов;
+- ``num_pages`` - количество страниц;
+- ``num_stream`` - количество потоков;
+- ``open action`` - автоматическое действие, выполняемое при просмотре документа;
+- ``startxref`` - эта запись присутствует в документе;
+- ``suspicious_colors`` - устанавливается, если количество цветов выражается более чем 3 байтами;
+- ``trailer`` - содержит раздел трейлера;
+- ``xref`` - таблица перекрестных ссылок.
+
+.. rubric:: Структура Acrobat PDF файлов
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "pdf_info": {
+             "acroform": <int>,
+             "autoaction": <int>,
+             "embedded_file": "<string>",
+             "encrypted": <int>,
+             "flash": <int>,
+             "header": "<string>",
+             "javascript": <int>,
+             "jbig2_compression": <int>,
+             "js": <int>,
+             "num_endobj": <int>,
+             "num_endsctream": <int>,
+             "num_launch_actions": <int>,
+             "num_obj": <int>,
+             "num_object_streams": <int>,
+             "num_pages": <int>,
+             "num_stream": <int>,
+             "openaction": <int>,
+             "startxref": <int>,
+             "suspicious_colors": "<string>",
+             "trailer": <int>,
+             "xref": <int>
+          }
+        }
+      }
 
 pe_info
 ~~~~~~~
@@ -794,6 +998,49 @@ swf_info
 
 Информация о Adobe Shockwave Flash файлах.
 
+``swf_info`` возвращает информацию о файлах `Shockwave Flash/Small Web Format <https://en.wikipedia.org/wiki/SWF>`_:
+
+- ``compression`` - тип используемого сжатия (наптимер ``zlib``);
+- ``duration`` - длина медиа-контента в секундах;
+- ``file_attributes``-  особые атрибуты (например ``ActionScript3``, ``UseGPU``);
+- ``flash_packages`` - список  используемых Flash пакетов;
+- ``frame_count``- количество фреймов;
+- ``frame_size`` - размер фреймов;
+- ``metadata`` - содержимое метаданных файла;
+- ``num_swf_tags`` - количество тэгов SWF;
+- ``num_unrecognized_tags``: количество нераспознанных тегов;
+- ``suspicious_strings`` - список найденных подозрительных строк;
+- ``suspicious_urls`` - список найденных подозрительных URL;
+- ``tags`` - примечательные замечания о файле (например ``get-url``, ``ext-interface``);
+- ``version`` - версия SWF.
+
+.. rubric:: SWF файл
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "swf_info": {
+            "compression": "<string>",
+            "duration": <float>,
+            "file_attributes": ["<strings>"],
+            "flash_packages": ["<strings>"],
+            "frame_count": <int>,
+            "frame_size": "<string>",
+            "metadata": "<string>",
+            "num_swf_tags": <int>,
+            "num_unrecognized_tags": <int>,
+            "suspicious_strings": ["<strings>"],
+            "suspicious_urls": ["<strings>"],
+            "tags": ["<strings>"],
+            "version": <int>
+          }
+        }
+      }
+    }
 
 trid
 ~~~~
@@ -846,33 +1093,131 @@ DroppedFile
 BehaviourTag
 ~~~~~~~~~~~~
 
+Поведение в Sandbox было помечено сложной операцией:
+
+- ``DETECT_DEBUG_ENVIRONMENT``
+- ``DIRECT_CPU_CLOCK_ACCESS``
+- ``LONG_SLEEPS``
+- ``SELF_DELETE`` - файл удаляется сам по себе при выполнении.
+- ``HOSTS_MODIFIER`` - файл local hosts изменен.
+- ``INSTALLS_BROWSER_EXTENSION`` - устанавливает BHO, расширение Chrome и т. д.
+- ``PASSWORD_DIALOG`` - отображается какая-то подсказка для ввода пароля.
+- ``SUDO`` - повышает привилегии до администратора.
+- ``PERSISTENCE`` - использует механизмы устойчивости, чтобы пережить перезагрузку.
+- ``SENDS_SMS``
+- ``CHECKS_GPS``
+- ``FTP_COMMUNICATION``
+- ``SSH_COMMUNICATION``
+- ``TELNET_COMMUNICATION``
+- ``SMTP_COMMUNICATION``
+- ``MYSQL_COMMUNICAION``
+- ``IRC_COMMUNICATION``
+- ``SUSPICIOUS_DNS`` - возможен DGA (алгоритм генерации домена).
+- ``SUSPICIOUS_UDP`` - большое количество различных UDP-соединений, это часто помогает выявить P2P.
+- ``BIG_UPSTREAM`` - большой исходящий сетевой трафик.
+- ``TUNNELING`` - наблюдается туннелирование сети, например, VPN.
+- ``CRYPTO`` - использует API, связанные с криптографией.
+- ``TELEPHONY`` - использует API, связанные с телефонией.
+- ``RUNTIME_MODULES`` - динамически загружает библиотеки DLL или дополнительные компоненты.
+- ``REFLECTION`` - выполняет отображение вызовов.
 
 FileCopy
 ~~~~~~~~
 
+Объект, описывающий копирование или перемещение файла:
+
+- ``source`` *<string>* - полный путь к исходному файлу.
+- ``destination`` *<string>* - полный путь к файлу назначения.
 
 HttpConversation
 ~~~~~~~~~~~~~~~~
 
+HTTP-вызовы.
+
+- ``RequestMethod`` - один из:
+
+	- ``GET``
+	- ``HEAD``
+	- ``POST``
+	- ``PUT``
+	- ``DELETE``
+	- ``TRACE``
+	- ``OPTIONS``
+	- ``CONNECT``
+	- ``PATCH``
+	
+- ``url`` - полное имя хоста и путь к указанному URL-адресу.
+- ``request_headers`` ключи и значения:
+
+	- ``key`` - например *Content-Type*;
+	- ``value`` - например *image/jpeg*;
+	
+- ``response_headers`` - ключи и значения заголовков ответов.
+- ``response_status_code`` - код состояния ответа, например ``200``.
+- ``response_body_filetype``
+- ``response_body_first_ten_bytes``
 
 IpTraffic
 ~~~~~~~~~
 
+IP-трафик:
+
+- ``destination_ip`` *<string>* - IP-адрес.
+- ``destination_port`` *<integer>* - номер порта.
+- ``transport_layer_protocol`` -  один из:
+
+	- ``ICMP``
+	- ``IGMP``
+	- ``TCP``
+	- ``UDP``
+	- ``ESP``
+	- ``AH``
+	- ``L2TP``
+	- ``SCTP``
 
 PermissionCheck
 ~~~~~~~~~~~~~~~
+
+Записывает запрос, чтобы узнать, имеет ли данный компонент/пакет/процесс/служба определенное разрешение.
+
+- ``permission`` *<string>* -  например: ``android.permission.INTERNET``.
+- ``owner`` *<string>* - имя приложения, которому было предоставлено проверяемое разрешение.
 
 
 Process
 ~~~~~~~
 
+- ``process_id`` *<string>* - ID процесса.
+- ``name`` *<string>* - имя процесса.
+- ``time_offset`` *<integer>* - начало наблюдения. Секунды с момента начала исполнения.
+- ``children`` *<Process array>* -  массив этого объекта ``Process``. Позволяет построить дерево процессов.
 
 Sms
 ~~~
 
+Отправлено SMS сообщение.
+
+- ``destination`` *<string>* -  номер телефона, на который отправляется SMS.
+- ``body`` *<string>* - текст сообщения.
+
 
 VerdictTag
 ~~~~~~~~~~
+
+Вердикты для пометки образца поведения в песочнице:
+
+- ``CLEAN`` - чистый, занесенный в белый список или незамеченный.
+- ``MALWARE`` - должно быть определено как вредоносное ПО
+- ``GREYWARE`` - PUA, PUP (возможно, нежелательная программа).
+- ``RANSOM`` - вымогатель или криптор.
+- ``PHISHING`` - пытается обмануть пользователя, чтобы получить его учетные данные.
+- ``BANKER`` - банковский троян.
+- ``ADWARE`` - отображает нежелательную рекламу.
+- ``EXPLOIT`` - содержит или запускает эксплойт.
+- ``EVADER`` - содержит логику, позволяющую уклониться от анализа.
+- ``RAT`` - троян для удаленного доступа, может прослушивать входящие соединения.
+- ``TROJAN`` - троян или бот.
+- ``SPREADER`` распространяется на USB, других накопителях, по сети и т. д.
 
 
 Домены (domains)
