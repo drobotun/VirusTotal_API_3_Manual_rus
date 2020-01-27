@@ -133,7 +133,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#domains">Домены (domains)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#communicating-files">communicating_files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">communicating_files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloaded-files">downloaded_files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#graphs">graphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referrer-files">referrer_files</a></li>
@@ -1412,14 +1411,94 @@
 </div>
 <div class="section" id="domains">
 <h2>Домены (domains)<a class="headerlink" href="#domains" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Наряду с URL-адресами VirusTotal хранит информацию о сетевых местоположениях, таких как домены и IP-адреса. В этом разделе будет рассмотрена информация, предоставляемая объектами типа <code class="docutils literal notranslate"><span class="pre">domain</span></code>.</p>
+<p>Объекты типа <code class="docutils literal notranslate"><span class="pre">domain</span></code> представляют собой информацию о домене или <a class="reference external" href="https://en.wikipedia.org/wiki/Fully_qualified_domain_name">FQDN</a>, и могут быть получены путем поиска уже существующего домена по его идентификатору, по его связи с другими объектами или по другим значениям при поиске в службах VT Enterprise services.</p>
+<p>Помните, что в отличие от отчетов о файлах и URL-адресах, сетевое расположение (такое как домены и IP-адреса) не записывает вердикты партнеров для рассматриваемого ресурса. Вместо этого эти отчеты включают всю недавнюю активность, которую VirusTotal наблюдал для ресурса, а также контекстную информацию о нем. Эта информация включает в себя:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> - для идентификации используется доменное имя или FQDN.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Categories</span></code> - сопоставление, которое связывает службы классификации с категорией, которую они назначают домену. К таким службам относятся, в частности: Alexa, BitDefender, TrendMicro, Websense ThreatSeeker и т. д.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">creation_date</span></code> - дата, когда домен был впервые включен в набор данных VirusTotal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_update_date</span></code> - дата последнего обновления информации о домене.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">registrar</span></code> - компания, которая зарегистрировала домен.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reputation</span></code> - оценка домена, рассчитанная по голосам сообщества VirusTotal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_votes</span></code> - невзвешенное количество голосов от сообщества, разделенное на «harmless» и «maliciousus».</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">whois</span></code> - информация «Whois», возвращенная с соответствующего whois-сервера.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">whois_date</span></code> - дата последнего обновления записи <code class="docutils literal notranslate"><span class="pre">whois</span></code> в VirusTotal.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Репутация каждого домена определяется сообществом Virustotal (в которое входят зарегистрированные пользователи). Пользователи, голосующие за домены, в свою очередь, сами имеют репутацию, при этом оценка сообщества включает в себя все голоса, с учетом репутациеи пользователей, которые проголосовали за тот или иной домен. Отрицательные (красные) оценки указывают на злонамеренность, в то время как положительные (зеленые) оценки отражают безвредность. Чем больше абсолютное число, тем больше вы можете доверять данной оценке. Вы можете прочитать больше об этом в <a class="reference external" href="https://support.virustotal.com/hc/en-us/articles/115002146769-Vote-comment">этой статье сообщества</a>.</p>
+</div>
+<p class="rubric">Объект типа «Domain»</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;domain&quot;</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;DOMAIN&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://virustotal.com/api/v3/domains/&lt;DOMAIN&gt;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;&lt;SERVICE&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;creation_date&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="p">:</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;last_update_date&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="p">:</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;registrar&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;reputation&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="s2">&quot;total_votes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;harmless&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;malicious&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;whois&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;whois_date&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">int</span><span class="p">:</span><span class="n">timestamp</span><span class="o">&gt;</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="section" id="communicating-files">
 <h3>communicating_files<a class="headerlink" href="#communicating-files" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Отношение <em>communicating_files</em> перечислит все файлы, которые генерируют какой-либо трафик для данного домена в какой-то момент выполнения этих файлов. Это отношение может быть получено с помощью API функции relationships. Ответ содержит поле:</p>
+<p><code class="docutils literal notranslate"><span class="pre">data</span></code> список объектов типа «File» (см. <a class="reference internal" href="#files">Файлы (files)</a>). Это представление будет содержать раздел <code class="docutils literal notranslate"><span class="pre">attributes</span></code> файла.</p>
+<p class="rubric">/domains/{domain}/communicating_files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">&lt;</span><span class="n">FILE_OBJECT</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">FILE_OBJECT</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">...</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;next&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;cursor&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="id8">
-<h3>communicating_files<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
 </div>
 <div class="section" id="downloaded-files">
 <h3>downloaded_files<a class="headerlink" href="#downloaded-files" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Отношение <em>downloaded_files</em> возвращает список файлов, которые были доступны с URL-адреса в данном домене или поддомене в определенный момент. Это отношение может быть получено с помощью API функции relationships. Ответ содержит поле:</p>
+<p><code class="docutils literal notranslate"><span class="pre">data</span></code> список объектов типа «File» (см. <a class="reference internal" href="#files">Файлы (files)</a>). Это представление будет содержать раздел <code class="docutils literal notranslate"><span class="pre">attributes</span></code> файла.</p>
+<p class="rubric">/domains/{domain}/communicating_files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">&lt;</span><span class="n">FILE_OBJECT</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="n">FILE_OBJECT</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">...</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;links&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;next&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;cursor&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="graphs">
 <h3>graphs<a class="headerlink" href="#graphs" title="Ссылка на этот заголовок">¶</a></h3>
