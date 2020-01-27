@@ -841,6 +841,7 @@ POST /domains/{domain}/comments
 
 |POST| ``https://www.virustotal.com/api/v3/domains/domain/comments``
 
+.. _domains-relationship-label:
 
 GET /domains/{domain}/{relationship}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
