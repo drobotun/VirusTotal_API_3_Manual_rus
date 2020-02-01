@@ -6,7 +6,7 @@
 	
 =======
 
-API VirusTotal (3 version)
+API VirusTotal (3 версия)
 ==========================
 
 .. toctree::
