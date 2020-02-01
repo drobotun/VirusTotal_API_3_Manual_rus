@@ -494,6 +494,8 @@ dmg_info
 dot_net_guids
 ~~~~~~~~~~~~~
 
+.. index:: dot_net_guids
+
 Идентификаторы для сборок Microsoft .NET.
 
 - ``dot_net_guids`` - список `идентификаторов для сборок Microsoft .NET <https://www.virusbulletin.com/virusbulletin/2015/06/using-net-guids-help-hunt-malware/>`_;
@@ -519,6 +521,8 @@ dot_net_guids
 
 elf_info
 ~~~~~~~~
+
+.. index:: elf_info
 
 Информация о Unix ELF-файлах.
 
@@ -591,6 +595,8 @@ elf_info
 exiftool
 ~~~~~~~~
 
+.. index:: exiftool
+
 Информация о метаданных EXIF из файлов.
 
 ``exiftool`` это утилита для извлечения метаданных EXIF из файлов различных форматов. Представляемые метаданные могут различаться в зависимости от типа файла, и, учитывая природу метаданных EXIF, соcтав отображаемых полей может различаться.
@@ -654,6 +660,8 @@ exiftool
 image_code_injections
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: image_code_injections
+
 Инъекция кода в файл изображения.
 
 ``image_code_injections`` возвращает содержимое внедренного кода в файлах изображений.
@@ -674,6 +682,8 @@ image_code_injections
 
 ipa_info
 ~~~~~~~~
+
+.. index:: ipa_info
 
 Информация об iOS App Store Package файле.
 
@@ -796,6 +806,8 @@ ipa_info
 isoimage_info
 ~~~~~~~~~~~~~
 
+.. index:: isoimage_info
+
 Информация о файлах ISO-образов.
 
 ``isoimage_info`` - возвращает информацию о структуре ISO-файлов.
@@ -847,6 +859,8 @@ isoimage_info
 jar_info
 ~~~~~~~~
 
+.. index:: jar_info
+
 Информация о файлах Java Archive.
 
 ``jar_info`` возвращает информацию о Java jar-файлах.
@@ -889,6 +903,8 @@ jar_info
 
 macho_info
 ~~~~~~~~~~
+
+.. index:: macho_info
 
 Информация о файлах Apple MachO.
 
@@ -959,6 +975,8 @@ macho_info
 magic
 ~~~~~
 
+.. index:: magic
+
 Идентификация файлов по "магическому числу".
 
 ``magic`` дает предположение о типе файла, основываясь на популярном инструменте синтаксического анализа из UNIX (команда ``file``).
@@ -979,6 +997,8 @@ magic
 
 office_info
 ~~~~~~~~~~~
+
+.. index:: office_info
 
 Информация о структуре файлов Microsoft Office.
 
@@ -1095,6 +1115,8 @@ office_info
 	
 openxml_info
 ~~~~~~~~~~~~
+
+.. index:: openxml_info
 
 Информация об Microsoft OpenXML файлах.
 
@@ -1229,6 +1251,8 @@ openxml_info
 packers
 ~~~~~~~
 
+.. index:: packers
+
 Информация об упаковщике, используемом в файле.
 
 ``packers`` - определtybt упаковщиков PE-файлов, используемых в Windows с помощью нескольких утилит и антивирусных средств.
@@ -1252,6 +1276,8 @@ packers
 
 pdf_info
 ~~~~~~~~
+
+.. index:: pdf_info
 
 Информация об Adobe PDF файлах.
 
@@ -1316,6 +1342,8 @@ pdf_info
 
 pe_info
 ~~~~~~~
+
+.. index:: pe_info
 
 Информация о файлах формата Microsoft Windows Portable Executable.
 
@@ -1425,23 +1453,29 @@ pe_info
 rombios_info
 ~~~~~~~~~~~~
 
-Информация о BIOS, EFI, UEFI и связанных с ними архивах.
+.. index:: rombios_info
 
+Информация о BIOS, EFI, UEFI и связанных с ними архивах.
 
 rtf_info
 ~~~~~~~~
 
-Информация о файлах формата Microsoft Rich Text.
+.. index:: rtf_info
 
+Информация о файлах формата Microsoft Rich Text.
 
 signature_info
 ~~~~~~~~~~~~~~
+
+.. index:: signature_info
 
 Информация о подписи PE-файлов.
 
 
 ssdeep
 ~~~~~~
+
+.. index:: ssdeep
 
 CTPH хэш содержимого файла.
 
@@ -1463,6 +1497,8 @@ CTPH хэш содержимого файла.
 
 swf_info
 ~~~~~~~~
+
+.. index:: swf_info
 
 Информация о Adobe Shockwave Flash файлах.
 
@@ -1512,6 +1548,8 @@ swf_info
 
 trid
 ~~~~
+
+.. index:: trid
 
 Тип файла идентифицированный с помощью утилиты `TrID <http://mark0.net/soft-trid-e.html>`_.
 
@@ -1741,6 +1779,8 @@ VerdictTag
 communicating_files
 ~~~~~~~~~~~~~~~~~~~
 
+.. index:: communicating_files
+
 Отношение *communicating_files* перечислит все **файлы, которые генерируют какой-либо трафик для данного домена** в какой-то момент выполнения этих файлов. Это отношение может быть получено с помощью API функции relationships. Ответ содержит поле:
 
 ``data`` список объектов типа "File" (см. `Файлы (files)`_). Это представление будет содержать раздел ``attributes`` файла.
@@ -1766,6 +1806,8 @@ communicating_files
 
 downloaded_files
 ~~~~~~~~~~~~~~~~
+
+.. index:: downloaded_files
 
 Отношение *downloaded_files* возвращает список **файлов, которые были доступны с URL-адреса в данном домене или поддомене** в определенный момент. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
 
@@ -1793,6 +1835,8 @@ downloaded_files
 graphs
 ~~~~~~
 
+.. index:: graphs
+
 Отношение *graphs* возвращает список графиков, содержащих данный домен. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
 
 ``data`` список объектов типа "Graph". Это представление будет содержать раздел ``attributes`` графика.
@@ -1813,6 +1857,8 @@ graphs
 
 referrer_files
 ~~~~~~~~~~~~~~
+
+.. index:: referrer_files
 
 Отношение *referrer_files* возвращает список **файлов, содержащих данный домен в своих строках**. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
 
@@ -1839,6 +1885,8 @@ referrer_files
 
 resolutions
 ~~~~~~~~~~~
+
+.. index:: resolutions
 
 Отношение *resolutions* возвращает список прошлых и текущих **разрешений IP-адресов для данного домена или поддомена**. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
 
@@ -1894,6 +1942,8 @@ resolutions
 
 siblings
 ~~~~~~~~
+
+.. index:: siblings
 
 С помощью отношения *sibling* можно получить список **поддоменов на том же уровне, что и данный поддомен** для домена, вместе с информацией о них. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
 
