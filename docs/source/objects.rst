@@ -663,6 +663,121 @@ ipa_info
 
 Информация об iOS App Store Package файле.
 
+``ipa_info`` - возвращает информацию о `Apple IPA <https://en.wikipedia.org/wiki/.ipa>`_ файлах.
+
+- ``apps`` - каждый IPA может содержать несколько экземпляров приложения:
+
+	- ``commands`` - список команд загрузки. Каждая запись отображается как значение ключа ``type``;
+	- ``vhash`` - vhash файла;
+	- ``segments`` - список сегментов в файле:
+	
+		- ``name`` - имя сегмента;
+		- ``fileoff`` - физический адрес сегмента;
+		- ``vmsize`` - размер виртуального адреса;
+		- ``vmaddr`` - виртуальный адрес;
+		- ``filesize`` - размер сегмента;
+		- ``sections`` - секции в сегменте:
+		
+			- ``type`` - тип секции;
+			- ``flags`` - флаги секции (например ``"S_8BYTE_LITERALS"``);
+			- ``name`` - имя секции;
+		
+		- ``tags`` общие замечания о файле (например ``"64 bits"``);
+		
+	- ``headers`` - некоторые описательные метаданные о файле:
+	
+		- ``cpu_type`` - общий тип процессора (например ``"i386"``);
+		- ``cpu_subtype`` - подтип процессора (например ``"I386_ALL"``);
+		- ``magic`` - "магический" идентификатор приложения;
+		- ``size_cmds`` - размер команд;
+		- ``num_cmds`` - количество команд;
+		- ``flags`` - флаги файла (например ``"DYLDLINK"``, ``"NOUNDEFS"``);
+		- ``file_type`` - тип файла (например ``"dynamically bound shared library"``);
+		
+	- ``libs`` - библиотеки, используемые в файле;
+	
+- ``plist`` - список, содержащий `пары ключ-значение <https://developer.apple.com/documentation/bundleresources/information_property_list>`_, которые идентифицируют и настраивают приложение. Некоторыми общими полями являются:
+
+	- ``CBundleIdentifier`` уникальный идентификатор пакета;
+	- ``CFBundleSupportedPlatforms`` - поддерживаемые платформы;
+	- ``CFAppleHelpAnchor`` - имя HTML help-файла для пакета;
+	- ``CFBundleIcons`` - информация об используемой иконке;
+	- ``CFBundleShortVersionString`` - номер релиза или версии пакета;
+	- ``CFBundleDisplayName`` -  вдимое для пользователя имя пакета;
+	- ``CFBundleName`` - вдимое для пользователя короткое имя пакета;
+	- ``MinimumOSVersion`` -  минимальная версия операционной системы, необходимая для запуска приложения;
+	
+- ``provision`` - приложения iOS должны содержать встроенный профиль инициализации:
+
+	- ``TeamName`` - team name.
+	- ``TeamIdentifier`` - team identifier.
+	- ``Name`` - имя приложения;
+	- ``AppIDName`` -  имя идентификатора приложения;
+	- ``ApplicationIdentifierPrefix`` - идентификатор подписи кода для запущенного приложения;
+	- ``Platform`` - поддерживаемая платформа;
+	- ``Version`` - версия приложения;
+	- ``TimeToLive`` - время существования;
+	- ``ExpirationDate`` -  срок действия приложения в формате "%Y-%m-%d %H:%M%S".
+	- ``Entitlements`` - позволяет использовать определенную функцию или превращает приложение в отдельную службу;
+	
+		- ``application-identifier`` - полный идентификатор приложения;
+	
+	- ``UUID`` - уникальный идентификатор;
+	- ``CreationDate`` - дата создания приложения в формате "%Y-%m-%d %H:%M%S".
+
+.. rubric:: Файлы Apple IPA
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "ipa_info": {
+            "apps": [{"commands": [{"type": "<string>"}], ... ],
+                      "vhash": "<string>",
+                      "segments": [{"name": "<string>",
+                                    "fileoff": "<string>",
+                                    "vmsize": "<string>",
+                                    "filesize": "<string>",
+                                    "vmaddr": "<string>",
+                                    "sections": [{"type": "<string>"
+                                                  "flags": ["<strings>"],
+                                                  "name": "<string>"}, ... ], } ...],
+                      "tags": ["<strings>"],
+                      "headers": {"cpu_subtype": "<string>",
+                                  "magic": "<string>",
+                                  "size_cmds": <int>,
+                                  "file_type": "<string>",
+                                  "num_cmds": <int>,
+                                  "flags": ["<strings>"]
+                                  "cpu_type": "<string>"},
+                      "libs":["<strings>"]} ... ],
+            "plist": {"CBundleIdentifier": "<string>",
+                      "CFBundleSupportedPlatforms": "<string>",
+                      "CFAppleHelpAnchor": "<string>",
+                      "CFBundleIcons": "<string>",
+                      "CFBundleShortVersionString": "<string>",
+                      "CFBundleDisplayName": "<string>",
+                      "CFBundleName": "<string>",
+                      "MinimumOSVersion": "<string>", ... },
+            "provision": {"TeamName": "<string>",
+                          "Name": "<string>", 
+                          "TeamIdentifier": ["<strings>"], 
+                          "AppIDName": "<string>", 
+                          "ApplicationIdentifierPrefix": ["<strings>"], 
+                          "Platform": ["<strings>"], 
+                          "Version": <int>, 
+                          "TimeToLive": <int>, 
+                          "ExpirationDate": "<string:%Y-%m-%d %H:%M%S>", 
+                          "Entitlements": {"application-identifier": "<string>", ... },
+                          "CreationDate": "<string:%Y-%m-%d %H:%M%S>", 
+                          "UUID": "<string>", ... }
+          }
+        }
+      }
+    }
 
 isoimage_info
 ~~~~~~~~~~~~~
@@ -853,7 +968,117 @@ office_info
 
 Информация о структуре файлов Microsoft Office.
 
+``office_info`` возвращает информацию о файлах Microsoft Office (до Office 2007). Включая информацию (Word) ``.doc``, ``.dot``, ``.wbk``, (Excel) ``.xls``, ``.xlt``, ``.xlm``, (PowerPoint) ``.pot``, ``.pps``.
 
+- ``document_summary_info`` - некоторые метаданные о файле Office:
+
+	- ``scale`` - ``True`` если требуется масштабирование миниатюры, ``False`` - в обратном случае;
+	- ``links_dirty`` - мешают ли пользовательским ссылкам 
+	- ``line_count`` - количество строк;
+	- ``hyperlinks_changed`` -  одна или несколько гиперссылок в этой части были обновлены производителем исключительно в этой части;
+	- ``characters_with_spaces`` -  количество символов, включая пробелы;
+	- ``version`` - целочисленный идентификатор приложения Microsoft Office;
+	- ``shared_document`` - если документ является общедоступным;
+	- ``paragraph_count`` - количество абзацев;
+	- ``company`` - имя компании;
+	- ``code_page`` - набор символов, используемый в документе;
+	
+- ``entries`` - список OLE-объектов в документе:
+
+	- ``clsid`` -  уникальный идентификатор приложения;
+	- ``clsid_literal`` - читаемая версия ``clsid``;
+	- ``name`` - имя объекта;
+	- ``sid`` - индекс записи в каталоге OLE;
+	- ``size`` - размер объекта в байтах;
+	- ``type_literal`` - тип объекта;
+	
+- ``ole`` - макросы, найденные в каталоге OLE:
+	
+	- ``macros`` - подробная информация о найденных макросах:
+		
+		- ``vba_code`` - код макроса;
+		- ``stream_path`` - путь в дереве хранения OLE;
+		- ``vba_filename`` - имя макроса;
+		- ``patterns`` - примечательные паттерны в макросе ("exe-pattern", "url-pattern", и т. д.);
+		- ``lengh`` - длина макроса;
+		- ``properties`` - примечательные свойсвта макроса ("obfuscated", "run-file", и т. д.);
+		
+	- ``num_macros`` - количестово найденных макросов;
+	
+- ``summary_info`` - оставшийся набор метаданных о файле Office. В зависимости от типа файла Office, некоторые поля могут отображаться, некоторые - нет:
+
+	- ``last_author`` - пользователь, который последний редактировал этот файл;
+	- ``creation_datetime`` - дата создания файла в `формате <http://strftime.org/>`_ "%Y-%m-%d %H:%M:%S";
+	- ``template`` - шаблон, используемый при создании файла;
+	- ``author`` - исходный пользователь, создавший файл;
+	- ``page_count`` - количество страниц в документе;
+	- ``last_saved`` - дата последнего сохранения файла в формате "%Y-%m-%d %H:%M:%S";
+	- ``edit_time`` - время, затраченное на редактирование документа, в секундах;
+	- ``word_count`` - количество слов в документе;
+	- ``revision_number`` - номер редакции документа;
+	- ``last_printed`` - дата последней печати документа в формате "%Y-%m-%d %H:%M:%S";
+	- ``application_name`` - имя приложения Office (например ``"Microsoft PowerPoint"``);
+	- ``title`` - заголовок документа;
+	- ``character_count`` - количество символов в документе;
+	- ``security`` - ``0`` если пароль для документа не установлен;
+	- ``code_page`` - набор символов, используемый в документе (например ``"Latin I"``);
+	
+- ``tags`` - примечательные замечания обо всем документе, взятые из шаблонов и свойств макросов.
+
+.. rubric:: Информация о структуре файлов Microsoft Office
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "office_info": {
+            "documment_summary_info": {"scale": <boolean>,
+                                       "links_dirty": <boolean>,
+                                       "line_count": <int>,
+                                       "hyperlinks_changed": <boolean>,
+                                       "characters_with_spaces": <int>,
+                                       "version": <int>,
+                                       "shared_document": <boolean>,
+                                       "paragraph_count": <int>,
+                                       "company": "<string>",
+                                       "code_page": "<string>"},
+            "entries": [{"clsid": "<string>",
+                         "clsid_literal": "<string>",
+                         "name": "<string>",
+                         "type_literal": "<string>",
+                         "sid": <int>,
+                         "size": <int>,} ... ],
+            "ole": {"macros": [{"vba_code": "<string>",
+                                "stream_path": "<string>",
+                                "vba_filename": "<string>",
+                                "patterns": ["<strings>"],
+                                "length": <int>,
+                                "properties": ["<strings>"]}] ...,
+                    "num_macros": <int>},
+            "summary_info": {"last_author": "<string>",
+                             "creation_datetime": "<string:%Y-%m-%d %H:%M:%S>",
+                             "template": "<string>",
+                             "author": "<string>", 
+                             "page_count": <int>, 
+                             "last_saved": "<string:%Y-%m-%d %H:%M:%S>", 
+                             "edit_time": <int>, 
+                             "word_count": <int>, 
+                             "revision_number": "<string>", 
+                             "last_printed": "<string:%Y-%m-%d %H:%M:%S>", 
+                             "application_name": "<string>", 
+                             "title": "<string>",
+                             "character_count": <int>,
+                             "security": <int>,
+                             "code_page": "<string>"},
+            "tags": ["<strings>"]
+          }
+        }
+      }
+    }
+	
 openxml_info
 ~~~~~~~~~~~~
 
@@ -1273,7 +1498,7 @@ VerdictTag
 communicating_files
 ~~~~~~~~~~~~~~~~~~~
 
-Отношение *communicating_files* перечислит все файлы, которые генерируют какой-либо трафик для данного домена в какой-то момент выполнения этих файлов. Это отношение может быть получено с помощью API функции relationships. Ответ содержит поле:
+Отношение *communicating_files* перечислит все **файлы, которые генерируют какой-либо трафик для данного домена** в какой-то момент выполнения этих файлов. Это отношение может быть получено с помощью API функции relationships. Ответ содержит поле:
 
 ``data`` список объектов типа "File" (см. `Файлы (files)`_). Это представление будет содержать раздел ``attributes`` файла.
 
@@ -1299,7 +1524,7 @@ communicating_files
 downloaded_files
 ~~~~~~~~~~~~~~~~
 
-Отношение *downloaded_files* возвращает список файлов, которые были доступны с URL-адреса в данном домене или поддомене в определенный момент. Это отношение может быть получено с помощью API функции :ref:`_domains-relationship-label`. Ответ содержит поле:
+Отношение *downloaded_files* возвращает список **файлов, которые были доступны с URL-адреса в данном домене или поддомене** в определенный момент. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
 
 ``data`` список объектов типа "File" (см. `Файлы (files)`_). Это представление будет содержать раздел ``attributes`` файла.
 
@@ -1325,18 +1550,130 @@ downloaded_files
 graphs
 ~~~~~~
 
+Отношение *graphs* возвращает список графиков, содержащих данный домен. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
+
+``data`` список объектов типа "Graph". Это представление будет содержать раздел ``attributes`` графика.
+
+.. rubric:: /domains/{domain}/graph
+
+::
+
+    {
+      "data": [
+        <GRAPH_OBJECT>,
+        ...
+      ],
+      "links": {
+        "self": <url>
+        }
+    }
 
 referrer_files
 ~~~~~~~~~~~~~~
 
+Отношение *referrer_files* возвращает список **файлов, содержащих данный домен в своих строках**. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
+
+``data`` список объектов типа "File" (см. `Файлы (files)`_). Это представление будет содержать раздел ``attributes`` файла.
+
+.. rubric:: /domains/{domain}/referrer_files
+
+::
+
+    {
+      "data": [
+        <FILE_OBJECT>,
+        <FILE_OBJECT>,
+        ...
+      ],
+      "links": {
+        "next": <string>,
+        "self": <string>
+      },
+      "meta": {
+        "cursor": <string>
+      }
+    }
 
 resolutions
 ~~~~~~~~~~~
+
+Отношение *resolutions* возвращает список прошлых и текущих **разрешений IP-адресов для данного домена или поддомена**. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
+
+``data`` список объектов типа "Resolution". Это представление будет содержать раздел ``attributes`` объекта.
+
+.. rubric:: /domains/{domain}/resolutions
+
+::
+
+    {
+      "data": [
+        <RESOLUTION_OBJECT>,
+        <RESOLUTION_OBJECT>,
+        ...
+      ],
+      "links": {
+        "next": <string>,
+        "self": <string>
+      },
+      "meta": {
+        "cursor": <string>
+      }
+    }
+
+Объект "Resolutions" (см. :ref:`resolution-object-label`) включает в себя следующую информацию:
+
+- ``id`` - объединение IP-адреса и домена.
+- ``date`` - метка времени (дата), когда был сделан запрос на разрешение.
+- ``host_name`` - домен или поддомен, запрошенный у резолвера.
+- ``ip_address`` - IP-адрес, на который указывал домен в заданную дату.
+- ``resolver`` - DNS-сервер, на который был отправлен запрос на разрешение.
+
+.. _resolution-object-label:
+
+.. rubric:: Resolution object
+
+::
+
+    {
+      "type": "resolution",
+      "id": <string>,
+      "attributes": {
+		    "date": <timestamp>,
+		    "host_name": <string>,
+		    "ip_address": <string>,
+		    "resolver": <string>
+	    },
+     "links": {
+  	    "self": <string>
+      }
+    }
 
 
 siblings
 ~~~~~~~~
 
+С помощью отношения *sibling* можно получить список **поддоменов на том же уровне, что и данный поддомен** для домена, вместе с информацией о них. Это отношение может быть получено с помощью API функции :ref:`domains-relationship-label`. Ответ содержит поле:
+
+``data`` список объектов типа " Domain" (см. `Домены (domains)`_). Это представление будет содержать раздел ``attributes`` объекта.
+
+.. rubric:: /domains/{domain}/siblings
+
+::
+
+    {
+      "data": [
+        <DOMAIN_OBJECT>,
+        <DOMAIN_OBJECT>,
+        ...
+      ],
+      "links": {
+        "next": <string>,
+        "self": <string>
+      },
+      "meta": {
+        "cursor": <string>
+      }
+    }
 
 IP-адреса (IP addresses)
 ------------------------
