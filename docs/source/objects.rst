@@ -85,6 +85,8 @@
 androguard
 ~~~~~~~~~~
 
+.. index:: androguard
+
 Информация об Android файлах.
 
 ``androguard`` показывает информацию о файлах Android APK, DEX и XML, извлеченных с помощью утилиты Androguard.
@@ -181,6 +183,8 @@ androguard
 asf_info
 ~~~~~~~~
 
+.. index:: asf_info
+
 Информация о Microsoft Advanced Streaming/Systems Format (ASF) файлах.
 
 ``asf_info`` показывает информацию о Microsoft ASF files (.asf, .wma, .wmv).
@@ -235,6 +239,8 @@ asf_info
 authentihash
 ~~~~~~~~~~~~
 
+.. index:: authentihash
+
 Хэш для проверки PE-файлов.
 
 ``authentihash`` - это хэш sha256, используемый корпорацией Microsoft для проверки того, что соответствующие разделы образа PE-файла не были изменены.
@@ -255,6 +261,8 @@ authentihash
 
 bundle_info
 ~~~~~~~~~~~
+
+.. index:: bundle_info
 
 Информация о сжатых файлах.
 
@@ -299,6 +307,8 @@ bundle_info
 class_info
 ~~~~~~~~~~
 
+.. index:: class_info
+
 Информация о классах Java в байткод-файлах.
 
 ``class_info`` предоставляет информацию о Java байткод-файлах.
@@ -337,6 +347,8 @@ class_info
 
 deb_info
 ~~~~~~~~
+
+.. index:: deb_info
 
 Информация о Debian пакетах.
 
@@ -408,6 +420,8 @@ deb_info
 
 dmg_info
 ~~~~~~~~
+
+.. index:: dmg_info
 
 Информация о монтируемых образах дисков macOS.
 
