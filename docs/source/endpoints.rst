@@ -9,6 +9,8 @@ Files (Функции для работы с файлами)
 POST /files
 ~~~~~~~~~~~
 
+.. index:: POST /files
+
 Загрузка и анализ файла.
 
 |POST| ``https://www.virustotal.com/api/v3/files``

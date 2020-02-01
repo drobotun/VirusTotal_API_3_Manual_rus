@@ -20,5 +20,3 @@ API VirusTotal (3 version)
 
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
