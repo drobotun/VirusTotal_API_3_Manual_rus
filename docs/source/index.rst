@@ -16,8 +16,7 @@ API VirusTotal (3 version)
    intro
    objects
    endpoints
-
-
-
+   enterprise
+   monitor
 
 * :ref:`genindex`
