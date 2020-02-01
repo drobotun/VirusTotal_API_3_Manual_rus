@@ -64,6 +64,8 @@ POST /files
 GET /files/upload_url
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /files/upload_url
+
 Получение URL для загрузки файла больше 32 МБ.
 
 |GET| ``https://www.virustotal.com/api/v3/files/upload_url``
@@ -111,6 +113,8 @@ GET /files/upload_url
 
 GET /files/{id}
 ~~~~~~~~~~~~~~~
+
+.. index:: GET /files{id}
 
 Получение информации о файле.
 
@@ -241,6 +245,8 @@ GET /files/{id}
 POST /files/{id}/analyse
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: POST /files/{id}/analyse
+
 Повторный анализ файла в VirusTotal/
 .. warning:: Эта функция API может привести к отказу в обслуживании инфраструктуры сканирования в случае неправильного использования. Пожалуйста, свяжитесь с нами, если вы собираетесь сканировать более 50 тысяч файлов в день.
 
@@ -288,6 +294,8 @@ POST /files/{id}/analyse
 GET /files/{id}/comments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /files/{id}/comments
+
 Получение комментариев для файла
 
 |GET| ``https://www.virustotal.com/api/v3/files/{id}/comments``
@@ -323,6 +331,8 @@ GET /files/{id}/comments
 
 POST /files/{id}/comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /files/{id}/comments
 
 Добавление комментария для файла.
 
@@ -402,6 +412,8 @@ POST /files/{id}/comments
 GET /files/{id}/votes
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /files/{id}/votes
+
 Получение результатов голосования для файла
 
 |GET| ``https://www.virustotal.com/api/v3/files/id/votes``
@@ -437,6 +449,8 @@ GET /files/{id}/votes
 
 POST /files/{id}/votes
 ~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /files/{id}/votes
 
 Добавление голоса для файла.
 
@@ -491,6 +505,8 @@ POST /files/{id}/votes
 GET /files/{id}/download_url
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /files/{id}/download_url
+
 Получение URL для загрузки файла.
 
 .. note:: Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.
@@ -536,6 +552,8 @@ GET /files/{id}/download_url
 GET /files/{id}/download
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /files/{id}/download
+
 Загрузка файла.
 
 .. note:: Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.
@@ -573,6 +591,8 @@ GET /files/{id}/download
 
 GET /files/{id}/{relationship}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /files/{id}/{relationship}
 
 Получение объектов, связанных с файлом.
 
@@ -669,6 +689,8 @@ GET /files/{id}/{relationship}
 GET /file_behaviours/{sandbox_id}/pcap
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /file_behaviours/{sandbox_id}/pcap
+
 |GET| ``https://www.virustotal.com/api/v3/file_behaviours/{sandbox_id}/pcap``
 
 .. rubric:: cURL
@@ -725,6 +747,8 @@ VirusTotal анализирует не только файлы, но и URL-ад
 POST /urls
 ~~~~~~~~~~
 
+.. index:: POST /urls
+
 Анализ URL-адреса.
 
 |POST| ``https://www.virustotal.com/api/v3/urls``
@@ -774,8 +798,10 @@ URL-адреса могут быть отправлены в VirusTotal путе
       "data": {"id": "<string>", "type": "analysis"}
     }
 
-POST /urls/{id}
+GET /urls/{id}
 ~~~~~~~~~~~~~~~
+
+.. index:: GET /urls{id}
 
 Получение информации об URL-адресе.
 
@@ -823,6 +849,8 @@ Domains (Функции для работы с доменами)
 GET /domains/{domain}
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /domains/{domain}
+
 Получение информации об Internet-домене.
 
 |GET| ``https://www.virustotal.com/api/v3/domains/{domain}``
@@ -831,6 +859,8 @@ GET /domains/{domain}
 GET /domains/{domain}/comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /domains/{domain}/comments
+
 Получение комментариев для Internet-домена.
 
 |GET| ``https://www.virustotal.com/api/v3/domains/domain/comments``
@@ -838,6 +868,8 @@ GET /domains/{domain}/comments
 
 POST /domains/{domain}/comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /domains/{domain}/comments
 
 Добавление комментария для Internet-домена.
 
@@ -848,6 +880,8 @@ POST /domains/{domain}/comments
 GET /domains/{domain}/{relationship}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /domains/{domain}/{relationship}
+
 Получение объектов, связанных с Internet-доменом.
 
 |GET| ``https://www.virustotal.com/api/v3/domains/{domain}/{relationship}``
@@ -856,11 +890,15 @@ GET /domains/{domain}/{relationship}
 GET /domains/{domain}/votes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. index:: GET /domains/{domain}/votes
+
 |GET| ``https://www.virustotal.com/api/v3/domains/{domain}/votes``
 
 
 POST /domains/{domain}/votes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /domains/{domain}/votes
 
 Добавить голос за имя хоста или домена.
 
