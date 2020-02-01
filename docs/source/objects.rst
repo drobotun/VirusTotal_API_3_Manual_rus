@@ -1305,6 +1305,108 @@ pe_info
 
 Информация о файлах формата Microsoft Windows Portable Executable.
 
+``pe_info`` возвращает информацию о структуре `Майкрософт Windows PE-файлов <https://docs.microsoft.com/en-us/windows/desktop/debug/pe-format>`_ (то есть исполняемые файлы, динамические библиотеки, драйверы и т. д.): разделы, точка входа, ресурсы, импорт, экспорт и т. д.
+
+- ``debug`` - отладочная информация, если таковая имеется:
+
+	- codeview`` - CodeView отладочная информация, если таковая имеется:
+	
+		- ``age`` - почтоянно увеличивающееся значение;
+		- ``guid`` - уникальный идентификатор;
+		- ``name`` - путь к PDB-файлу;
+		- ``signature`` - содержит ``"RSDS"``;
+
+	- ``offset`` - размещение отладочной информации;
+	- ``timedatestamp`` - метка времени в `формате <http://strftime.org/>`_ "%a %b %d %H:%M:%S %Y";
+	- ``type_str`` - человеко-читаемая версия информации о типе отладки;
+	- ``type`` - информация о типе отладки;
+	- ``size`` - размер блока отладочной информации;
+
+- ``entry_point`` - точка входа;
+- ``exports`` - экспортируемые функции;
+- ``imphash`` - хэш секции импорта;
+- ``imports`` - словарь с именами DLL в качестве ключей и списками импортированных функций в качестве значений;
+- ``machine_type`` - платформа;
+- ``overlay`` - информация о содержимом секции оверлея PE-файла (если эта секция присутствует в файле):
+
+	- ``chi2`` - проверочное значение хи-квадрат байтов из содержимого оверлея;
+	- ``entropy`` - значение энтропии оверлея;
+	- ``filetype`` - если возможно идентифицировать конкретный формат файла, его тип указывается здесь;
+	- ``offset`` - расположение начала оверлея;
+	- ``md5`` - хэш содержимого оверлея;
+	- ``size`` - размер в байтах;
+	
+- ``resource_details: if the PE contains resources, some info about them.
+
+	- ``chi2`` - проверочное значение хи-квадрат байтов из содержимого ресурсов;
+	- ``entropy`` - значение энтропии содержимого ресурсов.
+	- ``filetype`` - если возможно идентифицировать конкретный формат файла, его тип указывается здесь;
+	- ``lang`` - язык ресурса;
+	- ``sha256`` - хэш содержимого ресурса;
+	- ``type`` - тип ресурса;
+	
+- ``resource_langs``: информация о языках, найденных в ресурсе (имя и номер);
+- ``resource_types``: информация о типе ресурса (тип и номер);
+- ``sections`` - информация о PE секциях:
+
+	- ``entropy`` - значение энтропии содержимого секции;
+	- ``md5`` - хэш секции;
+	- ``name`` - section name.
+	- ``raw_size`` - размер инициализированных данных на диске (в байтах);
+	- ``virtual_address`` - адрес первого байта раздела при загрузке в память, относительно базы;
+	- ``virtual_size`` - общий размер раздела при загрузке в память (в байтах);
+	
+- ``timestamp`` - время компиляции в формате Unix Epoch.
+
+.. rubric:: Microsoft Windows PE-файла
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "pe_info": {
+            "debug": [{"codeview": {"age": <int>,
+                                    "guid": "<string>",
+                                    "name": "<string>",
+                                    "signature": "RSDS"},
+                       "offset": <int>,
+                       "size": <int>,
+                       "timedatestamp": "<string:%a %b %d %H:%M:%S %Y>",
+                       "type": <int>,
+                       "type_str": "<string>"}, ... ],
+            "entry_point": <int>,
+            "exports": ["<string>", ... ],
+            "imphash": "<string>",
+            "imports": {"<string>": ["<strings>"], ... },
+            "machine_type": <int>,
+            "overlay": {"chi2": <float>,
+                        "filetype": "<string>",
+                        "entropy": <float>,
+                        "offset": <int>,
+                        "md5": "<string>",
+                        "size": <int>},
+            "resource_details": [{"chi2": <float>,
+                                  "entropy": <float>,
+                                  "filetype": "<string>",
+                                  "lang": "<string>",
+                                  "sha256": "<string>",
+                                  "type": "<string>"}, ... ],
+            "resource_langs": {"<string>": <int>, ... },
+            "resource_types": {"<string>": <int>, ... },
+            "sections": [{"entropy": <float>,
+                          "md5": "<string>",
+                          "name": "<string>",
+                          "raw_size": <int>,
+                          "virtual_address": <int>,
+                          "virtual_size": <int>}, ... ],
+            "timestamp": <int>
+          }
+        }
+      }
+    }
 
 rombios_info
 ~~~~~~~~~~~~
