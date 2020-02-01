@@ -17,8 +17,8 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'Документация API VirusTotal'
-author = 'Евгений Дроботун'
+project = u'Документация API VirusTotal'
+author = u'Евгений Дроботун'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
