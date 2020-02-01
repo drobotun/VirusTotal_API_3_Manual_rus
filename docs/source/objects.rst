@@ -1084,6 +1084,133 @@ openxml_info
 
 Информация об Microsoft OpenXML файлах.
 
+``openxml_info`` возвращает информацию о структуре файлов Microsoft Office Open XML (Office 2007+). Включая информацию (Word) ``.docx``, ``.docm``, ``.dotx``, ``.dotm``, (Excel) ``.xlsx``, ``.xlsm``, ``.xltx``, ``.xltm``, (PowerPoint) ``.pptx``, ``.pptm``, ``.potx``, ``.potm``, ``.ppam``, ``.ppsx``, ``.ppsm``, ``.sldx``, ``.sldm``.
+
+- ``content_types`` - сведения о типе MIME для частей пакета;
+- ``docprops_app`` - некоторые свойства файла и поля могут отличаться в зависимости от типа файла:
+	
+	- ``TotalTime`` - общее время редактирования документа;
+	- ``Words`` - количество слов;
+	- ``ScaleCrop`` - режим отображения миниатюр;
+	- ``SharedDoc`` - если документ является общедоступным;
+	- ``Company`` - имя компании;
+	- ``Lines`` - число строк;
+	- ``AppVersion`` - версия приложения (в числовой форме);
+	- ``LinksUpToDate`` -  ``true`` означает, что гиперссылки обновляются, ``false`` - в противном случае;
+	- ``Pages`` - количество страниц;
+	- ``Application`` - имя приложения (например "Microsoft Office Word");
+	- ``CharactersWithSpaces`` -  количество символов, включая пробелы;
+	- ``Characters`` - количество символов без пробелов;
+	- ``Paragraphs`` - количество частей;
+	- ``Template`` - имя шаблона, используемого в документе;
+	- ``DocSecurity: ``0`` если пароль для документа не установлен;
+	- ``HyperlinksChanged`` - одна или несколько гиперссылок в этой части были обновлены производителем исключительно в этой части;
+
+- ``ocprops_core: core properties for any Office Open XML document
+	
+	- ``dc:creator`` - создатель документа;
+	- ``cp:revision`` - редакции документа;
+	- ``dcterms:created`` - дата создания в `формате <http://strftime.org/>`_ "%Y-%m-%dT%H:%M:%SZ";
+	- ``dcterms:modified`` - дата последней модификации в формате "%Y-%m-%dT%H:%M:%SZ";
+	- ``cp:lastModifiedBy`` - пользователь, который сделал последнюю модификацию;
+	- ``cp:lastPrinted`` - дата последней печати документа в формате "%Y-%m-%dT%H:%M:%SZ";
+	
+- ``file_type`` - тип файла (``"docx"``, ``"pptx"``, и т. д.);
+- ``ole`` - макросы найденные в содержимом OLE:
+
+	- ``macros`` - подробная информация о макросах:
+	
+		- ``vba_code`` - код макроса;
+		- ``stream_path`` - путь в дереве хранения OLE;
+		- ``vba_filename`` - имя макроса;
+		- ``patterns`` - примечательные паттерны в макросе (``"exe-pattern"``, ``"url-pattern"``, и т. д.);
+		- ``lengh`` - длина макроса;
+		- ``properties`` - примечательные свойсвта макроса (``"obfuscated"``, ``"run-file"``, и т. д.);
+		
+	- ``num_macros`` - количестов макросов;
+	- ``rels`` - отношения для файлов внутри пакета;
+	- ``tags`` - примечания о интересном содержимом в пакете (например ``"macros"``).
+	- ``type_content`` - информация, специфичная для каждого формата файла:
+	
+		- (Word, PowerPoint):
+		
+			- ``languages`` - ссылки на найденные языки (название и номер);
+			
+		- (Excel):
+		
+			- ``codifications`` - ссылки на используемые кодовые страницы (имя и номер);
+			- ``workbook`` - информация о книге:
+				
+				- ``sheets`` - количество листов;
+				- ``lowestEdited`` - самая низкая отредактированная версия;
+				- ``calcPr`` - версия Excel.
+				- ``lastEdited`` - последняя отредактированная версия;
+				- ``rupBuild`` - версия сборки;
+			
+			- ``language_guess`` - предполагаемый используемый язык (имя и номер);
+			
+		- (Excel, PowerPoint):
+		
+			- ``printers`` - используется для печати этого документа.
+
+.. rubric:: Информация о Microsoft Office openxml
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "openxml_info": {
+            "content_types": ["<strings>"],
+            "docprops_app": {"TotalTime": "<string>", 
+                             "Words": "<string>", 
+                             "ScaleCrop": "<string>", 
+                             "SharedDoc": "<string>", 
+                             "Company": "<string>", 
+                             "Lines": "<string>", 
+                             "AppVersion": "<string>", 
+                             "LinksUpToDate": "<string>", 
+                             "Pages": "<string>", 
+                             "Application": "<string>", 
+                             "CharactersWithSpaces": "<string>", 
+                             "Characters": "<string>", 
+                             "Paragraphs": "<string>", 
+                             "Template": "<string>", 
+                             "DocSecurity": "<string>", 
+                             "HyperlinksChanged": "<string>"},
+            "docprops_core": {"dc:creator": "<string>", 
+                              "cp:revision": "<string>", 
+                              "dcterms:created": "<string>", 
+                              "dcterms:modified": "<string>", 
+                              "cp:lastModifiedBy": "<string>", 
+                              "cp:lastPrinted": "<string>"},
+            "file_type": "<string>",
+            "ole": {"macros": [{"vba_code": "<string>",
+                                "stream_path": "<string>", 
+                                "subfilename": "<string>", 
+                                "vba_filename": "<string>", 
+                                "patterns": ["<strings>"], 
+                                "length": <int>, 
+                                "properties": ["<strings>"]}, ... ],
+                     "num_macros": <int>},
+            "rels": ["<strings>"],
+            "tags": ["<strings>"],
+            "type_content": {"languages": {"<string>": <int>, ... },
+                             "codifications" : [["<string>", <int>] ... ],
+                             "workbook": {"sheets": <int>, 
+                                          "lowestEdited": "<string>", 
+                                          "calcPr": "<string>", 
+                                          "lastEdited": "<string>", 
+                                          "rupBuild": "<string>"},
+                             "language_guess": [["<string>", <int>], ... ],
+                             "printers": ["<strings>"]}
+    
+          }
+        }
+      }
+    }
 
 packers
 ~~~~~~~
