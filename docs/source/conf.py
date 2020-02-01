@@ -19,6 +19,7 @@ import sys
 
 project = u'Документация API VirusTotal'
 author = u'Евгений Дроботун'
+copyright = u'2020, Евгений Дроботун'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
