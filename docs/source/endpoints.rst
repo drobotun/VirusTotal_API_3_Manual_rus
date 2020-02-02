@@ -959,7 +959,7 @@ GET /ip_addresses/{ip}/votes
 
 Получение результатов голосования по IP-адресу.
 
-|PATCH| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/votes``
+|GET| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/votes``
 
 
 
