@@ -1561,6 +1561,76 @@ rtf_info
 
 Информация о файлах формата Microsoft Rich Text.
 
+``rtf_info`` возвращает информацию о `Microsoft RTF файлах <https://en.wikipedia.org/wiki/Rich_Text_Format>`_.
+
+- ``document_properties`` - структурированные метаданные о документе:
+	
+	- ``non_ascii_characters`` - количество не ASCII символов в документе;
+	- ``embedded_drawings``- количество рисунков, содержащихся в документе;
+	- ``rtf_header`` - заголовок RTF (например ``"rtf1"``);
+	- ``default_ansi_codepage`` - используемая кодовая страница (например ``"Western European"``);
+	- ``read_only_protection`` - ``True`` если файл предназначен только для чтения;
+	- ``user_protection`` -  user protection.
+	- ``default_character_set`` - используемый набор символов (например ``"ANSI"``);
+	- ``custom_xml_data_properties`` - количество пользовательских объектов XML-данных;
+	- ``dos_stubs`` - количество найденных "заглушек" DOS;
+	- ``objects`` - список содержащихся объектов, с описанием типа и класса;
+	- ``embedded_pictures`` - количество встроенных картинок;
+	- ``default_languages`` - языки, обнаруженные в документе;
+	- ``longest_hex_string`` - самая длинная шестнадцатеричная строка найденная в документе;
+
+- ``summary_info`` - другие свойства документа:
+	
+	- ``revision_time`` - дата последнего изменения в формате "%Y-%m-%d %H:%M:%S";
+	- ``version_number`` - номер версии документа;
+	- ``editing_time`` - общее время редактирования в минутах;
+	- ``number_of_pages`` - number of pages in the document.
+	- ``creation_time`` - дата создания в формате "%Y-%m-%d %H:%M:%S";
+	- ``operator`` - имя пользователя, создавшего документ;
+	- ``number_of_non_whitespace_characters`` -  количество символов не являющимися пробелами;
+	- ``version`` - версия RTF отраженная в документе;
+	- ``number_of_characters`` - количество символов в документе;
+	- ``number_of_words`` - количество слов в документе.
+
+.. rubric:: Microsoft RTF файл
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "rtf_info": {
+            "document_properties": {"non_ascii_characters": <int>,
+                                    "embedded_drawings": <int>,
+                                    "rtf_header": "<string>", 
+                                    "default_ansi_codepage": "<string>", 
+                                    "read_only_protection": <boolean>, 
+                                    "user_protection": <boolean>, 
+                                    "default_character_set": "<string>", 
+                                    "custom_xml_data_properties": <int>, 
+                                    "dos_stubs": <int>, 
+                                    "objects": [{"type": "<string>",
+                                                 "class": "<string>"} ... ],
+                                    "embedded_pictures": <int>, 
+                                    "default_languages": ["<strings>"],
+                                    "longest_hex_string": <int>},
+            "summary_info": {"revision_time": "<string:%Y-%m-%d %H:%M:%S>",
+                             "version_number": <int>,
+                             "editing_time": <int>,
+                             "number_of_pages": <int>,
+                             "creation_time": "<string:%Y-%m-%d %H:%M:%S>",
+                             "operator": "<string>",
+                             "number_of_non_whitespace_characters": <int>,
+                             "version": <int>,
+                             "number_of_characters": <int>,
+                             "number_of_words": <int>}
+          }
+        }
+      }
+    }
+
 signature_info
 ~~~~~~~~~~~~~~
 
