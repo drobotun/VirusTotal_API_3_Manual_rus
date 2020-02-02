@@ -1402,7 +1402,7 @@ pe_info
 	
 - ``timestamp`` - время компиляции в формате Unix Epoch.
 
-.. rubric:: Microsoft Windows PE-файла
+.. rubric:: Microsoft Windows PE-файл
 
 ::
 
@@ -1458,6 +1458,101 @@ rombios_info
 .. index:: rombios_info
 
 Информация о BIOS, EFI, UEFI и связанных с ними архивах.
+
+``rombios_info`` показывает информацию о файлах прошивок и встроенных программ.
+
+- ``acpi_tables`` - таблицы ACPI (Advanced Configuration and Power interface), имеющиеся в прошивке;
+- ``apple_data`` - метаданные из файлов прошивки Apple EFI, представленные в виде списка кортежей, с ключом и значениями. Некоторые типичные ключи и значения:
+
+	- ``Board ID`` - идентификатор сборки;
+	- ``Built by`` - наименование сборщика файла;
+	- ``Date`` - дата создания файла в формате "%a %b %m %H:%M:%S %Z %Y";
+	- ``Revision`` - редакция сборки;
+	- ``ROM Version`` - версия ROM;
+	- ``Buildcave ID`` - идентификатор сборки внутренней прошивки;
+	
+- ``bios_information`` - некторые детали о файле BIOS:
+
+	- ``BIOS Release`` - версия релиза;
+	- ``Characteristics`` - характеристики BIOS, такие как ``"PCI supported"``, ``"8042 keyboard supported"`` и т. д.;
+	- ``ROM Size`` - размер ROM в удобном для чтения формате (например ``"2MB"``);
+	- ``Release Date`` - дата релизав формате "%m/%d/%Y";
+	- ``Runtime Size`` - размер среды выполнения в удобном для чтения формате (например ``"64.0KB"``);
+	- ``Starting Address Segment`` - в шестнадцатеричном формате;
+	- ``Vendor`` - поставщик BIOS;
+	- ``Version`` - полная версия файла BIOS;
+	
+- ``certs`` - сертификаты, найденные в файле прошивки:
+
+	- ``valid_from`` - дата начала действия сертификата в формате "%Y-%m-%d %H:%M%S";
+	- ``subject`` - уникальные имена RDN и их значения;
+	- ``valid_to``- дата окончания действия сертификата в формате "%Y-%m-%d %H:%M%S";
+	- ``issuer`` - имя выпускающего удостоверяющего центра RDN;
+	
+- ``executable_files`` - количество обнаруженных исполняемых файлов;
+- ``firmware_volumes`` - количество найденных томов прошивки;
+- ``format`` - формат пакета (например ``"ROMFLASH_HEADER"``);
+- ``manufacturer_strings`` - ссылки на производителей BIOS;
+- ``nvar_variable_names`` - обнаруженные переменные NVAR;
+- ``raw_objects`` - количество необработанных объектов;
+- ``sections`` - количество секций;
+- ``smbios_data`` - обнаруженные ключи и значения данных SMBIOS:
+	
+	- ``Version`` - версия файла;
+	
+- ``system_information`` - информация о платформе для этого файла:
+	
+	- ``SKU Number`` - SKU номер;
+	- ``UUID`` - уникальный идентификатор;
+	- ``Family`` - номер семейства;
+	- ``Serial Number`` - серийный номер;
+	- ``Version`` - версия;
+	- ``Product Name`` - наименование;
+	- ``Manufacturer`` - производитель BIOS.
+	
+.. rubric:: Образ прошивки
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "rombios_info": {
+            "acpi_tables": ["<strings>"],
+            "apple_data": [["<string>", "<string>"], ... ],
+            "bios_information": {"BIOS Release": "<string>",
+                                 "Characteristics": ["<strings>"],
+                                 "ROM Size": "<string>",
+                                 "Release Date": "<string:%m/%d/%Y>",
+                                 "Runtime Size": "<string>",
+                                 "Starting Address Segment": "<string>",
+                                 "Vendor": "<string>",
+                                 "Version": "<string>"},
+            "certs":[{"issuer": "<string>",
+                      "subject": "<string>",
+                      "valid_from": "<string:%Y-%m-%d %H:%M:%S>",
+                      "valid_to": "<string:%Y-%m-%d %H:%M:%S>"}, ... ],
+            "executable_files": <int>,
+            "firmware_volumes": <int>,
+            "format": "<string>",
+            "manufacturer_strings": {"<string>": <int>, ... },
+            "nvar_variable_names": ["<strings>"],
+            "raw_objects": <int>,
+            "sections": <int>,
+            "smbios_data": {"<string>": "<string>", ... },
+            "system_information": {"Family": "<string>",
+                                   "Manufacturer": "<string>",
+                                   "Product Name": "<string>",
+                                   "SKU Number": "<string>",
+                                   "Serial Number": "<string>",
+                                   "UUID": "<string>",
+                                   "Version": "<string>"}
+          }
+        }
+      }
+    }
 
 rtf_info
 ~~~~~~~~
