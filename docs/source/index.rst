@@ -13,6 +13,7 @@ API VirusTotal (3 version)
 .. toctree::
    :maxdepth: 2
    
+   about
    intro
    objects
    endpoints
