@@ -1638,6 +1638,104 @@ signature_info
 
 Информация о подписи PE-файлов.
 
+``signature_info`` содержит информацию о цифровой подписи для  Windows Executable файлов, извлеченную с помощью утилиты `Sigcheck <https://docs.microsoft.com/en-us/sysinternals/downloads/sigcheck>`_.
+
+- ``comments`` - из ресурсов файла (если обнаружено);
+- ``copyright`` - из ресурсов файла (если обнаружено);
+- ``counter signers`` - строка со счетчиком подписей Common Names;
+- ``counter signers details`` - список словарей, детализирующих значение каждого сертификата из счетчика:
+
+	- ``algorithm`` -  алгоритм, используемый для создания пар ключей;
+	- ``cert issuer`` - компания, выпустившая  сертификат;
+	- ``name`` - отличительное имя сертификата;
+	- ``serial number`` - в шестнадцатеричном виде с разделением пробелом между байтами;
+	- ``status`` - может иметь значение ``"Valid"`` или указать проблему с сертификатом, если таковая имеется (например ``"This certificate or one of the certificates in the certificate chain is not time valid."``);
+	- ``thumbprint`` - хэш сертификата в шестнадцатеричном представлении.
+	- ``valid from`` - дата начала действия в формате "%H:%M %p %m/%d/%Y";
+	- ``valid to`` - дата истечения срока действия в формате "%H:%M %p %m/%d/%Y";
+	- ``valid usage`` - для чего может быть использован сертификат (например ``"Code Signing"``);
+	
+- ``description`` -  из ресурсов файла (если обнаружено);
+- ``file version`` -из ресурсов файла (если обнаружено);
+- ``internal name`` - из ресурсов файла (если обнаружено);
+- ``original name`` - из ресурсов файла (если обнаружено);
+- ``product`` - из ресурсов файла (если обнаружено);
+- ``signers`` - строка с подписывающими Common Names;
+- ``singers details`` - список словарей с подробным описанием каждого сертификата подписавшего:
+
+	- ``algorithm`` -  алгоритм, используемый для создания пар ключей;
+	- ``cert issuer`` - компания, выпустившая  сертификат;
+	- ``name`` - отличительное имя сертификата;
+	- ``serial number`` - в шестнадцатеричном виде с разделением пробелом между байтами;
+	- ``status`` - может иметь значение ``"Valid"`` или указать проблему с сертификатом, если таковая имеется (например ``"This certificate or one of the certificates in the certificate chain is not time valid."``);
+	- ``thumbprint`` - хэш сертификата в шестнадцатеричном представлении.
+	- ``valid from`` - дата начала действия в формате "%H:%M %p %m/%d/%Y";
+	- ``valid to`` - дата истечения срока действия в формате "%H:%M %p %m/%d/%Y";
+	- ``valid usage`` - для чего может быть использован сертификат (например ``"Code Signing"``);
+	
+- ``signing date`` - дата подписания файла в формате "%H:%M %p %m/%d/%Y";
+- ``verified`` - статус сертификата. Возможные варианты: ``"Signed"``, ``"Unsigned"``, или если есть какие-либо проблемы с подписью (например ``"A - certificate was explicitly revoked by its issuer."``);
+- ``x509`` - список сертификатов, найденных в файле, в случае, если Sigcheck не возвращает информацию о них:
+
+	- ``algorithm`` -  алгоритм, используемый для создания пар ключей;
+	- ``cert issuer`` - компания, выпустившая  сертификат;
+	- ``name`` - отличительное имя сертификата;
+	- ``serial number`` - в шестнадцатеричном виде с разделением пробелом между байтами;
+	- ``thumbprint`` - хэш сертификата в шестнадцатеричном представлении.
+	- ``valid from`` - дата начала действия в формате "%H:%M %p %m/%d/%Y";
+	- ``valid to`` - дата истечения срока действия в формате "%H:%M %p %m/%d/%Y";
+	- ``valid usage`` - для чего может быть использован сертификат (например ``"Code Signing"``).
+	
+.. rubric:: JSON
+
+::
+
+    {
+      "data": {
+		    ...
+        "attributes" : {
+          ...
+          "signature_info": {
+            "comments": "<string>",
+            "copyright": "<string>",
+            "counter signers": "<string>",
+            "counter signers details": [{"algorithm": "<string>",
+                                         "cert issuer": "<string>",
+                                         "name": "<string>",
+                                         "serial number": "<string>",
+                                         "status": "<string>",
+                                         "thumbprint": "<string>",
+                                         "valid from": "<string:%H:%M %p %m/%d/%Y>",
+                                         "valid to": "<string:%H:%M %p %m/%d/%Y>",
+                                         "valid usage": "<string>"} ... ],
+            "description": "<string>",
+            "file version": "<string>",
+            "internal name": "<string>",
+            "original name": "<string>",
+            "product": "<string>",
+            "signers": "<string>",
+            "signers details": [{"algorithm": "<string>",
+                                 "cert issuer": "<string>",
+                                 "name": "<string>",
+                                 "serial number": "<string>",
+                                 "status": "<string>",
+                                 "thumbprint": "<string>",
+                                 "valid from": "<string:%H:%M %p %m/%d/%Y>",
+                                 "valid to": "<string:%H:%M %p %m/%d/%Y>",
+                                 "valid usage": "<string>"}, ... ],
+            "signing date": "<string:%H:%M %p %m/%d/%Y>",
+            "verified": "<string>",
+            "x509": [{"algorithm": "<string>",
+                      "cert issuer": "<string>",
+                      "name": "<string>",
+                      "serial number": "<string>",
+                      "thumbprint": "<string>",
+                      "valid from": "<string:%H:%M %p %m/%d/%Y>",
+                      "valid to": "<string:%H:%M %p %m/%d/%Y>",
+                      "valid_usage": "<string>"}, ... ]
+        }
+      }
+    }
 
 ssdeep
 ~~~~~~
@@ -2164,11 +2262,161 @@ IP-адреса (IP addresses)
 
 .. index:: IP addresses
 
+IPv4-адреса - это сетевые адреса, о которых VirusTotal также хранит информацию. Ниже приводится описание полей, хранящихся в объектах типа ``IP addresses``.
+
+IP-адреса, также как домены и сетевые местоположения связаны с объектами файлов и URL-адресов во многих отношениях. Именно поэтому их можно получить по связи с другими объектами, а также при поиске в службах VT Enterprise или просто путем поиска уже существующего IP-адреса.
+
+Обратите внимание, что в качестве объектов домена, представления IP-адресов не записывают вердикты партнеров для рассматриваемого ресурса. Вместо этого, отчеты включают в себя всю недавнюю активность, которую VirusTotal видел для ресурса, а также контекстную информацию о нем. Эти детали включают в себя:
+
+- ``id`` - идентификатор объекта в виде строки с IPv4-адресом;
+- ``as_owner`` - владелец объекта Autonomous System, которому принадлежит IP-адрес;
+- ``asn`` - номер Autonomous System, которому принадлежит IP-адрес;
+- ``continent`` - континент, на котором размещен IP (код континента по ISO-3166);
+- ``country`` - страна, в которой размещен IP (код страны по ISO-3166);
+- ``network`` - диапазон IPv4 сети, к которому принадлежит IP-адрес;
+- ``regional_internet_registry`` - RIR (один из пяти региональных регистраторов: ``AFRINIC``, ``ARIN``, ``APNIC``, ``LACNIC`` или ``RIPE NCC``);
+- ``reputation`` - оценка домена, рассчитанная исходя из результатов голосования сообщества VirusTotal;
+- ``total_votes`` - Unweighted number of total votes from the community, divided in "harmless" and "malicious".
+
+.. note:: Репутация каждого домена определяется сообществом Virustotal (в которое входят зарегистрированные пользователи). Пользователи, голосующие за домены, в свою очередь, сами имеют репутацию, при этом оценка сообщества включает в себя все голоса, с учетом репутациеи пользователей, которые проголосовали за тот или иной домен. Отрицательные (красные) оценки указывают на злонамеренность, в то время как положительные (зеленые) оценки отражают безвредность. Чем больше абсолютное число, тем больше вы можете доверять данной оценке. Вы можете прочитать больше об этом в `этой статье сообщества <https://support.virustotal.com/hc/en-us/articles/115002146769-Vote-comment>`_.
+
+.. rubric:: Объект типа "IP-addresses"
+
+::
+
+    {
+      "data": {
+        "type": "ip_address"
+        "id": "<ipv4>",
+        "links": {
+          "self": "https://virustotal.com/api/v3/ip_addresses/<ipv4>"
+        },
+        "attributes": {
+          "as_owner": "<string>",
+          "asn": <int>,
+          "continent": "<string>", 
+          "country": "<string>",
+          "network": "<ipv4_range>",
+          "regional_internet_registry": "<string>", 
+          "reputation": <int>,
+          "total_votes": {
+            "harmless": <int>,
+            "malicious": <int>
+          }
+        }
+      }
+    }
 
 URL (URLs)
 ----------
 
 .. index:: URLs
+
+Информация об URL-адресах.
+
+URL-адреса не только представляют информацию сами по себе, но и могут давать контекстную информацию о файлах и других элементах на VirusTotal.
+
+Различные вызовы URL-адресов могут возвращать различные объекты, связанные с URL-адресами:
+
+- ``data`` -  корневая структура отчета:
+	
+	- ``categories`` - категория;
+	- ``first_submission_date`` - дата первого представления этого URL-адреса в VirusTotal;
+	- ``last_analysis_date`` - время последнего сканирования URL-адреса;
+	- ``last_analysis_results`` - результат сканирования URL-адресов. Словарь с именем сканера в качестве ключа и словарь с примечаниями / результатом сканирования в качестве значения:
+	
+		- ``category`` - нормализованный результат сканирования:
+			
+			- ``"harmless"`` - сайт не является вредоносным;
+			- ``"undetected"`` - сканер не имеет никакого мнения об этом сайте;
+			- ``"suspicious"`` - сканер считает сайт подозрительным;
+			- ``"malicious"`` - сканер считает сайт вредоносным;
+			
+		- ``engine_name`` - полное наименование сервиса, сканировавшего URL (имя антивирусного "движка");
+		- ``engine_update`` - значение обновления антивирусного "движка", в случае, если эти данные доступны;
+		- ``engine_version`` - версия антивирусного "движка", в случае, если эти данные доступны;
+		- ``method`` - способ анализа URL, предоставляемого сервисом (например ``"blacklist"``);
+		- ``result`` - необработанное значение, возвращаемое сканером URL-адресов (``"clean"``, ``"malicious"``, ``"suspicious"``, ``"phishing"``). Данное значение может варьироваться от сканера к сканеру, поэтому для нормализации требуется поле ``"category"``;
+		
+	``last_analysis_stats`` - общее количество результатов сканирования этого URL-адреса;
+		
+		- ``harmless`` - количество сообщений о безвредности URL-адреса;
+		- ``malicious`` - количество сообщений о вредоносности URL-адреса;
+		- ``suspicious`` - количество сообщений о подозрительности URL-адреса;
+		- ``timeout`` - количество таймаутов при сканировании URL-адреса;
+		- ``undetected`` - количество сообщений о необнаружении каких-либо признаков вредоносности URL-адреса;
+	
+	- ``last_final_url`` - окончание перенаправления исходного URL (при перенаправлении);
+	- ``last_http_response_code`` - HTTP код последнего ответа;
+	- ``last_http_response_content_length`` - длина полученного содержимого (в байтах);
+	- ``last_http_response_content_sha256`` - SHA256 хэш полученного контента;
+	- ``last_http_response_headers`` - словарь из заголовков и их значений последнего HTTP-ответа;
+	- ``last_modification_date`` - дата последней модификации;
+	- ``last_submission_date`` - время последней отправки URL-адреса на анализ;
+	- ``reputation`` - значение голосов от сообщества VirusTotal;
+	- ``tags`` - тэги;
+	- ``times_submitted`` - количество проверок URL-адреса;
+	- ``total_votes`` - словарь с количеством положительных (``"harmless"``) и отрицательных (``"malicious"``) голосов, полученных от сообщества VirusTotal;
+	- ``url`` - исходный URL для сканирования;
+	
+- ``id`` - идентификатор для этого конкретного отчета об URL-адресе;
+- ``links`` - содержит ``"self"``, со ссылкой на сам отчет;
+- ``type`` - значение - ``"url"``, тип этого ответа.
+
+.. rubric:: Объект типа "URL"
+
+::
+
+    {
+      "data": {
+        "attributes": {
+          "categories": {dict},
+          "first_submission_date": <int:timestamp>,
+          "last_analysis_date": <int:timestamp>,
+          "last_analysis_results": {
+            "<str:scanner name>": {
+              "category": "<string>",
+              "engine_name": "<string>",
+              "engine_update": null,
+              "engine_version": null,
+              "method": "<string>",
+              "result": "<string>"
+              }, ...
+            },
+          "last_analysis_stats": {
+            "harmless": <int>,
+            "malicious": <int>,
+            "suspicious": <int>,
+            "timeout": <int>,
+            "undetected": <int>
+            },
+          "last_final_url": "<string>",
+          "last_http_response_code": <int>,
+          "last_http_response_content_length": <int>,
+          "last_http_response_content_sha256": "<string>",
+          "last_http_response_headers": {"<string>": "<string>", ... },
+          "last_modification_date": <int:timestamp>,
+          "last_submission_date": <int:timestamp>,
+          "reputation": <int>,
+          "tags": [<strings>],
+          "times_submitted": <int>,
+          "total_votes": {"harmless": <int>, "malicious": <int>},
+          "url": "<string>"
+          },
+        "id": "<string>",
+        "links": {"self": "<string>"}
+        "type": "url"
+      }
+    }
+
+Комментарии (comments)
+----------------------
+
+.. index:: comments
+
+Комментарии, размещенные сообществом о файлах, URL-адресах, IP-адресах, доменах и графиках.
+
+Пользователи сообщества VirusTotal моuen добавить информацию в отчет объекта, добавив комментарий. Детали комментария:
 
 Представления (submissions)
 ---------------------------
