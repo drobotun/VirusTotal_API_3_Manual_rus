@@ -904,7 +904,68 @@ POST /domains/{domain}/votes
 
 |POST| ``https://www.virustotal.com/api/v3/domains/{domain}/votes``
 
+IP addresses (Функции для работы с IP-адресами)
+-----------------------------------------------
+
+GET /ip_addresses/{ip}
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /ip_addresses/{ip}
+
+Получение информации о IP-адресе.
+
+|GET| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}``
+
+GET /ip_addresses/{ip}/comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /ip_addresses/{ip}/comments
+
+Получение комментариев для IP-адресе.
+
+|GET| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/comments``
+
+POST /ip_addresses/{ip}/comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /ip_addresses/{ip}/comments
+
+Добавление комментария для IP_адреса.
+
+|POST| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/comments \``
+
+GET /ip_addresses/{ip}/{relationship}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /ip_addresses/{ip}/{relationship}
+
+Получение объектов, связанных с IP-адресом.
+
+|GET| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/{relationship}``
+
+POST /ip_addresses/{ip}/votes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /ip_addresses/{ip}/votes
+
+Добавление голоса для IP-адреса.
+
+|POST| ``www.virustotal.com/api/v3/ip_addresses/{ip}/votes``
+
+GET /ip_addresses/{ip}/votes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /ip_addresses/{ip}/votes
+
+Получение результатов голосования по IP-адресу.
+
+|PATCH| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/votes``
+
+
+
 
 .. |POST| image:: https://i.imgur.com/CWgYjh1.png
 .. |GET| image:: https://i.imgur.com/CBcN0Fh.png
+.. |PATCH| image:: https://i.imgur.com/y4fIf8i.png
+.. |DELETE| image:: https://i.imgur.com/GoV49Sn.png
 
