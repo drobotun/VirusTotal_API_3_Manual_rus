@@ -416,7 +416,7 @@ GET /files/{id}/votes
 
 Получение результатов голосования для файла
 
-|GET| ``https://www.virustotal.com/api/v3/files/id/votes``
+|GET| ``https://www.virustotal.com/api/v3/files/{id}/votes``
 
 .. rubric:: cURL
 
@@ -511,7 +511,7 @@ GET /files/{id}/download_url
 
 .. note:: Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.
 
-|GET| ``https://www.virustotal.com/api/v3/files/id/download_url``
+|GET| ``https://www.virustotal.com/api/v3/files/{id}/download_url``
 
 .. rubric:: cURL
 
@@ -558,7 +558,7 @@ GET /files/{id}/download
 
 .. note:: Требуются особые привилегии. Эта функция доступна только для пользователей со специальными привилегиями.
 
-|GET| ``https://www.virustotal.com/api/v3/files/id/download``
+|GET| ``https://www.virustotal.com/api/v3/files/{id}/download``
 
 
 .. rubric:: cURL
@@ -1003,7 +1003,7 @@ GET /urls/{id}/votes
 
 Получение результатов голосования для URL-адреса.
 
-|GET| ``https://www.virustotal.com/api/v3/urls/id/votes``
+|GET| ``https://www.virustotal.com/api/v3/urls/{id}/votes``
 
 .. rubric:: cURL
 
@@ -1019,7 +1019,7 @@ GET /urls/{id}/votes
 
     import requests
         ...
-    api_url = "https://www.virustotal.com/api/v3/urls/{id}/comments"
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/votes"
     headers = {"x-apikey" : "<ключ доступа к API>"}
     query = {"limit": "<limit)>", "cursor": "<cursor>"}
     response = requests.get(api_url, headers=headers, params=query)
@@ -1055,7 +1055,7 @@ POST /urls/{id}/votes
 
 Добавление голоса для URL-адреса.
 
-|POST| ``https://www.virustotal.com/api/v3/urls/{id}/comments``
+|POST| ``https://www.virustotal.com/api/v3/urls/{id}/votes``
 
 .. rubric:: cURL
 
@@ -1234,6 +1234,63 @@ GET /domains/{domain}
 
 |GET| ``https://www.virustotal.com/api/v3/domains/{domain}``
 
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/domains/{domain} \
+      --header 'x-apikey: <your API key>'
+  
+.. rubric:: Python
+
+.. code-block:: Pynhon
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/domains/{domain}"
+	headers = {"x-apikey" : "<ключ доступа к API>"}
+	response = requests.get(api_url, headers=headers)
+	
+.. rubric:: Параметры запроса
+
+- **domain** - имя домена (string).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. rubric:: Пример ответа
+
+::
+
+    {
+      "data": {
+        "type": "domain",
+        "id": "virustotal.com",
+        "links": {
+          "self": "https://virustotal.com/api/v3/domains/virustotal.com"
+        },
+        "attributes": {
+          "categories": {
+            "Alexa": "services",
+            "BitDefender": "computersandsoftware",
+            "TrendMicro": "computers internet",
+            "Websense ThreatSeeker": "computer security"
+          },
+          "creation_date": 1032308169,
+          "last_update_date": 1389199030,
+          "registrar": "MarkMonitor Inc.",
+          "reputation": 13,
+          "total_votes": {
+            "harmless": 2,
+            "malicious": 0
+          },
+    	    "whois": "Domain Name: VIRUSTOTAL.COM\r\n   Registry Domain ID: ...",    
+          "whois_date": 1560599498
+        }
+      }
+    }
 
 GET /domains/{domain}/comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1242,8 +1299,36 @@ GET /domains/{domain}/comments
 
 Получение комментариев для Internet-домена.
 
-|GET| ``https://www.virustotal.com/api/v3/domains/domain/comments``
+|GET| ``https://www.virustotal.com/api/v3/domains/{domain}/comments``
 
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/domains/{domain}/comments \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/domains/{domain}/comments"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    query = {"limit": "<limit)>", "cursor": "<cursor>"}
+    response = requests.get(api_url, headers=headers, params=query)
+
+.. rubric:: Параметры запроса
+
+- **id** - имя домена (string);
+- **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
+- **cursor** - курсор продолжения (string, необязательный параметр).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
 
 POST /domains/{domain}/comments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1252,7 +1337,78 @@ POST /domains/{domain}/comments
 
 Добавление комментария для Internet-домена.
 
-|POST| ``https://www.virustotal.com/api/v3/domains/domain/comments``
+|POST| ``https://www.virustotal.com/api/v3/domains/{domain}/comments``
+
+.. rubric:: cURL
+
+::
+
+    curl --request POST \
+      --url https://www.virustotal.com/api/v3/domains/{domain}/comments \
+      --header 'x-apikey: <your API key>' \
+      --data '{"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/domains/{domain}/comments"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    comments = {"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}
+    response = requests.post(api_url, headers=headers, json=comments)
+
+.. rubric:: Параметры запроса
+
+- **id** - имя домена (string);
+- **data** - комментарий (json).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+С помощью этой функции вы можете опубликовать комментарий для данного домена. Тело POST-запроса должно быть JSON-представлением объекта "comment". Обратите внимание, однако, что вам не нужно указывать идентификатор для объекта, так как они автоматически генерируются для новых комментариев.
+
+Любое слово, начинающееся с ``#`` в тексте вашего комментария, будет считаться тегом и будет добавлено в атрибут тега комментария.
+
+.. rubric:: Пример запроса
+
+::
+
+    {
+      "data": {
+        "type": "comment",
+        "attributes": {
+    	    "text": "Lorem #ipsum dolor sit ..."
+        }
+      }
+    }
+
+.. rubric:: Пример ответа
+
+::
+
+    {
+      "data": {
+        "type": "comment",
+        "id": "<comment's ID>",
+        "links": {
+          "self": "https://www.virustotal.com/api/v3/comments/<comment's ID>"
+        },
+        "attributes": {
+          "date": 1521725475,
+          "tags": ["ipsum"],
+          "html": "Lorem #ipsum dolor sit ...",
+          "text": "Lorem #ipsum dolor sit ...",
+          "votes": {
+            "abuse": 0,
+            "negative": 0,
+            "positive": 0
+          }
+        }
+      }
+    }
 
 .. _domains-relationship-label:
 
