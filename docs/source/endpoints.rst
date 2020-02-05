@@ -1322,7 +1322,7 @@ GET /domains/{domain}/comments
 
 .. rubric:: Параметры запроса
 
-- **id** - имя домена (string);
+- **domain** - имя домена (string);
 - **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
 - **cursor** - курсор продолжения (string, необязательный параметр).
 
@@ -1361,7 +1361,7 @@ POST /domains/{domain}/comments
 
 .. rubric:: Параметры запроса
 
-- **id** - имя домена (string);
+- **domain** - имя домена (string);
 - **data** - комментарий (json).
 
 .. rubric:: Заголовок запроса
@@ -1495,6 +1495,9 @@ GET /ip_addresses/{ip}/votes
 Получение результатов голосования по IP-адресу.
 
 |GET| ``https://www.virustotal.com/api/v3/ip_addresses/{ip}/votes``
+
+Analyses (функции для анализа объектов)
+---------------------------------------
 
 
 
