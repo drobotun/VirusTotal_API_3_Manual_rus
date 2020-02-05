@@ -843,6 +843,316 @@ GET /urls/{id}
       "data": <URL OBJECT>
     }
 
+POST /urls/{id}/analyse
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /urls/{id}/analyse
+
+Анализ URL-адреса.
+
+|POST| ``https://www.virustotal.com/api/v3/urls/{id}/analyse``
+
+.. rubric:: cURL
+
+::
+
+    curl --request POST \
+      --url https://www.virustotal.com/api/v3/urls/{id}/analyse \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/analyse"
+	headers = {"x-apikey" : "<ключ доступа к API>"}
+	response = requests.post(api_url, headers=headers)
+
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL-адреса.
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+.. rubric:: Структура ответа
+
+::
+
+    {
+      "data": {"id": "<string>", "type": "analysis"}
+    }
+
+GET /urls/{id}/comments
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /urls/{id}/comments
+
+Получение комментариев для URL
+
+|GET| ``https://www.virustotal.com/api/v3/urls/{id}/comments``
+
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/urls/{id}/comments \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/comments"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    query = {"limit": "<limit)>", "cursor": "<cursor>"}
+    response = requests.get(api_url, headers=headers, params=query)
+
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL (string);
+- **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
+- **cursor** - курсор продолжения (string, необязательный параметр).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+- ``data`` - список объектов типа "комментарий" (``comments``);
+- ``links`` - содержит ``"self"`` со ссылкой на эту группу комментариев и ``"next"``, со ссылкой на следующую группу;
+- ``cursor`` - содержит символ курсора, используемый для доступа к следующей группе комментариев.
+
+.. rubric:: Структура ответа
+
+::
+
+    {
+      "data": [<COMMENT OBJECTS>],
+      "links": {"next": "<string>", "self": "<string>"},
+      "meta": {"cursor": "<string>"},
+    }
+
+POST /files/{id}/comments
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /urls/{id}/comments
+
+Добавление комментария для URL-адреса.
+
+|POST| ``https://www.virustotal.com/api/v3/urls/{id}/comments``
+
+.. rubric:: cURL
+
+::
+
+    curl --request POST \
+      --url https://www.virustotal.com/api/v3/urls/{id}/comments \
+      --header 'x-apikey: <your API key>' \
+      --data '{"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/comments"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    comments = {"data": {"type": "comment", "attributes": {"text": "Lorem ipsum dolor sit ..."}}}
+    response = requests.post(api_url, headers=headers, json=comments)
+
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL (string);
+- **data** - комментарий (json).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+
+
+С помощью этой функции вы можете опубликовать комментарий для данного URL-адреса. Тело POST-запроса должно быть JSON-представлением комментария. Обратите внимание, что вам не нужно указывать идентификатор объекта, так как он автоматически генерируется для новых комментариев.
+
+Любое слово, начинающееся с ``#`` в тексте вашего комментария, будет считаться тегом и добавляться в атрибут тега комментария.
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+.. rubric:: Структура ответа
+
+::
+
+    {
+      "data": <COMMENT OBJECT>
+    }
+
+GET /urls/{id}/votes
+~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /urls/{id}/votes
+
+Получение результатов голосования для URL-адреса.
+
+|GET| ``https://www.virustotal.com/api/v3/urls/id/votes``
+
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/urls/{id}/votes \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/comments"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    query = {"limit": "<limit)>", "cursor": "<cursor>"}
+    response = requests.get(api_url, headers=headers, params=query)
+
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL (string);
+- **limit** - максимальное число комментариев в ответе (int_32, необязательный параметр);
+- **cursor** - курсор продолжения (string, необязательный параметр).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+- ``data`` - список объектов типа "голос" (``votes``);
+- ``links`` - содержит ``"self "``, со ссылкой на саму группу голосов.
+
+.. rubric:: Структура ответа
+
+::
+
+    {
+      "data": [<VOTE OBJECTS>],
+      "links": {"self": "<string>"}
+    }
+
+POST /urls/{id}/votes
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: POST /urls/{id}/votes
+
+Добавление голоса для URL-адреса.
+
+|POST| ``https://www.virustotal.com/api/v3/urls/{id}/comments``
+
+.. rubric:: cURL
+
+::
+
+    curl --request POST \
+      --url https://www.virustotal.com/api/v3/urls/{id}/votes \
+      --header 'x-apikey: <your API key>' \
+      --data '{"data": {"type": "vote", "attributes": {"verdict": "malicious"}}}''
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/votes"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    votes = {"data": {"type": "vote", "attributes": {"verdict": "malicious"}}}
+    response = requests.post(api_url, headers=headers, json=votes)
+
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL (string);
+- **data** - голос (json).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+С помощью этой функции вы можете опубликовать свой голос за данный URL-адрес. Тело для запроса POST должно быть JSON-представлением объекта голосования. Обратите внимание, однако, что вам не нужно указывать идентификатор объекта, так как они автоматически генерируются для новых голосов.
+
+Атрибут ``verdict`` должен быть либо ``harmless``, либо ``malicious``.
+
+.. rubric:: Пример ответа
+
+::
+
+    {
+      "data": <VOTE OBJECT>
+    }
+
+
+GET /urls/{id}/network_location
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: GET /urls/{id}/network_location
+
+Получение домена или IP-адреса для URL-адреса.
+
+|GET| ``https://www.virustotal.com/api/v3/urls/{id}/network_location``
+
+.. rubric:: cURL
+
+::
+
+    curl --request GET \
+      --url https://www.virustotal.com/api/v3/urls/{id}/network_location \
+      --header 'x-apikey: <your API key>'
+
+.. rubric:: Python
+
+.. code-block:: python
+
+    import requests
+        ...
+    api_url = "https://www.virustotal.com/api/v3/urls/{id}/network_location"
+    headers = {"x-apikey" : "<ключ доступа к API>"}
+    response = requests.get(api_url, headers=headers)
+
+.. rubric:: Параметры запроса
+
+- **id** - идентификатор URL (string).
+
+.. rubric:: Заголовок запроса
+
+- **x-apikey** - ключ доступа к API (string).
+
+.. hint:: Дополнительные сведения о создании допустимого идентификатора URL-адреса см. в разделе "`Идентификатор URL-адреса`_".
+
+- ``data`` - водержит объект типа "домен" (``domain``) или объект типа "IP-адрес" (``IP addresses``), в зависимости от идентификатора запроса;
+- ``links`` - содержит ``"self"``, со ссылкой на отчет о конкретном местоположении.
+
+.. rubric:: Пример ответа
+
+::
+
+    {
+      "data": <DOMAIN OBJECT> or <IP OBJECT>,
+      "links": {"self": "<string>"}
+    }
+
+
+
+
 Domains (Функции для работы с доменами)
 ---------------------------------------
 
